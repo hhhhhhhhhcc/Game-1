@@ -1,0 +1,10 @@
+{"list":[
+{"_t":"BuffConfig","_id":1,"BuffDescription":"眩晕"},
+{"_t":"BuffConfig","_id":2,"BuffDescription":"减速"},
+{"_t":"BuffConfig","_id":3,"BuffDescription":"灼伤"},
+{"_t":"BuffConfig","_id":4,"BuffDescription":"共振"},
+{"_t":"BuffConfig","_id":5,"BuffDescription":"易伤"},
+{"_t":"BuffConfig","_id":6,"BuffDescription":"点燃"},
+{"_t":"BuffConfig","_id":7,"BuffDescription":"破甲"},
+{"_t":"BuffConfig","_id":8,"BuffDescription":"延迟眩晕"},
+]}

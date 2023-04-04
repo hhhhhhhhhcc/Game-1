@@ -1,0 +1,14 @@
+{"list":[
+{"_t":"TalentCostConfig","_id":1,"Code":"ArrowTalent","Level":1,"Cost":600},
+{"_t":"TalentCostConfig","_id":2,"Code":"ArrowTalent","Level":2,"Cost":800},
+{"_t":"TalentCostConfig","_id":3,"Code":"ArrowTalent","Level":3,"Cost":1000},
+{"_t":"TalentCostConfig","_id":4,"Code":"CannonTalent","Level":1,"Cost":600},
+{"_t":"TalentCostConfig","_id":5,"Code":"CannonTalent","Level":2,"Cost":800},
+{"_t":"TalentCostConfig","_id":6,"Code":"CannonTalent","Level":3,"Cost":1000},
+{"_t":"TalentCostConfig","_id":7,"Code":"LaserTalent","Level":1,"Cost":600},
+{"_t":"TalentCostConfig","_id":8,"Code":"LaserTalent","Level":2,"Cost":800},
+{"_t":"TalentCostConfig","_id":9,"Code":"LaserTalent","Level":3,"Cost":1000},
+{"_t":"TalentCostConfig","_id":10,"Code":"BurnTalent","Level":1,"Cost":600},
+{"_t":"TalentCostConfig","_id":11,"Code":"BurnTalent","Level":2,"Cost":800},
+{"_t":"TalentCostConfig","_id":12,"Code":"BurnTalent","Level":3,"Cost":1000},
+]}

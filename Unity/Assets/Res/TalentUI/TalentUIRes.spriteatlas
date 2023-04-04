@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TalentUIRes
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: f79cbe8c4ab4eca42b29d7686aef58e2, type: 3}
+    - {fileID: 21300000, guid: 860059973a5bffa40a05055fa12da8f5, type: 3}
+    - {fileID: 21300000, guid: 59bae791ffac46e4896837e62f726a9f, type: 3}
+    - {fileID: 21300000, guid: f2bdae254cc56244b9398049856e91ed, type: 3}
+    - {fileID: 21300000, guid: 3b01da7fff6c1a64eaf64a9d512e14e2, type: 3}
+    - {fileID: 21300000, guid: e2e43773b668c93408806c69c6684d11, type: 3}
+    - {fileID: 21300000, guid: 8e194f142de830d4ebee21615f121f97, type: 3}
+    - {fileID: 21300000, guid: 2f496a325ed00c5439329bf4ba7932f3, type: 3}
+    - {fileID: 21300000, guid: f42e7d1edf4d53a4ea00660b63fee97c, type: 3}
+    - {fileID: 21300000, guid: 30ff7b470b728ec41bcd478e0b3eaa10, type: 3}
+    - {fileID: 21300000, guid: 82e64df3cebec274390ea91ff72f836a, type: 3}
+    - {fileID: 21300000, guid: 3e4878bd470218642a87d857a84c25ca, type: 3}
+    - {fileID: 21300000, guid: d010d1f60eec20a42a2b0a11c63c5ca9, type: 3}
+    - {fileID: 21300000, guid: 59b163aee0be5224892d62092e3fd3d9, type: 3}
+    - {fileID: 21300000, guid: 2fce7ac1a70a6b845a7547e660308534, type: 3}
+    - {fileID: 21300000, guid: 91f489ac59b848c49a979ad8984638c4, type: 3}
+    - {fileID: 21300000, guid: 0784c462d900ce441b4fb16af23e103c, type: 3}
+    - {fileID: 21300000, guid: fb75f572b85383f4eaa473a09a6a6507, type: 3}
+    - {fileID: 21300000, guid: 875c6ee6dd875dd45a1b70a7778f6674, type: 3}
+    - {fileID: 21300000, guid: 2560ebc5d98e77e4186e9c5432c9613b, type: 3}
+    - {fileID: 21300000, guid: aa7f2074c23ea1b49b0692e8d100ca58, type: 3}
+    - {fileID: 21300000, guid: 0090c904a03f4d0458ce0b5b5dd8cc57, type: 3}
+    - {fileID: 21300000, guid: 4faa327a322e17d41b8dde78bcbe71f0, type: 3}
+    - {fileID: 21300000, guid: 09a39d6444741db4b988a2d0ce8d4a11, type: 3}
+    - {fileID: 21300000, guid: 2b53c32cc5b7c7545bd26bcc06351344, type: 3}
+    - {fileID: 21300000, guid: cd836b8066ab81544bb56d7aed676e50, type: 3}
+    - {fileID: 21300000, guid: 62db75aeee1398a4e9de71b2c9a9cf26, type: 3}
+    - {fileID: 21300000, guid: e8648ffd25afdfa4da46eb829fa09fb2, type: 3}
+    - {fileID: 21300000, guid: 3b2f4cb7f89060a4385cd350b1d98521, type: 3}
+    - {fileID: 21300000, guid: dcfb6c0dea2e2624788f387e91386105, type: 3}
+    - {fileID: 21300000, guid: 39c0ed767b754c04aa6ebeafb825d076, type: 3}
+    - {fileID: 21300000, guid: 00a624d531bdac0448b4cd61450be6fd, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: cd836b8066ab81544bb56d7aed676e50, type: 3}
+  - {fileID: 21300000, guid: 59bae791ffac46e4896837e62f726a9f, type: 3}
+  - {fileID: 21300000, guid: 2fce7ac1a70a6b845a7547e660308534, type: 3}
+  - {fileID: 21300000, guid: 2f496a325ed00c5439329bf4ba7932f3, type: 3}
+  - {fileID: 21300000, guid: 0784c462d900ce441b4fb16af23e103c, type: 3}
+  - {fileID: 21300000, guid: fb75f572b85383f4eaa473a09a6a6507, type: 3}
+  - {fileID: 21300000, guid: e2e43773b668c93408806c69c6684d11, type: 3}
+  - {fileID: 21300000, guid: 82e64df3cebec274390ea91ff72f836a, type: 3}
+  - {fileID: 21300000, guid: 0090c904a03f4d0458ce0b5b5dd8cc57, type: 3}
+  - {fileID: 21300000, guid: 8e194f142de830d4ebee21615f121f97, type: 3}
+  - {fileID: 21300000, guid: 09a39d6444741db4b988a2d0ce8d4a11, type: 3}
+  - {fileID: 21300000, guid: aa7f2074c23ea1b49b0692e8d100ca58, type: 3}
+  - {fileID: 21300000, guid: f2bdae254cc56244b9398049856e91ed, type: 3}
+  - {fileID: 21300000, guid: 2560ebc5d98e77e4186e9c5432c9613b, type: 3}
+  - {fileID: 21300000, guid: 00a624d531bdac0448b4cd61450be6fd, type: 3}
+  - {fileID: 21300000, guid: 39c0ed767b754c04aa6ebeafb825d076, type: 3}
+  - {fileID: 21300000, guid: 875c6ee6dd875dd45a1b70a7778f6674, type: 3}
+  - {fileID: 21300000, guid: d010d1f60eec20a42a2b0a11c63c5ca9, type: 3}
+  - {fileID: 21300000, guid: 30ff7b470b728ec41bcd478e0b3eaa10, type: 3}
+  - {fileID: 21300000, guid: 860059973a5bffa40a05055fa12da8f5, type: 3}
+  - {fileID: 21300000, guid: 3b2f4cb7f89060a4385cd350b1d98521, type: 3}
+  - {fileID: 21300000, guid: 4faa327a322e17d41b8dde78bcbe71f0, type: 3}
+  - {fileID: 21300000, guid: 2b53c32cc5b7c7545bd26bcc06351344, type: 3}
+  - {fileID: 21300000, guid: f79cbe8c4ab4eca42b29d7686aef58e2, type: 3}
+  - {fileID: 21300000, guid: 91f489ac59b848c49a979ad8984638c4, type: 3}
+  - {fileID: 21300000, guid: dcfb6c0dea2e2624788f387e91386105, type: 3}
+  - {fileID: 21300000, guid: 3e4878bd470218642a87d857a84c25ca, type: 3}
+  - {fileID: 21300000, guid: e8648ffd25afdfa4da46eb829fa09fb2, type: 3}
+  - {fileID: 21300000, guid: f42e7d1edf4d53a4ea00660b63fee97c, type: 3}
+  - {fileID: 21300000, guid: 59b163aee0be5224892d62092e3fd3d9, type: 3}
+  - {fileID: 21300000, guid: 62db75aeee1398a4e9de71b2c9a9cf26, type: 3}
+  - {fileID: 21300000, guid: 3b01da7fff6c1a64eaf64a9d512e14e2, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - TalentBaseNormal
+  - ChooseInfo
+  - TowerBright
+  - LabelDark
+  - TowerIconBright
+  - TowerIconDark
+  - InfoDark
+  - PetBright
+  - MAX
+  - LabelBright
+  - TalentBaseBright
+  - ArrowDark
+  - ChooseTalent
+  - ArrowChoose
+  - TowerNormal
+  - TowerChoose
+  - ArrowBright
+  - TalentBright
+  - MonsterDark
+  - BookDark
+  - TalentBoxChoose
+  - Reset
+  - TalentBaseDark
+  - BookBright
+  - TowerDark
+  - TalentBoxNormal
+  - PetDark
+  - MonsterNormal
+  - MonsterBright
+  - TalentDark
+  - MonsterChoose
+  - InfoBright
+  m_RenderDataMap: {}
+  m_Tag: TalentUIRes
+  m_IsVariant: 0
+  m_IsPlaceholder: 0
