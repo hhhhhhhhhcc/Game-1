@@ -235,7 +235,11 @@ namespace ET
         }
         public static void aaaaaaaaa()
         {
-
+            Log.Debug("515125");
+        }
+        public static void BBblasd()
+        {
+            Log.Debug("45555");
         }
     }
 }
