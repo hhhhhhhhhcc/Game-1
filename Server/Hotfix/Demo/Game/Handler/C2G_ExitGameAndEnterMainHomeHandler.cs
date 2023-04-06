@@ -8,7 +8,6 @@ namespace ET
         protected override async ETTask Run(Unit unit, C2G_ExitGameAndEnterMainHome request, G2C_ExitGameAndEnterMainHome response, Action reply)
         {
             NumericComponent numeric = unit.GetComponent<NumericComponent>();
-            numeric.Set(NumericType.LevelId, 0);
             unit.GetComponent<UnitSaveDBComponent>()?.SaveChange();
             reply();    
             StartSceneConfig Map1SceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(unit.DomainZone(), "Map1");

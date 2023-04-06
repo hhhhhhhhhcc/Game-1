@@ -1197,6 +1197,9 @@ namespace ET
 		[ProtoMember(2)]
 		public int Position { get; set; }
 
+		[ProtoMember(3)]
+		public int BaseHp { get; set; }
+
 	}
 
 	[Message(OuterOpcode.G2C_WinGame)]
@@ -1219,7 +1222,7 @@ namespace ET
 	public partial class G2C_ReturnWinGame: Object, IActorMessage
 	{
 		[ProtoMember(1)]
-		public long WinUnitId { get; set; }
+		public int IsWin { get; set; }
 
 		[ProtoMember(2)]
 		public List<int> WinItemId = new List<int>();
@@ -1544,6 +1547,18 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_UpdateLevelData)]
+	[ProtoContract]
+	public partial class G2C_UpdateLevelData: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public List<int> LevelData = new List<int>();
 
 	}
 

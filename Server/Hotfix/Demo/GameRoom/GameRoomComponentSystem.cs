@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 
 namespace ET
@@ -7,59 +8,63 @@ namespace ET
     {
         public override void Awake(GameRoomComponent self)
         {
-            self.CurrentRoom = 0;
-            self.rooms.Clear();
-            for(int i=1;i<=100;i++)
-            {
-                List<Unit> units = new List<Unit>();
-                self.rooms.Add(i, units);
-                self.roomstate.Add(i, 0);
-            }
         }
     }
     public class GameRoomComponentDestroySystem : DestroySystem<GameRoomComponent>
     {
         public override void Destroy(GameRoomComponent self)
         {
-            self.CurrentRoom = 0;
-            self.rooms.Clear();
         }
     }
     [FriendClass(typeof(GameRoomComponent))]
     public static class GameRoomComponentSystem
     {
-        public static void Add(this GameRoomComponent self,int roomIndex,List<Unit> unit)
+        public static void Add(this GameRoomComponent self,int roomIndex,Unit unit)
         {
-            if (self.rooms.ContainsKey(roomIndex))
+            if(!self.rooms.ContainsKey(roomIndex))//不包含 创建一个List
             {
-                self.rooms[roomIndex] = unit;
+                List<Unit> units = new List<Unit>();
+                units.Add(unit);
+                self.rooms.Add(roomIndex, units);   
             }
             else
             {
-                self.rooms.Add(roomIndex, unit);
+                List<Unit> units = self.rooms[roomIndex];
+                units.Add(unit);
+                self.rooms[roomIndex] = units;
             }
-        }
-        public static void Remove(this GameRoomComponent self,int RoomIndex)
-        {
-            self.rooms.Remove(RoomIndex);
         }
         public static void RemoveUnit(this GameRoomComponent self,int RoomIndex,Unit unit)
         {
-            self.rooms[RoomIndex].Remove(unit);
+            if(self.rooms.ContainsKey(RoomIndex))
+            {
+                if (self.rooms[RoomIndex].Contains(unit))
+                {
+                    self.rooms[RoomIndex].Remove(unit);
+                }
+            }
         }
-        public static void ClearRoomUnit(this GameRoomComponent self,int RoomIndex)
+        public static void ClearRoomUnit(this GameRoomComponent self,int RoomIndex)//清空房间玩家
         {
-            List<Unit> units = self.Get(RoomIndex);
-            units.Clear();
-            self.rooms[RoomIndex] = units;
+            if (self.rooms.ContainsKey(RoomIndex))
+            {
+                self.rooms.Remove(RoomIndex);
+            }
         }
-        public static void SetRoomState(this GameRoomComponent self, int RoomIndex,int State)
+        public static void ClearRoomState(this GameRoomComponent self, int RoomIndex)
         {
-            self.roomstate[RoomIndex] = 0;
+            if(self.roomstate.ContainsKey(RoomIndex))
+            {
+                self.roomstate.Remove(RoomIndex);
+            }
         }
         public static int GetRoomState(this GameRoomComponent self, int RoomIndex)
         {
             return self.roomstate[RoomIndex];
+        }
+        public static int SetRoomState(this GameRoomComponent self, int RoomIndex,int State)
+        {
+            return self.roomstate[RoomIndex] = State;
         }
         public static List<Unit> Get(this GameRoomComponent self,int RoomIndex)
         {
@@ -89,6 +94,12 @@ namespace ET
         public static List<int> GetChance(this GameRoomComponent self,int roomindex)
         {
             return self.chance[roomindex];
+        }
+        public static void ClearLogicComponent(this GameRoomComponent self,int roomindex)//清空帧同步组件
+        {
+            long logicid = self.logics[roomindex];
+            LogicComponent logiccomponent = self.GetChild<LogicComponent>(logicid);
+            logiccomponent.Dispose();
         }
     }
 }

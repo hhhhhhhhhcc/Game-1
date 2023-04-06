@@ -21,12 +21,24 @@ namespace ET
             GameRoomComponent gameRoomComponent = unit.DomainScene().GetComponent<GameRoomComponent>(); 
             if(gameRoomComponent != null)
             {   
-                gameRoomComponent.RemoveUnit(num.GetAsInt(NumericType.RoomIndex),unit);
-                List<Unit> units = gameRoomComponent.Get(num.GetAsInt(NumericType.RoomIndex));
-                if(units.Count == 0)
+                if(num.GetAsInt(NumericType.RoomIndex) != 0)
                 {
-                    gameRoomComponent.roomstate[num.GetAsInt(NumericType.RoomIndex)] = 0;
-                }
+                    gameRoomComponent.RemoveUnit(num.GetAsInt(NumericType.RoomIndex), unit);
+                    List<Unit> units = gameRoomComponent.Get(num.GetAsInt(NumericType.RoomIndex));
+                    if (units != null)
+                    {
+                        if (units.Count == 0)
+                        {
+                            gameRoomComponent.roomstate[num.GetAsInt(NumericType.RoomIndex)] = 0;
+                            gameRoomComponent.ClearLogicComponent(num.GetAsInt(NumericType.RoomIndex));
+                        }
+                    }
+                    else
+                    {
+                        gameRoomComponent.roomstate[num.GetAsInt(NumericType.RoomIndex)] = 0;
+                        gameRoomComponent.ClearLogicComponent(num.GetAsInt(NumericType.RoomIndex));
+                    }
+                }              
             }
             //保存数据库
             unit.GetComponent<UnitSaveDBComponent>()?.SaveChange();

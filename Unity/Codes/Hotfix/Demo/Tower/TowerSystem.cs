@@ -43,30 +43,33 @@ namespace ET
         }
         public static async void OnLogicGetAttackMonsterList(this Tower self)
         {
-            List<Monster> list = self.ZoneScene().CurrentScene().GetComponent<GameComponent>().AllEnemy;
-            foreach (Monster monster in list)
+            List<Monster> list = self?.ZoneScene()?.CurrentScene()?.GetComponent<GameComponent>()?.AllEnemy;
+            if(list != null)
             {
-                float MonsterPx = monster.Position.x;
-                float MonsterPy = monster.Position.y;
-                int MonsterZone = monster.Zone;
+                foreach (Monster monster in list)
+                {
+                    float MonsterPx = monster.Position.x;
+                    float MonsterPy = monster.Position.y;
+                    int MonsterZone = monster.Zone;
 
-                float TowerPx = self.Position.x;
-                float TowerPy = self.Position.y;
-                float TowerRange = self.AttackRange;
-                float TowerZone = self.Zone;
-                if (TowerZone != MonsterZone) continue;
-                float dis = Vector2.Distance(new Vector2(MonsterPx, MonsterPy), new Vector2(TowerPx, TowerPy));
-                if (dis <= TowerRange)
-                {
-                    self.AddMonster(monster);
-                    monster.DeathEvent = monster.DeathEvent + self.RemoveMonster;
+                    float TowerPx = self.Position.x;
+                    float TowerPy = self.Position.y;
+                    float TowerRange = self.AttackRange;
+                    float TowerZone = self.Zone;
+                    if (TowerZone != MonsterZone) continue;
+                    float dis = Vector2.Distance(new Vector2(MonsterPx, MonsterPy), new Vector2(TowerPx, TowerPy));
+                    if (dis <= TowerRange)
+                    {
+                        self.AddMonster(monster);
+                        monster.DeathEvent = monster.DeathEvent + self.RemoveMonster;
+                    }
+                    else
+                    {
+                        self.RemoveMonster(monster);
+                    }
                 }
-                else
-                {
-                    self.RemoveMonster(monster);
-                }
+                self.AttackTargetList.Sort(SortMethod);
             }
-            self.AttackTargetList.Sort(SortMethod);
             await ETTask.CompletedTask;
         }
         public static int SortMethod(Monster a,Monster b)

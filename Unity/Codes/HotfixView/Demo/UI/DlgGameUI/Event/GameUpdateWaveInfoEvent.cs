@@ -9,18 +9,21 @@ namespace ET
         {
             List<int> ms = args.CurrentWaveAllMonsterConfigId;
             Dictionary<int ,int> monsterIdNumberDic = new Dictionary<int ,int>();
-            for(int i=0;i<ms.Count;i++)
+            if (ms != null)
             {
-                int id = ms[i];
-                if(!monsterIdNumberDic.ContainsKey(id))//不包含Id 就增加Key Value
+                for (int i = 0; i < ms.Count; i++)
                 {
-                    monsterIdNumberDic.Add(id, 1);
-                }
-                else//包含id  就增加Value
-                {
-                    int temp = monsterIdNumberDic[id];
-                    temp++;
-                    monsterIdNumberDic[id] = temp;
+                    int id = ms[i];
+                    if (!monsterIdNumberDic.ContainsKey(id))//不包含Id 就增加Key Value
+                    {
+                        monsterIdNumberDic.Add(id, 1);
+                    }
+                    else//包含id  就增加Value
+                    {
+                        int temp = monsterIdNumberDic[id];
+                        temp++;
+                        monsterIdNumberDic[id] = temp;
+                    }
                 }
             }
             args.zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().UpdateGameWaveInfo(args.CurrentWaveNumber,monsterIdNumberDic);

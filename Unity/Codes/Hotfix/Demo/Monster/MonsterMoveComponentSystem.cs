@@ -40,6 +40,7 @@ namespace ET
         }
         public static void OnLogicMoveUpdate(this MonsterMoveComponent self, int dt_ms)
         {
+            self.JudgeDir();
             if (self.GetParent<Monster>().State != MonsterState.Run) return;
             self.GetParent<Monster>().Position = self.LogicPos;
             Vector3 src = self.GetParent<Monster>().Position;
@@ -63,7 +64,7 @@ namespace ET
                 dt = time;
                 isArrived = true;
             }
-            self.JudgeDir();
+
             self.GetParent<Monster>().Position = self.GetParent<Monster>().Position + dir.normalized * dt * self.GetParent<Monster>().Speed;
             self.AllReadyRun = self.AllReadyRun + dt * (float)(self.GetParent<Monster>().Speed);
             self.LogicPos = self.GetParent<Monster>().Position;
@@ -85,31 +86,43 @@ namespace ET
         }
         public static void JudgeDir(this MonsterMoveComponent self)
         {
-            if(self.GetParent<Monster>().DelayAnimatorLogic != 0 && self.GetParent<Monster>().State == MonsterState.GetHurt)
+            if(self.GetParent<Monster>().State == MonsterState.Control)//被控制了
             {
-                self.GetParent<Monster>().DelayAnimatorLogic--;
+                Vector3 dir = self.GetDir();
+                if ((dir.x <= 0 && dir.y < 0) || (dir.x <= 0 && dir.y > 0 && (dir.y / dir.x) >= -0.15f)) //左下角
+                {
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "LDSJ" }).Coroutine();
+                }
+                else if ((dir.x > 0 && dir.y <= 0) || (dir.x > 0 && dir.y > 0 && (dir.y / dir.x) <= 0.15f)) //右下角
+                {
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "RDSJ" }).Coroutine();
+                }
+                else if ((dir.x < 0 && dir.y >= 0) && (dir.y / dir.x) <= -0.15f)//左上角
+                {
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "LUSJ" }).Coroutine();
+                }
+                else if ((dir.x >= 0 && dir.y > 0) && (dir.y / dir.x) >= 0.15f)//右上角
+                {
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "RUSJ" }).Coroutine();
+                }
             }
             else if(self.GetParent<Monster>().State == MonsterState.Run)//走路
             {
                 Vector3 dir = self.GetDir();
                 if ((dir.x <= 0 && dir.y < 0) || (dir.x <= 0 && dir.y > 0 && (dir.y / dir.x) >= -0.15f)) //左下角
                 {
-                    Game.EventSystem.PublishAsync(new EventType.MonsterMove() { monster = self.GetParent<Monster>() }).Coroutine();
                     Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "LD" }).Coroutine();
                 }
                 else if ((dir.x > 0 && dir.y <= 0) || (dir.x > 0 && dir.y > 0 && (dir.y / dir.x) <= 0.15f)) //右下角
                 {
-                    Game.EventSystem.PublishAsync(new EventType.MonsterMove() { monster = self.GetParent<Monster>() }).Coroutine();
                     Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "RD" }).Coroutine();
                 }
                 else if ((dir.x < 0 && dir.y >= 0) && (dir.y / dir.x) <= -0.15f)//左上角
                 {
-                    Game.EventSystem.PublishAsync(new EventType.MonsterMove() { monster = self.GetParent<Monster>() }).Coroutine();
                     Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "LU" }).Coroutine();
                 }
                 else if ((dir.x >= 0 && dir.y > 0) && (dir.y / dir.x) >= 0.15f)//右上角
                 {
-                    Game.EventSystem.PublishAsync(new EventType.MonsterMove() { monster = self.GetParent<Monster>() }).Coroutine();
                     Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "RU" }).Coroutine();
                 }
             }
@@ -131,9 +144,10 @@ namespace ET
             }
             if (self.CurrentPos < self.NavPos.Length)
             {
+                Vector3 v = self.NavPos[self.CurrentPos] - self.GetParent<Monster>().Position;
                 if (Vector3.Distance(self.NavPos[self.CurrentPos], self.GetParent<Monster>().Position) > 0.01f)
                 {
-                    self.GetParent<Monster>().Position = self.GetParent<Monster>().Position + (self.NavPos[self.CurrentPos] - self.GetParent<Monster>().Position).normalized * Time.deltaTime * self.GetParent<Monster>().Speed;
+                    Game.EventSystem.PublishAsync(new EventType.TimeChangeMonsterPos() { monster = self.GetParent<Monster>(), v = v, speed = self.GetParent<Monster>().Speed }).Coroutine();
                 }
                 else
                 {

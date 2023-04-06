@@ -35,6 +35,7 @@ namespace ET
 			unit.AddComponent<NumericNoticeComponent>();
 			ItemUpdateNoticeHelper.AsyncAllBagItems(unit);
 			FightItemUpdateNoticeHelper.AsyncAllFightItems(unit);
+			LevelHelper.AsycnLevelData(unit);
 			// 加入aoi
 			//unit.AddComponent<AOIEntity, int, Vector3>(9 * 1000, unit.Position);
 

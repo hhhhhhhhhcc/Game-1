@@ -91,15 +91,7 @@ namespace ET
                 return;
             }
             Vector3 v = self.DirPos - self.GetParent<Bullet>().Position;//子弹位移方向
-            self.GetParent<Bullet>().Position = self.GetParent<Bullet>().Position + v.normalized * Time.deltaTime * self.Speed;
-            if (v.x != 0)//朝向
-            {
-                self.GetParent<Bullet>().Rotation = Quaternion.Euler(0, 0, Mathf.Atan(v.y / v.x) * Mathf.Rad2Deg);
-            }
-            if (v.x < 0)
-            {
-                self.GetParent<Bullet>().Rotation = Quaternion.Euler(0, 0, Mathf.Atan(v.y / v.x) * Mathf.Rad2Deg + 180);
-            }
+            Game.EventSystem.PublishAsync(new EventType.TimeChangeBulletPos() { bullet = self.GetParent<Bullet>(), v = v, speed = self.Speed }).Coroutine();
         }
     }
 }

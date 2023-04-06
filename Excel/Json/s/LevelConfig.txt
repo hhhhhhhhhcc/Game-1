@@ -1,4 +1,7 @@
 {"list":[
-{"_t":"LevelConfig","_id":1,"MapId":1,"WaveCode":"Wave1","MonsterWaveInterval":[10000]},
-{"_t":"LevelConfig","_id":2,"MapId":2,"WaveCode":"Wave2","MonsterWaveInterval":[5000,6000,7000,8000,9000,10000,11000,12000,13000]},
+{"_t":"LevelConfig","_id":1,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000],"Reward":"1,100"},
+{"_t":"LevelConfig","_id":2,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000],"Reward":"1,100"},
+{"_t":"LevelConfig","_id":3,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000,7000,8000,9000,10000,11000,12000,13000],"Reward":"1,100"},
+{"_t":"LevelConfig","_id":4,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000,7000,8000,9000,10000,11000,12000,13000],"Reward":"1,100"},
+{"_t":"LevelConfig","_id":1001,"MapId":1,"MonsterWaveCode":"Wave1","MonsterWaveInterval":[5000,5000,5000,5000,5000,5000],"Reward":""},
 ]}

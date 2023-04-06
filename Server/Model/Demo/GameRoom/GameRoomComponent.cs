@@ -10,7 +10,6 @@ namespace ET
         public Dictionary<int, int> roomstate = new Dictionary<int, int>();//0房间关闭，1房间开着但是没有准备，2房间开着游戏也开始
         public Dictionary<int, long> logics = new Dictionary<int, long>();
         public Dictionary<int, List<int>> chance = new Dictionary<int, List<int>>();        
-        public int CurrentRoom;
     }
 }
 

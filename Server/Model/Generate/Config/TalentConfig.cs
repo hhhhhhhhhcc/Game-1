@@ -78,7 +78,7 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>对应战斗单元表的天赋code</summary>
+		/// <summary>对应fightitemconfig表的天赋code</summary>
 		[ProtoMember(2)]
 		public string Code { get; set; }
 		/// <summary>天赋层级</summary>

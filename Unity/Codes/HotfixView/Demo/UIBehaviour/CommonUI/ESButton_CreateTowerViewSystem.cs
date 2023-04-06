@@ -134,7 +134,11 @@ namespace ET
                 self.CreateTower(X, Y, TowerId4).Coroutine();
             });
             int pos = unit.GetComponent<NumericComponent>().GetAsInt(NumericType.Position);
-            if (self.Position != pos) self.EButton_CreateTowerButton.gameObject.SetActive(false);
+            if (self.Position != pos)
+            {
+                self.EButton_CreateTowerButton.gameObject.SetActive(false);
+                self.EButton_CreateTowerBaseImage.gameObject.SetActive(false);
+            }
             //显示造塔的Id
             self.Ecreatemoneytext1Text.SetText(SkillHelper.GetBuildLossMoney(self.ZoneScene(), TowerId1).ToString());//钱
             self.Espritetower1Image.sprite = IconHelper.LoadIconSprite("Tower", TowerConfigCategory.Instance.Get(TowerId1).PrefabName);//图片

@@ -11,7 +11,6 @@ namespace ET
                 long delaytime = (long)(AnimatorHelper.GetCurrentClipTime(args.Bullet, args.DelayAnimatorName) * 1000);
                 await TimerComponent.Instance.WaitAsync(delaytime);
             }
-            GameObject.Destroy(args.Bullet.GetComponent<GameObjectComponent>().GameObject.gameObject);
             args.currentscene.GetComponent<GameComponent>().RemoveBullet(args.Bullet);
             args.Bullet?.Dispose();
             await ETTask.CompletedTask;

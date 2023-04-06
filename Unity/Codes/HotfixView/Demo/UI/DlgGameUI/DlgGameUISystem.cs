@@ -83,6 +83,12 @@ namespace ET
         {
             GameHelper.ContinueSingleGameMode(self.ZoneScene()).Coroutine();
         }*/
+        public static void HideRestartAndBack(this DlgGameUI self)
+        {
+            self.View.EButton_WinRestartGameImage.gameObject.SetActive(false);
+            self.View.EButton_WinNextGameImage.gameObject.SetActive(false);
+            self.View.EButton_LoseRestartGameImage.gameObject.SetActive(false);
+        }
         public static void SingleModeHide(this DlgGameUI self)
         {
             self.View.ECreateMonsterAllImage.gameObject.SetActive(false);
@@ -154,8 +160,17 @@ namespace ET
             if (gameComponent == null || gameComponent.GameEnding == false) return;
             gameComponent.GameEnding = false;
             int position = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>().GetAsInt(NumericType.Position);
-            if (position == 1) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(2).Coroutine();
-            if (position == 2) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(1).Coroutine();
+            if (self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)//单人
+            {
+                if (position == 1) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(2, 0).Coroutine();
+                if (position == 2) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(1, 0).Coroutine();
+            }
+            else if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 2)
+            {
+                if (position == 1) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(2, self.ZoneScene().CurrentScene().GetComponent<GameComponent>().Base2.Hp).Coroutine();
+                if (position == 2) self.ZoneScene().CurrentScene().GetComponent<GameComponent>().WinGame(1, self.ZoneScene().CurrentScene().GetComponent<GameComponent>().Base1.Hp).Coroutine();
+            }
+           
             self.View.E_SettingBaseSpriteImage.gameObject.SetActive(false);
             self.View.E_GiveUpBaseSpriteImage.gameObject.SetActive(false);
         }
@@ -391,6 +406,10 @@ namespace ET
                 self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(false);
                 self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(true);
             }
+            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 2)//双人对战
+            {
+                self.HideRestartAndBack();
+            }
         }
         public static void DisReadyAndShowWindow(this DlgGameUI self)
         {
@@ -481,11 +500,11 @@ namespace ET
                 return;
             }
         }
-        public static async void RequestWin(this DlgGameUI self, int winposition)
+        public static async void RequestWin(this DlgGameUI self, int winposition,int basehp)
         {
             try
             {
-                int errorcode = await GameHelper.RequestWin(self.ZoneScene(), winposition);
+                int errorcode = await GameHelper.RequestWin(self.ZoneScene(), winposition,basehp);
                 if (errorcode != ErrorCode.ERR_Success)
                 {
                     Log.Error(errorcode.ToString());

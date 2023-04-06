@@ -5,7 +5,7 @@
     {
         public override void Awake(VertigoBuffComponent self)
         {
-            self.GetParent<Monster>().State = MonsterState.Control;
+            
         }
     }
     [FriendClass(typeof(Monster))]
@@ -17,6 +17,7 @@
         }
     }
     [FriendClass(typeof(VertigoBuffComponent))]
+    [FriendClass(typeof(Monster))]
     public static class VertigoBuffComponentSystem
     {
         public static void Init(this VertigoBuffComponent self,string param)
@@ -28,7 +29,8 @@
         public static void OnLogic(this VertigoBuffComponent self,int dt) 
         {
             self.timer = self.timer + dt;
-            if(self.timer >= self.lasttime)
+            self.GetParent<Monster>().State = MonsterState.Control;
+            if (self.timer >= self.lasttime)
             {
                 self.Dispose();
             }

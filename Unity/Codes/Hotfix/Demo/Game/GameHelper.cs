@@ -1,7 +1,6 @@
 ﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using static UnityEngine.UI.CanvasScaler;
 
 namespace ET
 {
@@ -147,18 +146,20 @@ namespace ET
             await ETTask.CompletedTask;
             return ErrorCode.ERR_Success;
         }
-        public static async ETTask<int> RequestWin(Scene zonescene,int position)
+        public static async ETTask<int> RequestWin(Scene zonescene,int position,int basehp)
         {
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(zonescene.CurrentScene());
             NumericComponent numeric = unit.GetComponent<NumericComponent>();
             int roomIndex = numeric.GetAsInt(NumericType.RoomIndex);
+            Log.Debug(roomIndex.ToString());
             G2C_WinGame g2C_WinGame = null;
             try
             {
                 g2C_WinGame = (G2C_WinGame)await zonescene.GetComponent<SessionComponent>().Session.Call(new C2G_WinGame()
                 {
                     RoomIndex = roomIndex,
-                    Position = position
+                    Position = position,
+                    BaseHp = basehp
                 });
             }
             catch (Exception e)

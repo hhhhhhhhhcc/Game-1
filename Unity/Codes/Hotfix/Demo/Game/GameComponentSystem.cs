@@ -1,12 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using UnityEngine;
-
 namespace ET
 {
+ 
     public class GameComponentAwakeSystem : AwakeSystem<GameComponent>
     {
         public override void Awake(GameComponent self)
@@ -44,6 +41,7 @@ namespace ET
         }
     }
     [FriendClass(typeof(GameComponent))]
+    [FriendClass(typeof(Base))]
     public static class GameComponentSystem 
     {
         public static async ETTask InitLevel(this GameComponent self, int LevelId,int MatchMode)
@@ -57,7 +55,7 @@ namespace ET
             self.MaxVisualX = mapconfig.MaxVisualX;
             self.MaxVisualY = mapconfig.MaxVisualY;
             self.RoadNumber = mapconfig.RoadNumber;
-            self.waves = MonsterWaveConfigCategory.Instance.GetAllConfigByWaveCode(levelConfig.WaveCode);
+            self.waves = MonsterWaveConfigCategory.Instance.GetAllConfigByWaveCode(levelConfig.MonsterWaveCode);
             self.ListToDictionary();
             self.DictionaryToTimerMonster();
             await Game.EventSystem.PublishAsync(new EventType.ShowGameUI() { ZoneScene = self.ZoneScene(), MatchMode = MatchMode });
@@ -187,11 +185,11 @@ namespace ET
             if (zone == 2) return self.Base2;
             return null;
         }
-        public static async ETTask WinGame(this GameComponent self,int winposition)
+        public static async ETTask WinGame(this GameComponent self,int winposition,int basehp)
         {
             try
             {
-                int errorcode = await GameHelper.RequestWin(self.ZoneScene(),winposition);
+                int errorcode = await GameHelper.RequestWin(self.ZoneScene(),winposition,basehp);
                 if (errorcode != ErrorCode.ERR_Success)
                 {
                     Log.Error(errorcode.ToString());
@@ -258,7 +256,15 @@ namespace ET
                     self.CurrentMonsterIndex++;
                     self.OnLogicCreateMonster(0);
                 }
-            }    
+            }
+            else
+            {
+                if(self.MatchMode == 1 && self.AllEnemy.Count == 0 && self.GameEnding == true)
+                {
+                    self.GameEnding = false;
+                    GameHelper.RequestWin(self.ZoneScene(), 1,self.Base1.Hp).Coroutine();
+                }
+            }
         }
         public static async ETTask OnLogicUpdate(this GameComponent self,LogicFrame frame)
         {
@@ -354,38 +360,46 @@ namespace ET
             self.WaveInfoTimer = self.WaveInfoTimer + dt;
             if (self.CurrentWaveNumber < self.WaveNumber.Count)
             {
-                if (self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber])//直接发布self.CurrentWaveNumber
-                {
-                    self.CurrentWaveNumber++;
-                    List<int> CurrentWaveAllMonsterConfigId = self.GetCurrentWaveAllMonster();//获取当前波次所有怪物
-                    Game.EventSystem.PublishAsync(new EventType.GameUpdateWaveInfo() { zonescene = self.ZoneScene(),CurrentWaveNumber = self.CurrentWaveNumber,CurrentWaveAllMonsterConfigId = CurrentWaveAllMonsterConfigId}).Coroutine();
-                }
-                if(self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber] - self.MonsterWaveInterval[self.CurrentWaveNumber] && self.WaveInfoTimer < self.WaveNumber[self.CurrentWaveNumber])//TimeLeft信息
+                if (self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber] - self.MonsterWaveInterval[self.CurrentWaveNumber] && self.WaveInfoTimer < self.WaveNumber[self.CurrentWaveNumber])//TimeLeft信息
                 {
                     int Time = self.WaveNumber[self.CurrentWaveNumber] - self.WaveInfoTimer;
-                    Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(),Time = Time}).Coroutine();
+                    Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = Time }).Coroutine();
                 }
                 else
                 {
                     Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = 0 }).Coroutine();
                 }
+                if (self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber])//直接发布self.CurrentWaveNumber
+                {
+                    self.CurrentWaveNumber++;
+                    List<int> CurrentWaveAllMonsterConfigId = self.GetCurrentWaveAllMonster();//获取当前波次所有怪物
+                    Game.EventSystem.PublishAsync(new EventType.GameUpdateWaveInfo() { zonescene = self.ZoneScene(),CurrentWaveNumber = self.CurrentWaveNumber,CurrentWaveAllMonsterConfigId = CurrentWaveAllMonsterConfigId}).Coroutine();
+                }           
+            }
+            else
+            {
+                Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = 0 }).Coroutine();
             }
             await ETTask.CompletedTask;
         }
         public static List<int> GetCurrentWaveAllMonster(this GameComponent self)//获取当前波次所有怪物
         {
             List<int> MonsterConfigId = new List<int>();
-            int FormerTime = self.WaveNumber[self.CurrentWaveNumber - 1];
-            int NextTime = self.WaveNumber[self.CurrentWaveNumber];
-            for(int i=0;i<self.MonsterTime.Count;i++)
+            if(self.CurrentWaveNumber < self.WaveNumber.Count)
             {
-                int currentmonstertime = self.MonsterTime[i];
-                if(FormerTime<=currentmonstertime && currentmonstertime<=NextTime)
+                int FormerTime = self.WaveNumber[self.CurrentWaveNumber - 1];
+                int NextTime = self.WaveNumber[self.CurrentWaveNumber];
+                for (int i = 0; i < self.MonsterTime.Count; i++)
                 {
-                    MonsterConfigId.Add(self.MonsterId[i]);
+                    int currentmonstertime = self.MonsterTime[i];
+                    if (FormerTime <= currentmonstertime && currentmonstertime <= NextTime)
+                    {
+                        MonsterConfigId.Add(self.MonsterId[i]);
+                    }
                 }
+                return MonsterConfigId;
             }
-            return MonsterConfigId;
+            return null;
         }
         public static async void OnHandlerPlayerControl(this GameComponent self,OptionEvent option)
         {
@@ -530,7 +544,6 @@ namespace ET
         }
         public static void RestartSingleGame(this GameComponent self)
         {
-            Log.Debug(self.LevelId.ToString());
             GameHelper.ContinueGame(self.ZoneScene(), self.LevelId, self.MatchMode).Coroutine();
             //gamecomponent重新生成
         }

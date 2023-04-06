@@ -269,6 +269,18 @@ namespace ET
             public Monster monster;
             public bool flip;
         }
+        public struct TimeChangeBulletPos
+        {
+            public Bullet bullet;
+            public Vector3 v;
+            public float speed;
+        }
+        public struct TimeChangeMonsterPos
+        {
+            public Monster monster;
+            public Vector3 v;
+            public float speed;
+        }
 
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 namespace ET
 {
     [FriendClass(typeof(Unit))]
+    [FriendClass(typeof(LevelComponent))]
     public static class UnitFactory
     {
         public static Unit Create(Scene scene, Player player, UnitType unitType)
@@ -22,6 +23,7 @@ namespace ET
                         
                         NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
                         unit.AddComponent<BagComponent>();
+                        unit.AddComponent<LevelComponent>();
                         FightItemComponent fightitemcomponent = unit.AddComponent<FightItemComponent>();
                         fightitemcomponent.AddFightItemByConfigId(3001);
                         fightitemcomponent.AddFightItemByConfigId(3004);

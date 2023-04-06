@@ -12,7 +12,6 @@
         public override void Destroy(FightItem self)
         {
             self.ConfigId = 0;
-            self.AddedTalent.Clear();
         }
     }
     [FriendClass(typeof(FightItem))]

@@ -9,7 +9,7 @@ namespace ET
         protected override async ETTask Run(Scene scene, M2G_ChangeRoomState request, G2M_ChangeRoomState response, Action reply)
         {
             GameRoomComponent gameroomcomponent = scene.GetComponent<GameRoomComponent>();
-            gameroomcomponent.roomstate[request.RoomIndex] = request.State;
+            gameroomcomponent.roomstate.Add(request.RoomIndex, 1);
             List<int> chance = gameroomcomponent.NewChance(10000);
             gameroomcomponent.chance[request.RoomIndex] = chance;
             reply();

@@ -61,8 +61,8 @@ namespace ET
                 if (gameComponent == null || gameComponent.GameEnding == false) return;
                 gameComponent.GameEnding = false;
                 int basezone = baseitem.Zone;
-                if (basezone == 1) await currentscene.GetComponent<GameComponent>().WinGame(2);
-                if (basezone == 2) await currentscene.GetComponent<GameComponent>().WinGame(1);
+                if (basezone == 1) await currentscene.GetComponent<GameComponent>().WinGame(2,currentscene.GetComponent<GameComponent>().Base2.Hp);
+                if (basezone == 2) await currentscene.GetComponent<GameComponent>().WinGame(1,currentscene.GetComponent<GameComponent>().Base1.Hp);
             }
             await ETTask.CompletedTask;
         }

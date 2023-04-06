@@ -40,7 +40,7 @@ namespace ET
         public int MoneyTimer;
         public List<OptionEvent> NextOpts;
         public int LevelId;
-        public int MatchMode;
+        public int MatchMode;//单人为1双人为2
         public float MaxVisualX;
         public float MaxVisualY;
         public bool SingleGameModeState;

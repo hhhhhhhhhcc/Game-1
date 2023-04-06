@@ -62,7 +62,6 @@ namespace ET
 			monstercomponent.Add(monster);
 			monster.MaxHp = monster.Config.Hp;
 			monster.Hp = monster.Config.Hp;
-			Log.Debug(monster.Hp.ToString());
 			monster.Speed = monster.Config.Speed / 1000.0f;
 			monster.ReturnMoney = monster.Config.DropMoney;
 			monster.Zone = MonsterZone;

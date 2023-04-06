@@ -22,5 +22,19 @@ namespace ET
                 }
             }
         }
+        public static Dictionary<int,int> GetRewardByLevelId(int LevelId)
+        {
+            Dictionary<int,int> RewardDict = new Dictionary<int,int>();
+            LevelConfig levelconfig = LevelConfigCategory.Instance.Get(LevelId);
+            string reward = levelconfig.Reward;
+            string[] rewards = reward.Split(';');
+            for(int i=0;i<rewards.Length;i++)
+            {
+                int rewardid = int.Parse(rewards[i].Split(',')[0]);
+                int rewardnumber = int.Parse(rewards[i].Split(',')[1]);
+                RewardDict.Add(rewardid,rewardnumber);
+            }
+            return RewardDict;
+        }
     }
 }

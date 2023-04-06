@@ -10,18 +10,21 @@ namespace ET
         public override async void Run(LogicComponent self)
         {
             self.Frames.Add(self.NextFrameOpt);
-            GameRoomComponent gameroomcomponent = self.DomainScene().GetComponent<GameRoomComponent>();
-            List<Unit> units = gameroomcomponent.Get(self.roomid);
-            for(int i=0;i<units.Count; i++)
+            GameRoomComponent gameroomcomponent = self?.DomainScene()?.GetComponent<GameRoomComponent>();
+            if(gameroomcomponent != null)
             {
-                Unit unit = units[i];
-                if (unit != null)
+                List<Unit> units = gameroomcomponent.Get(self.roomid);
+                for (int i = 0; i < units.Count; i++)
                 {
-                    self.SendLogic(unit);
+                    Unit unit = units[i];
+                    if (unit != null)
+                    {
+                        self.SendLogic(unit);
+                    }
                 }
+                self.frameid = self.frameid + 1;
+                self.NextFrameOpt = new FrameOpts() { frameid = self.frameid, opts = new List<OptionEvent>() };
             }
-            self.frameid = self.frameid + 1;
-            self.NextFrameOpt = new FrameOpts() { frameid = self.frameid, opts = new List<OptionEvent>()};
             await ETTask.CompletedTask;
         }
     }

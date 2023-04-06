@@ -81,12 +81,15 @@ namespace ET
 		/// <summary>地图编号</summary>
 		[ProtoMember(2)]
 		public int MapId { get; set; }
-		/// <summary>关卡配置</summary>
+		/// <summary>关卡配置(对应monsterwaveconfig的code)</summary>
 		[ProtoMember(3)]
-		public string WaveCode { get; set; }
+		public string MonsterWaveCode { get; set; }
 		/// <summary>每波次的时间间隔</summary>
 		[ProtoMember(4)]
 		public int[] MonsterWaveInterval { get; set; }
+		/// <summary>获胜奖励</summary>
+		[ProtoMember(5)]
+		public string Reward { get; set; }
 
 	}
 }

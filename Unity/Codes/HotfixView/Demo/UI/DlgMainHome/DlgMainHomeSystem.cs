@@ -23,7 +23,7 @@ namespace ET
         }
         public static void EnterSingleMode(this DlgMainHome self)
         {
-            MatchHelper.EnterSingleMode(self.ZoneScene(),2).Coroutine();
+            MatchHelper.EnterSingleMode(self.ZoneScene(),1).Coroutine();
         }
         public static void GetItem(this DlgMainHome self)
         {
