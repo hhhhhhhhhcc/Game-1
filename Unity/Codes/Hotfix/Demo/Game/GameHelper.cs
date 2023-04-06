@@ -232,5 +232,9 @@ namespace ET
             GameComponent gamecomponent = currentScene.AddComponent<GameComponent>();
             gamecomponent.InitLevel(LevelId, MatchMode).Coroutine();
         }
+        public static void aaaaaaaaa()
+        {
+
+        }
     }
 }
