@@ -234,15 +234,7 @@ namespace ET
         }
         public static void aaaaaaaaa()
         {
-            Log.Debug("123");
-        }
-        public static void cccccc()
-        {
-            Log.Debug("a");
-        }
-        public static void dddd()
-        {
-            Log.Debug("b");
+
         }
     }
 }
