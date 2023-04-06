@@ -21,7 +21,6 @@ namespace ET
             self.chance = new List<int>();
             self.currentchanceindex = 0;
             self.CurrentMonsterIndex = 0;
-            self.LogicTimer = 0;
             self.MonsterTimer = 0;
             self.WaveInfoTimer = 0;
             self.LastFrameOpt = null;
@@ -31,6 +30,7 @@ namespace ET
             self.SingleGameModeState = true;
             self.MonsterNavs = new List<Vector3[]>();
             self.MonsterNavDict = new List<int[]>();
+            self.IsViewNextWave = false;
         }
     }
     public class GameComponentDestroySystem : DestroySystem<GameComponent>
@@ -355,7 +355,7 @@ namespace ET
             }
             await ETTask.CompletedTask;
         }
-        public static async void OnLogicUpdateWaveInfoToView(this GameComponent self, int dt)
+        public static async void OnLogicUpdateWaveInfoToView(this GameComponent self, int dt)//更新波次信息
         {
             self.WaveInfoTimer = self.WaveInfoTimer + dt;
             if (self.CurrentWaveNumber < self.WaveNumber.Count)
@@ -364,42 +364,68 @@ namespace ET
                 {
                     int Time = self.WaveNumber[self.CurrentWaveNumber] - self.WaveInfoTimer;
                     Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = Time }).Coroutine();
+                    if(self.IsViewNextWave == false)//上传一次怪物波次信息和显示一次直接下一波的按钮
+                    {
+                        self.IsViewNextWave = true;
+                        (List<int> CurrentWaveAllMonsterConfigId, List<int> CurrentWaveAllMonsterRoadId) = self.GetCurrentWaveAllMonster();//获取当前波次所有怪物
+                        Game.EventSystem.PublishAsync(new EventType.GameUpdateWaveInfo() { zonescene = self.ZoneScene(), CurrentWaveNumber = self.CurrentWaveNumber + 1, CurrentWaveAllMonsterConfigId = CurrentWaveAllMonsterConfigId, CurrentWaveAllMonsterRoadId = CurrentWaveAllMonsterRoadId }).Coroutine();
+                    }
                 }
-                else
-                {
-                    Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = 0 }).Coroutine();
-                }
-                if (self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber])//直接发布self.CurrentWaveNumber
+                if(self.WaveInfoTimer >= self.WaveNumber[self.CurrentWaveNumber])
                 {
                     self.CurrentWaveNumber++;
-                    List<int> CurrentWaveAllMonsterConfigId = self.GetCurrentWaveAllMonster();//获取当前波次所有怪物
-                    Game.EventSystem.PublishAsync(new EventType.GameUpdateWaveInfo() { zonescene = self.ZoneScene(),CurrentWaveNumber = self.CurrentWaveNumber,CurrentWaveAllMonsterConfigId = CurrentWaveAllMonsterConfigId}).Coroutine();
-                }           
+                    Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = 0 }).Coroutine();
+                    self.IsViewNextWave = false;
+                }
             }
             else
             {
                 Game.EventSystem.PublishAsync(new EventType.GameUpdateTimeLeftInfo() { zonescene = self.ZoneScene(), Time = 0 }).Coroutine();
             }
+            
             await ETTask.CompletedTask;
         }
-        public static List<int> GetCurrentWaveAllMonster(this GameComponent self)//获取当前波次所有怪物
+        public static (List<int>,List<int>) GetCurrentWaveAllMonster(this GameComponent self)//获取当前波次所有怪物
         {
             List<int> MonsterConfigId = new List<int>();
-            if(self.CurrentWaveNumber < self.WaveNumber.Count)
+            List<int> MonsterRoadId = new List<int>();
+            if(self.CurrentWaveNumber < self.WaveNumber.Count - 1)//前几波
             {
-                int FormerTime = self.WaveNumber[self.CurrentWaveNumber - 1];
-                int NextTime = self.WaveNumber[self.CurrentWaveNumber];
+                int FormerTime = self.WaveNumber[self.CurrentWaveNumber];
+                int NextTime = self.WaveNumber[self.CurrentWaveNumber + 1];
                 for (int i = 0; i < self.MonsterTime.Count; i++)
                 {
                     int currentmonstertime = self.MonsterTime[i];
-                    if (FormerTime <= currentmonstertime && currentmonstertime <= NextTime)
+                    if (FormerTime <= currentmonstertime && currentmonstertime < NextTime)
                     {
-                        MonsterConfigId.Add(self.MonsterId[i]);
+                        for(int j = 0; j < self.MonsterNavDict[i].Length;j++)
+                        {
+                            MonsterConfigId.Add(self.MonsterId[i]);
+                            MonsterRoadId.Add(self.MonsterNavDict[i][j]);
+                        }
                     }
                 }
-                return MonsterConfigId;
+                return (MonsterConfigId, MonsterRoadId);
             }
-            return null;
+            if (self.CurrentWaveNumber == self.WaveNumber.Count - 1)//最后一波
+            {
+                int FormerTime = self.WaveNumber[self.CurrentWaveNumber];
+                int NextTime = 10000000;
+                for (int i = 0; i < self.MonsterTime.Count; i++)
+                {
+                    int currentmonstertime = self.MonsterTime[i];
+                    if (FormerTime <= currentmonstertime && currentmonstertime < NextTime)
+                    {
+                        for (int j = 0; j < self.MonsterNavDict[i].Length; j++)
+                        {
+                            MonsterConfigId.Add(self.MonsterId[i]);
+                            MonsterRoadId.Add(self.MonsterNavDict[i][j]);
+                        }
+                    }
+                }
+                return (MonsterConfigId, MonsterRoadId);
+            }
+            return (null,null);
         }
         public static async void OnHandlerPlayerControl(this GameComponent self,OptionEvent option)
         {
@@ -415,6 +441,11 @@ namespace ET
             if(opttype == (int)OptType.ContinueSingleGameMode)
             {
                 self.SingleGameModeState = true;
+            }
+            if(opttype == (int)OptType.NextWave)
+            {
+                self.WaveInfoTimer = self.WaveNumber[self.CurrentWaveNumber];
+                self.MonsterTimer = self.MonsterTime[self.CurrentMonsterIndex];
             }
             if(opttype == (int)OptType.CreateTower)//造塔
             {

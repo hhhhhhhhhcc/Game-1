@@ -7,26 +7,37 @@ namespace ET
     {
         protected override async ETTask Run(GameUpdateWaveInfo args)
         {
-            List<int> ms = args.CurrentWaveAllMonsterConfigId;
-            Dictionary<int ,int> monsterIdNumberDic = new Dictionary<int ,int>();
-            if (ms != null)
+            List<int> monsterconfigid = args.CurrentWaveAllMonsterConfigId;//怪物config
+            List<int> monsteroadid = args.CurrentWaveAllMonsterRoadId;//怪物路线
+            Dictionary<int ,Dictionary<int,int>> monsterwaveinfo = new Dictionary<int, Dictionary<int, int>>();  //路线  configid  数量
+            if (monsterconfigid != null)
             {
-                for (int i = 0; i < ms.Count; i++)
+                for (int i = 0; i < monsterconfigid.Count; i++)
                 {
-                    int id = ms[i];
-                    if (!monsterIdNumberDic.ContainsKey(id))//不包含Id 就增加Key Value
+                    int roadid = monsteroadid[i];//怪物路线
+                    Log.Debug(roadid.ToString());
+                    int configid = monsterconfigid[i];//怪物configId
+                    if(!monsterwaveinfo.ContainsKey(roadid))//不存在这个路线的怪物
                     {
-                        monsterIdNumberDic.Add(id, 1);
+                        Dictionary<int,int> monsternumberdict = new Dictionary<int, int>();
+                        monsternumberdict.Add(configid, 1);
+                        monsterwaveinfo.Add(roadid, monsternumberdict);
                     }
-                    else//包含id  就增加Value
+                    else//存在这个路线的怪物 
                     {
-                        int temp = monsterIdNumberDic[id];
-                        temp++;
-                        monsterIdNumberDic[id] = temp;
+                        Dictionary<int,int> monsternumberdict = monsterwaveinfo[roadid];
+                        if(monsternumberdict.ContainsKey(configid))//且存在这个configid的怪物
+                        {
+                            monsternumberdict[configid]++;
+                        }
+                        else//不存在这个configid的怪物
+                        {
+                            monsternumberdict.Add(configid, 1);
+                        }
                     }
                 }
-            }
-            args.zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().UpdateGameWaveInfo(args.CurrentWaveNumber,monsterIdNumberDic);
+            }//路线id configid 数量
+            args.zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().UpdateGameWaveInfo(args.CurrentWaveNumber, monsterwaveinfo);
             await ETTask.CompletedTask;
         }
     }

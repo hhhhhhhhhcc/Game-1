@@ -12,6 +12,7 @@ namespace ET
         CreateMonster = 4 ,
         PauseSingleGameMode = 5,
         ContinueSingleGameMode = 6,
+        NextWave = 7,
     }
     [ComponentOf(typeof(Scene))]
     public class GameComponent : Entity,IAwake,IDestroy
@@ -49,5 +50,6 @@ namespace ET
         public List<Vector3[]> MonsterNavs;
         public int RoadNumber;
         public List<int[]> MonsterNavDict;
+        public bool IsViewNextWave;
     }
 }

@@ -249,6 +249,7 @@ namespace ET
             public Scene zonescene;
             public int CurrentWaveNumber;
             public List<int> CurrentWaveAllMonsterConfigId;
+            public List<int> CurrentWaveAllMonsterRoadId;
         }
         public struct GameUpdateTimeLeftInfo
         {

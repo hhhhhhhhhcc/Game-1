@@ -16,15 +16,15 @@ namespace ET
             G2C_GetReadyGame g2C_GetReadyGame = null;
             try
             {
-                g2C_GetReadyGame = (G2C_GetReadyGame)await zonescene.GetComponent<SessionComponent>().Session.Call(new C2G_GetReadyGame() {});
+                g2C_GetReadyGame = (G2C_GetReadyGame)await zonescene.GetComponent<SessionComponent>().Session.Call(new C2G_GetReadyGame() { });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error(e.ToString());
                 return ErrorCode.ERR_NetWorkError;
             }
 
-            if(g2C_GetReadyGame.Error != ErrorCode.ERR_Success)
+            if (g2C_GetReadyGame.Error != ErrorCode.ERR_Success)
             {
                 Log.Error(g2C_GetReadyGame.Error.ToString());
                 return g2C_GetReadyGame.Error;
@@ -51,7 +51,7 @@ namespace ET
             }
             return ErrorCode.ERR_Success;
         }
-        public static async ETTask<int> CreateTower(Scene zonescene,int TowerConfigId,float PX,float PY)
+        public static async ETTask<int> CreateTower(Scene zonescene, int TowerConfigId, float PX, float PY)
         {
             FightItemComponent fightitemcomponent = zonescene.GetComponent<FightItemComponent>();
             List<int> skillids = fightitemcomponent.GetTalentIdByConfigId(TowerConfigId);
@@ -61,14 +61,14 @@ namespace ET
             int frameid = num.GetAsInt(NumericType.Frameid);
             int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
             nextframeopts.frameid = gameroomframeid;
-            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.CreateTower), TowerConfigId = TowerConfigId, TowerX = PX, TowerY = PY ,SkillIds = skillids };
+            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.CreateTower), TowerConfigId = TowerConfigId, TowerX = PX, TowerY = PY, SkillIds = skillids };
             opts.Add(opt);
             nextframeopts.opts = opts;
             zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);
             await ETTask.CompletedTask;
             return ErrorCode.ERR_Success;
         }
-        public static async ETTask<int> UpTower(Scene zonescene, int TowerConfigId, long TowerId,float PX,float PY)
+        public static async ETTask<int> UpTower(Scene zonescene, int TowerConfigId, long TowerId, float PX, float PY)
         {
             FightItemComponent fightitemcomponent = zonescene.GetComponent<FightItemComponent>();
             List<int> skillids = fightitemcomponent.GetTalentIdByConfigId(TowerConfigId);
@@ -78,7 +78,7 @@ namespace ET
             int frameid = num.GetAsInt(NumericType.Frameid);
             int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
             nextframeopts.frameid = gameroomframeid;
-            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.UpTower), TowerId = TowerId,TowerConfigId = TowerConfigId,TowerX = PX,TowerY = PY,SkillIds = skillids };
+            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.UpTower), TowerId = TowerId, TowerConfigId = TowerConfigId, TowerX = PX, TowerY = PY, SkillIds = skillids };
             opts.Add(opt);
             nextframeopts.opts = opts;
             zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);
@@ -89,11 +89,9 @@ namespace ET
         {
             NextFrameOpts nextframeopts = new NextFrameOpts();
             List<OptionEvent> opts = new List<OptionEvent>();
-            NumericComponent num = UnitHelper.GetMyUnitFromCurrentScene(zonescene.CurrentScene()).GetComponent<NumericComponent>();
-            int frameid = num.GetAsInt(NumericType.Frameid);
             int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
             nextframeopts.frameid = gameroomframeid;
-            OptionEvent opt = new OptionEvent() { optType = (int)(OptType.PauseSingleGameMode)};
+            OptionEvent opt = new OptionEvent() { optType = (int)(OptType.PauseSingleGameMode) };
             opts.Add(opt);
             nextframeopts.opts = opts;
             zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);
@@ -104,11 +102,22 @@ namespace ET
         {
             NextFrameOpts nextframeopts = new NextFrameOpts();
             List<OptionEvent> opts = new List<OptionEvent>();
-            NumericComponent num = UnitHelper.GetMyUnitFromCurrentScene(zonescene.CurrentScene()).GetComponent<NumericComponent>();
-            int frameid = num.GetAsInt(NumericType.Frameid);
             int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
             nextframeopts.frameid = gameroomframeid;
             OptionEvent opt = new OptionEvent() { optType = (int)(OptType.ContinueSingleGameMode) };
+            opts.Add(opt);
+            nextframeopts.opts = opts;
+            zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);
+            await ETTask.CompletedTask;
+            return ErrorCode.ERR_Success;
+        }
+        public static async ETTask<int> NextWaveSingleGameMode(Scene zonescene)
+        {
+            NextFrameOpts nextframeopts = new NextFrameOpts();
+            List<OptionEvent> opts = new List<OptionEvent>();
+            int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
+            nextframeopts.frameid = gameroomframeid;
+            OptionEvent opt = new OptionEvent() { optType = (int)(OptType.NextWave) };
             opts.Add(opt);
             nextframeopts.opts = opts;
             zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);

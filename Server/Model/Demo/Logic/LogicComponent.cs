@@ -12,6 +12,7 @@ namespace ET
         CreateMonster = 4,
         PauseSingleGameMode = 5,
         ContinueSingleGameMode = 6,
+        NextWave = 7
     }
 
     public class LogicComponent : Entity , IAwake<int>,IDestroy

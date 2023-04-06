@@ -20,8 +20,8 @@ namespace ET
             }
             GameRoomComponent gameRoomComponent = unit.DomainScene().GetComponent<GameRoomComponent>(); 
             if(gameRoomComponent != null)
-            {   
-                if(num.GetAsInt(NumericType.RoomIndex) != 0)
+            {
+                if (gameRoomComponent.roomstate.ContainsKey(num.GetAsInt(NumericType.RoomIndex)))
                 {
                     gameRoomComponent.RemoveUnit(num.GetAsInt(NumericType.RoomIndex), unit);
                     List<Unit> units = gameRoomComponent.Get(num.GetAsInt(NumericType.RoomIndex));
@@ -29,16 +29,19 @@ namespace ET
                     {
                         if (units.Count == 0)
                         {
-                            gameRoomComponent.roomstate[num.GetAsInt(NumericType.RoomIndex)] = 0;
+                            gameRoomComponent.ClearRoomState(num.GetAsInt(NumericType.RoomIndex));
+                            gameRoomComponent.ClearRoomUnit(num.GetAsInt(NumericType.RoomIndex));
                             gameRoomComponent.ClearLogicComponent(num.GetAsInt(NumericType.RoomIndex));
                         }
                     }
                     else
                     {
-                        gameRoomComponent.roomstate[num.GetAsInt(NumericType.RoomIndex)] = 0;
+                        gameRoomComponent.ClearRoomState(num.GetAsInt(NumericType.RoomIndex));
+                        gameRoomComponent.ClearRoomUnit(num.GetAsInt(NumericType.RoomIndex));
                         gameRoomComponent.ClearLogicComponent(num.GetAsInt(NumericType.RoomIndex));
                     }
-                }              
+                }
+                           
             }
             //保存数据库
             unit.GetComponent<UnitSaveDBComponent>()?.SaveChange();

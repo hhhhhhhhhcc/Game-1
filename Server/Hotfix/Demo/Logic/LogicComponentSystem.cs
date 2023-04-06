@@ -73,7 +73,6 @@ namespace ET
             {
                 if (unit == null) return;
 
-                NumericComponent num = unit.GetComponent<NumericComponent>();//最新的客户端的Unit的numericcomponent
                 List<Unit> units = self.GetParent<GameRoomComponent>().Get(self.roomid);
                 for (int i = 0; i < units.Count; i++)
                 {

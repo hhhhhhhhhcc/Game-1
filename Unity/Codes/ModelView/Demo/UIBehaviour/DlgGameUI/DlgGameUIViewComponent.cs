@@ -7,57 +7,6 @@ namespace ET
 	[EnableMethod]
 	public  class DlgGameUIViewComponent : Entity,IAwake,IDestroy 
 	{
-		public UnityEngine.UI.Button EButton_readyButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EButton_readyButton == null )
-     			{
-		    		this.m_EButton_readyButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_ready");
-     			}
-     			return this.m_EButton_readyButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EButton_readyImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EButton_readyImage == null )
-     			{
-		    		this.m_EButton_readyImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_ready");
-     			}
-     			return this.m_EButton_readyImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Text ELabel_Text
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_ELabel_Text == null )
-     			{
-		    		this.m_ELabel_Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EButton_ready/ELabel_");
-     			}
-     			return this.m_ELabel_Text;
-     		}
-     	}
-
 		public UnityEngine.UI.Image EInfoLeftImage
      	{
      		get
@@ -551,6 +500,57 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button EButton_readyButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EButton_readyButton == null )
+     			{
+		    		this.m_EButton_readyButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_ready");
+     			}
+     			return this.m_EButton_readyButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EButton_readyImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EButton_readyImage == null )
+     			{
+		    		this.m_EButton_readyImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_ready");
+     			}
+     			return this.m_EButton_readyImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text ELabel_Text
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ELabel_Text == null )
+     			{
+		    		this.m_ELabel_Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EButton_ready/ELabel_");
+     			}
+     			return this.m_ELabel_Text;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_SkillAllImage
      	{
      		get
@@ -637,6 +637,278 @@ namespace ET
 		    	   this.m_es_skill4 = this.AddChild<ES_Skill,Transform>(subTrans);
      			}
      			return this.m_es_skill4;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualLImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLImage == null )
+     			{
+		    		this.m_EvisualLImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualL");
+     			}
+     			return this.m_EvisualLImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualLEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLEventTrigger == null )
+     			{
+		    		this.m_EvisualLEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualL");
+     			}
+     			return this.m_EvisualLEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualLUImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLUImage == null )
+     			{
+		    		this.m_EvisualLUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualLU");
+     			}
+     			return this.m_EvisualLUImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualLUEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLUEventTrigger == null )
+     			{
+		    		this.m_EvisualLUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualLU");
+     			}
+     			return this.m_EvisualLUEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualUImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualUImage == null )
+     			{
+		    		this.m_EvisualUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualU");
+     			}
+     			return this.m_EvisualUImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualUEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualUEventTrigger == null )
+     			{
+		    		this.m_EvisualUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualU");
+     			}
+     			return this.m_EvisualUEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualRUImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualRUImage == null )
+     			{
+		    		this.m_EvisualRUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualRU");
+     			}
+     			return this.m_EvisualRUImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualRUEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualRUEventTrigger == null )
+     			{
+		    		this.m_EvisualRUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualRU");
+     			}
+     			return this.m_EvisualRUEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualRImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualRImage == null )
+     			{
+		    		this.m_EvisualRImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualR");
+     			}
+     			return this.m_EvisualRImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualREventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualREventTrigger == null )
+     			{
+		    		this.m_EvisualREventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualR");
+     			}
+     			return this.m_EvisualREventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualRDImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualRDImage == null )
+     			{
+		    		this.m_EvisualRDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualRD");
+     			}
+     			return this.m_EvisualRDImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualRDEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualRDEventTrigger == null )
+     			{
+		    		this.m_EvisualRDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualRD");
+     			}
+     			return this.m_EvisualRDEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualDImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualDImage == null )
+     			{
+		    		this.m_EvisualDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualD");
+     			}
+     			return this.m_EvisualDImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualDEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualDEventTrigger == null )
+     			{
+		    		this.m_EvisualDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualD");
+     			}
+     			return this.m_EvisualDEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EvisualLDImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLDImage == null )
+     			{
+		    		this.m_EvisualLDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualLD");
+     			}
+     			return this.m_EvisualLDImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger EvisualLDEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EvisualLDEventTrigger == null )
+     			{
+		    		this.m_EvisualLDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualLD");
+     			}
+     			return this.m_EvisualLDEventTrigger;
      		}
      	}
 
@@ -1017,278 +1289,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image EvisualLImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLImage == null )
-     			{
-		    		this.m_EvisualLImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualL");
-     			}
-     			return this.m_EvisualLImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualLEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLEventTrigger == null )
-     			{
-		    		this.m_EvisualLEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualL");
-     			}
-     			return this.m_EvisualLEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualLUImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLUImage == null )
-     			{
-		    		this.m_EvisualLUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualLU");
-     			}
-     			return this.m_EvisualLUImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualLUEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLUEventTrigger == null )
-     			{
-		    		this.m_EvisualLUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualLU");
-     			}
-     			return this.m_EvisualLUEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualUImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualUImage == null )
-     			{
-		    		this.m_EvisualUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualU");
-     			}
-     			return this.m_EvisualUImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualUEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualUEventTrigger == null )
-     			{
-		    		this.m_EvisualUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualU");
-     			}
-     			return this.m_EvisualUEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualRUImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualRUImage == null )
-     			{
-		    		this.m_EvisualRUImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualRU");
-     			}
-     			return this.m_EvisualRUImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualRUEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualRUEventTrigger == null )
-     			{
-		    		this.m_EvisualRUEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualRU");
-     			}
-     			return this.m_EvisualRUEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualRImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualRImage == null )
-     			{
-		    		this.m_EvisualRImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualR");
-     			}
-     			return this.m_EvisualRImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualREventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualREventTrigger == null )
-     			{
-		    		this.m_EvisualREventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualR");
-     			}
-     			return this.m_EvisualREventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualRDImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualRDImage == null )
-     			{
-		    		this.m_EvisualRDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualRD");
-     			}
-     			return this.m_EvisualRDImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualRDEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualRDEventTrigger == null )
-     			{
-		    		this.m_EvisualRDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualRD");
-     			}
-     			return this.m_EvisualRDEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualDImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualDImage == null )
-     			{
-		    		this.m_EvisualDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualD");
-     			}
-     			return this.m_EvisualDImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualDEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualDEventTrigger == null )
-     			{
-		    		this.m_EvisualDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualD");
-     			}
-     			return this.m_EvisualDEventTrigger;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EvisualLDImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLDImage == null )
-     			{
-		    		this.m_EvisualLDImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Evisual/EvisualLD");
-     			}
-     			return this.m_EvisualLDImage;
-     		}
-     	}
-
-		public UnityEngine.EventSystems.EventTrigger EvisualLDEventTrigger
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EvisualLDEventTrigger == null )
-     			{
-		    		this.m_EvisualLDEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"Evisual/EvisualLD");
-     			}
-     			return this.m_EvisualLDEventTrigger;
-     		}
-     	}
-
 		public UnityEngine.UI.Image ECreateMonsterAllImage
      	{
      		get
@@ -1443,6 +1443,23 @@ namespace ET
 		    		this.m_E_SettingBaseSpriteImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_SettingBaseSprite");
      			}
      			return this.m_E_SettingBaseSpriteImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_BackgroundImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_BackgroundImage == null )
+     			{
+		    		this.m_E_BackgroundImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_SettingBaseSprite/E_Background");
+     			}
+     			return this.m_E_BackgroundImage;
      		}
      	}
 
@@ -2109,6 +2126,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text E_WinRestartTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_WinRestartTextText == null )
+     			{
+		    		this.m_E_WinRestartTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EResultWinBackground/EButton_WinRestartGame/E_WinRestartText");
+     			}
+     			return this.m_E_WinRestartTextText;
+     		}
+     	}
+
 		public UnityEngine.UI.Button EButton_WinExitGameButton
      	{
      		get
@@ -2143,6 +2177,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text E_WinExitTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_WinExitTextText == null )
+     			{
+		    		this.m_E_WinExitTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EResultWinBackground/EButton_WinExitGame/E_WinExitText");
+     			}
+     			return this.m_E_WinExitTextText;
+     		}
+     	}
+
 		public UnityEngine.UI.Button EButton_WinNextGameButton
      	{
      		get
@@ -2174,6 +2225,23 @@ namespace ET
 		    		this.m_EButton_WinNextGameImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EResultWinBackground/EButton_WinNextGame");
      			}
      			return this.m_EButton_WinNextGameImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_WinNextTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_WinNextTextText == null )
+     			{
+		    		this.m_E_WinNextTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EResultWinBackground/EButton_WinNextGame/E_WinNextText");
+     			}
+     			return this.m_E_WinNextTextText;
      		}
      	}
 
@@ -2466,6 +2534,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text E_LoseRestartTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LoseRestartTextText == null )
+     			{
+		    		this.m_E_LoseRestartTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EResultLoseBackground/EButton_LoseRestartGame/E_LoseRestartText");
+     			}
+     			return this.m_E_LoseRestartTextText;
+     		}
+     	}
+
 		public UnityEngine.UI.Button EButton_LoseExitGameButton
      	{
      		get
@@ -2500,11 +2585,110 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text E_LoseExitTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LoseExitTextText == null )
+     			{
+		    		this.m_E_LoseExitTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EResultLoseBackground/EButton_LoseExitGame/E_LoseExitText");
+     			}
+     			return this.m_E_LoseExitTextText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_AllNextWaveImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AllNextWaveImage == null )
+     			{
+		    		this.m_E_AllNextWaveImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave");
+     			}
+     			return this.m_E_AllNextWaveImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextWave1Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave1Button == null )
+     			{
+		    		this.m_E_NextWave1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave1");
+     			}
+     			return this.m_E_NextWave1Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave1Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave1Image == null )
+     			{
+		    		this.m_E_NextWave1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave1");
+     			}
+     			return this.m_E_NextWave1Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextWave2Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave2Button == null )
+     			{
+		    		this.m_E_NextWave2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave2");
+     			}
+     			return this.m_E_NextWave2Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave2Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave2Image == null )
+     			{
+		    		this.m_E_NextWave2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave2");
+     			}
+     			return this.m_E_NextWave2Image;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
-			this.m_EButton_readyButton = null;
-			this.m_EButton_readyImage = null;
-			this.m_ELabel_Text = null;
 			this.m_EInfoLeftImage = null;
 			this.m_ELeftInfoBaseSpriteImage = null;
 			this.m_ELeftPlayerAvatarBaseSpriteImage = null;
@@ -2534,6 +2718,9 @@ namespace ET
 			this.m_ETimeLeftTextText = null;
 			this.m_E_CloseAllTowerButton = null;
 			this.m_E_CloseAllTowerImage = null;
+			this.m_EButton_readyButton = null;
+			this.m_EButton_readyImage = null;
+			this.m_ELabel_Text = null;
 			this.m_E_SkillAllImage = null;
 			this.m_es_skill1?.Dispose();
 			this.m_es_skill1 = null;
@@ -2543,6 +2730,22 @@ namespace ET
 			this.m_es_skill3 = null;
 			this.m_es_skill4?.Dispose();
 			this.m_es_skill4 = null;
+			this.m_EvisualLImage = null;
+			this.m_EvisualLEventTrigger = null;
+			this.m_EvisualLUImage = null;
+			this.m_EvisualLUEventTrigger = null;
+			this.m_EvisualUImage = null;
+			this.m_EvisualUEventTrigger = null;
+			this.m_EvisualRUImage = null;
+			this.m_EvisualRUEventTrigger = null;
+			this.m_EvisualRImage = null;
+			this.m_EvisualREventTrigger = null;
+			this.m_EvisualRDImage = null;
+			this.m_EvisualRDEventTrigger = null;
+			this.m_EvisualDImage = null;
+			this.m_EvisualDEventTrigger = null;
+			this.m_EvisualLDImage = null;
+			this.m_EvisualLDEventTrigger = null;
 			this.m_EListImage = null;
 			this.m_esbutton_createtower1?.Dispose();
 			this.m_esbutton_createtower1 = null;
@@ -2584,22 +2787,6 @@ namespace ET
 			this.m_esbutton_createtower19 = null;
 			this.m_esbutton_createtower20?.Dispose();
 			this.m_esbutton_createtower20 = null;
-			this.m_EvisualLImage = null;
-			this.m_EvisualLEventTrigger = null;
-			this.m_EvisualLUImage = null;
-			this.m_EvisualLUEventTrigger = null;
-			this.m_EvisualUImage = null;
-			this.m_EvisualUEventTrigger = null;
-			this.m_EvisualRUImage = null;
-			this.m_EvisualRUEventTrigger = null;
-			this.m_EvisualRImage = null;
-			this.m_EvisualREventTrigger = null;
-			this.m_EvisualRDImage = null;
-			this.m_EvisualRDEventTrigger = null;
-			this.m_EvisualDImage = null;
-			this.m_EvisualDEventTrigger = null;
-			this.m_EvisualLDImage = null;
-			this.m_EvisualLDEventTrigger = null;
 			this.m_ECreateMonsterAllImage = null;
 			this.m_ECreateMonsterAllBaseSpriteImage = null;
 			this.m_escreatemonster1?.Dispose();
@@ -2613,6 +2800,7 @@ namespace ET
 			this.m_E_GameSettingButton = null;
 			this.m_E_GameSettingImage = null;
 			this.m_E_SettingBaseSpriteImage = null;
+			this.m_E_BackgroundImage = null;
 			this.m_E_SettingTitleSpriteImage = null;
 			this.m_E_SettingInsideBaseSpriteImage = null;
 			this.m_E_SettingMusicBaseSpriteImage = null;
@@ -2652,10 +2840,13 @@ namespace ET
 			this.m_ELoopScrollListRewardLoopHorizontalScrollRect = null;
 			this.m_EButton_WinRestartGameButton = null;
 			this.m_EButton_WinRestartGameImage = null;
+			this.m_E_WinRestartTextText = null;
 			this.m_EButton_WinExitGameButton = null;
 			this.m_EButton_WinExitGameImage = null;
+			this.m_E_WinExitTextText = null;
 			this.m_EButton_WinNextGameButton = null;
 			this.m_EButton_WinNextGameImage = null;
+			this.m_E_WinNextTextText = null;
 			this.m_E_Star1Image = null;
 			this.m_E_Star2Image = null;
 			this.m_E_Star3Image = null;
@@ -2673,14 +2864,18 @@ namespace ET
 			this.m_E_LoseBaseImage = null;
 			this.m_EButton_LoseRestartGameButton = null;
 			this.m_EButton_LoseRestartGameImage = null;
+			this.m_E_LoseRestartTextText = null;
 			this.m_EButton_LoseExitGameButton = null;
 			this.m_EButton_LoseExitGameImage = null;
+			this.m_E_LoseExitTextText = null;
+			this.m_E_AllNextWaveImage = null;
+			this.m_E_NextWave1Button = null;
+			this.m_E_NextWave1Image = null;
+			this.m_E_NextWave2Button = null;
+			this.m_E_NextWave2Image = null;
 			this.uiTransform = null;
 		}
 
-		private UnityEngine.UI.Button m_EButton_readyButton = null;
-		private UnityEngine.UI.Image m_EButton_readyImage = null;
-		private UnityEngine.UI.Text m_ELabel_Text = null;
 		private UnityEngine.UI.Image m_EInfoLeftImage = null;
 		private UnityEngine.UI.Image m_ELeftInfoBaseSpriteImage = null;
 		private UnityEngine.UI.Image m_ELeftPlayerAvatarBaseSpriteImage = null;
@@ -2710,11 +2905,30 @@ namespace ET
 		private UnityEngine.UI.Text m_ETimeLeftTextText = null;
 		private UnityEngine.UI.Button m_E_CloseAllTowerButton = null;
 		private UnityEngine.UI.Image m_E_CloseAllTowerImage = null;
+		private UnityEngine.UI.Button m_EButton_readyButton = null;
+		private UnityEngine.UI.Image m_EButton_readyImage = null;
+		private UnityEngine.UI.Text m_ELabel_Text = null;
 		private UnityEngine.UI.Image m_E_SkillAllImage = null;
 		private ES_Skill m_es_skill1 = null;
 		private ES_Skill m_es_skill2 = null;
 		private ES_Skill m_es_skill3 = null;
 		private ES_Skill m_es_skill4 = null;
+		private UnityEngine.UI.Image m_EvisualLImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualLEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualLUImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualLUEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualUImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualUEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualRUImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualRUEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualRImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualREventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualRDImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualRDEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualDImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualDEventTrigger = null;
+		private UnityEngine.UI.Image m_EvisualLDImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_EvisualLDEventTrigger = null;
 		private UnityEngine.UI.Image m_EListImage = null;
 		private ESButton_CreateTower m_esbutton_createtower1 = null;
 		private ESButton_CreateTower m_esbutton_createtower2 = null;
@@ -2736,22 +2950,6 @@ namespace ET
 		private ESButton_CreateTower m_esbutton_createtower18 = null;
 		private ESButton_CreateTower m_esbutton_createtower19 = null;
 		private ESButton_CreateTower m_esbutton_createtower20 = null;
-		private UnityEngine.UI.Image m_EvisualLImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualLEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualLUImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualLUEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualUImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualUEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualRUImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualRUEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualRImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualREventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualRDImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualRDEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualDImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualDEventTrigger = null;
-		private UnityEngine.UI.Image m_EvisualLDImage = null;
-		private UnityEngine.EventSystems.EventTrigger m_EvisualLDEventTrigger = null;
 		private UnityEngine.UI.Image m_ECreateMonsterAllImage = null;
 		private UnityEngine.UI.Image m_ECreateMonsterAllBaseSpriteImage = null;
 		private ESCreateMonster m_escreatemonster1 = null;
@@ -2761,6 +2959,7 @@ namespace ET
 		private UnityEngine.UI.Button m_E_GameSettingButton = null;
 		private UnityEngine.UI.Image m_E_GameSettingImage = null;
 		private UnityEngine.UI.Image m_E_SettingBaseSpriteImage = null;
+		private UnityEngine.UI.Image m_E_BackgroundImage = null;
 		private UnityEngine.UI.Image m_E_SettingTitleSpriteImage = null;
 		private UnityEngine.UI.Image m_E_SettingInsideBaseSpriteImage = null;
 		private UnityEngine.UI.Image m_E_SettingMusicBaseSpriteImage = null;
@@ -2800,10 +2999,13 @@ namespace ET
 		private UnityEngine.UI.LoopHorizontalScrollRect m_ELoopScrollListRewardLoopHorizontalScrollRect = null;
 		private UnityEngine.UI.Button m_EButton_WinRestartGameButton = null;
 		private UnityEngine.UI.Image m_EButton_WinRestartGameImage = null;
+		private UnityEngine.UI.Text m_E_WinRestartTextText = null;
 		private UnityEngine.UI.Button m_EButton_WinExitGameButton = null;
 		private UnityEngine.UI.Image m_EButton_WinExitGameImage = null;
+		private UnityEngine.UI.Text m_E_WinExitTextText = null;
 		private UnityEngine.UI.Button m_EButton_WinNextGameButton = null;
 		private UnityEngine.UI.Image m_EButton_WinNextGameImage = null;
+		private UnityEngine.UI.Text m_E_WinNextTextText = null;
 		private UnityEngine.UI.Image m_E_Star1Image = null;
 		private UnityEngine.UI.Image m_E_Star2Image = null;
 		private UnityEngine.UI.Image m_E_Star3Image = null;
@@ -2821,8 +3023,15 @@ namespace ET
 		private UnityEngine.UI.Image m_E_LoseBaseImage = null;
 		private UnityEngine.UI.Button m_EButton_LoseRestartGameButton = null;
 		private UnityEngine.UI.Image m_EButton_LoseRestartGameImage = null;
+		private UnityEngine.UI.Text m_E_LoseRestartTextText = null;
 		private UnityEngine.UI.Button m_EButton_LoseExitGameButton = null;
 		private UnityEngine.UI.Image m_EButton_LoseExitGameImage = null;
+		private UnityEngine.UI.Text m_E_LoseExitTextText = null;
+		private UnityEngine.UI.Image m_E_AllNextWaveImage = null;
+		private UnityEngine.UI.Button m_E_NextWave1Button = null;
+		private UnityEngine.UI.Image m_E_NextWave1Image = null;
+		private UnityEngine.UI.Button m_E_NextWave2Button = null;
+		private UnityEngine.UI.Image m_E_NextWave2Image = null;
 		public Transform uiTransform = null;
 	}
 }

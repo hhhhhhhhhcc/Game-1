@@ -152,7 +152,13 @@ namespace ET
             self.View.EButton_LoseRestartGameButton.AddListener(() => { self.RestartGame(); });//重新打
             self.View.EButton_WinExitGameButton.AddListener(() => { self.ExitGame(); });//返回大厅
             self.View.EButton_LoseExitGameButton.AddListener(() => { self.ExitGame(); });//返回大厅
-            self.View.EButton_WinNextGameButton.AddListener(() => { self.NextGame(); });    
+            self.View.EButton_WinNextGameButton.AddListener(() => { self.NextGame(); });
+
+            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            {
+                self.View.E_NextWave1Button.AddListener(() => { self.NextWave(); });
+                self.View.E_NextWave2Button.AddListener(() => { self.NextWave(); });
+            }
         }
         public static void GiveUp(this DlgGameUI self)
         {
@@ -192,6 +198,21 @@ namespace ET
             if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
             {
                 GameHelper.ContinueSingleGameMode(self.ZoneScene()).Coroutine();
+            }
+        }
+        public static void NextWave(this DlgGameUI self)
+        {
+            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            {
+                self.HideAllNextWave();
+                GameHelper.NextWaveSingleGameMode(self.ZoneScene()).Coroutine();
+            }
+        }
+        public static void HideAllNextWave(this DlgGameUI self)
+        {
+            for(int i=0;i<self.View.E_AllNextWaveImage.transform.childCount;i++)
+            {
+                self.View.E_AllNextWaveImage.transform.GetChild(i).gameObject.SetActive(false);      
             }
         }
         public static void CloseGiveUpUI(this DlgGameUI self)
@@ -535,12 +556,24 @@ namespace ET
             }
             await ETTask.CompletedTask;
         }
-        public static async void UpdateGameWaveInfo(this DlgGameUI self, int CurrentWaveNumber, Dictionary<int, int> MonsterIdNumberDict)//当前波次  当前波次所有怪
+        public static async void UpdateGameWaveInfo(this DlgGameUI self, int CurrentWaveNumber, Dictionary<int, Dictionary<int, int>> MonsterIdNumberDict)//当前波次  当前波次所有怪
         {
             self.View.ERoundInfoWaveNumberTextText.SetText("Round  " + CurrentWaveNumber.ToString());
-            foreach (int k in MonsterIdNumberDict.Keys)
+            foreach (int roadid in MonsterIdNumberDict.Keys)
             {
-
+                foreach(int configid in MonsterIdNumberDict[roadid].Keys)
+                {
+                    if (roadid == 1)
+                    {
+                        self.View.E_NextWave1Image.gameObject.SetActive(true);
+                    }
+                    if (roadid == 2)
+                    {
+                        self.View.E_NextWave2Image.gameObject.SetActive(true);
+                    }
+                    Log.Debug(configid.ToString());
+                    Log.Debug(MonsterIdNumberDict[roadid][configid].ToString());    
+                }
             }
             await ETTask.CompletedTask;
         }
@@ -564,10 +597,10 @@ namespace ET
             if(Time == 0)
             {
                 self.View.ETimeLeftTextText.SetText("------");
+                self.HideAllNextWave();
                 return;
             }
             self.View.ETimeLeftTextText.SetText("TimeLeft " + (Time / 1000).ToString());
-            
         }
         public static void RestartGame(this DlgGameUI self)
         {
