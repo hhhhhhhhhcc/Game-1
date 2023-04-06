@@ -233,13 +233,5 @@ namespace ET
             GameComponent gamecomponent = currentScene.AddComponent<GameComponent>();
             gamecomponent.InitLevel(LevelId, MatchMode).Coroutine();
         }
-        public static void aaaaaaaaa()
-        {
-            Log.Debug("515125");
-        }
-        public static void BBblasd()
-        {
-            Log.Debug("45555");
-        }
     }
 }
