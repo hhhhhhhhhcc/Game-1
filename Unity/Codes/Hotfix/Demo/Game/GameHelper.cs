@@ -223,8 +223,9 @@ namespace ET
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(currentScene);
             currentScene.AddComponent<MonsterComponent>();
             currentScene.AddComponent<TowerComponent>();
-            currentScene.AddComponent<BulletComponent>();
             currentScene.AddComponent<BaseComponent>();
+            currentScene.AddComponent<BulletComponent>();
+            currentScene.AddComponent<GameComponent>();
             currentScene.AddComponent<NavVectorComponent>();
             NumericComponent UnitNumeric = unit.GetComponent<NumericComponent>();
             int LevelId = UnitNumeric.GetAsInt(NumericType.LevelId);
