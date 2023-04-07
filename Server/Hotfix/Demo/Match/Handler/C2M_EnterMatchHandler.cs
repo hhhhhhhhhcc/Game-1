@@ -56,7 +56,7 @@ namespace ET
                 n.Set(NumericType.Frameid, 0);
                 n.Set(NumericType.MatchMode, 1);
                 await n.AddOrUpdateUnitCache(UnitHelper.GetUnitServerId(unit));
-                M2G_ChangeRoomState m2G_ChangeRoomState = new M2G_ChangeRoomState() { RoomIndex = matchcomponent.CurrentMatch };
+                M2G_ChangeRoomState m2G_ChangeRoomState = new M2G_ChangeRoomState() { RoomIndex = roomindex };
                 StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(unit.DomainZone(), "Game");
                 await MessageHelper.CallActor(startSceneConfig.InstanceId, m2G_ChangeRoomState);
                 await TransferHelper.Transfer(unit, startSceneConfig.InstanceId, startSceneConfig.Name);
@@ -70,6 +70,9 @@ namespace ET
                     int roomindex = matchcomponent.NextIndex();//房间号++
                     //抽取MapId
                     int LevelId = 1001;
+                    M2G_ChangeRoomState m2G_ChangeRoomState = new M2G_ChangeRoomState() { RoomIndex = roomindex };
+                    StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(unit.DomainZone(), "Game");
+                    await MessageHelper.CallActor(startSceneConfig.InstanceId, m2G_ChangeRoomState);
                     for (int i = 1; i >= 0; i--)
                     {
                         Unit u = matchcomponent.MatchUnits[i];
@@ -98,9 +101,6 @@ namespace ET
                         n.Set(NumericType.MatchMode, 2);
                         unit.GetComponent<UnitSaveDBComponent>()?.SaveChange();
                         matchcomponent.Remove(u);
-                        M2G_ChangeRoomState m2G_ChangeRoomState = new M2G_ChangeRoomState() { RoomIndex = matchcomponent.CurrentMatch };
-                        StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(u.DomainZone(), "Game");
-                        await MessageHelper.CallActor(startSceneConfig.InstanceId, m2G_ChangeRoomState);
                         await TransferHelper.Transfer(u, startSceneConfig.InstanceId, startSceneConfig.Name);
                     }
                 }

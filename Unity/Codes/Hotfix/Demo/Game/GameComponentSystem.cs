@@ -422,6 +422,7 @@ namespace ET
                             MonsterRoadId.Add(self.MonsterNavDict[i][j]);
                         }
                     }
+      			  Log.Debug("1111");
                 }
                 return (MonsterConfigId, MonsterRoadId);
             }

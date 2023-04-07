@@ -431,6 +431,7 @@ namespace ET
             {
                 self.HideRestartAndBack();
             }
+            self.HideAllNextWave();
         }
         public static void DisReadyAndShowWindow(this DlgGameUI self)
         {

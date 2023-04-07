@@ -86,6 +86,8 @@ namespace ET
         }
         public static void JudgeDir(this MonsterMoveComponent self)
         {
+            if (self == null) return;
+            if (self.GetParent<Monster>() == null) return;
             if(self.GetParent<Monster>().State == MonsterState.Control)//被控制了
             {
                 Vector3 dir = self.GetDir();

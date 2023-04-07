@@ -33,16 +33,16 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 21300000, guid: 14032131b0962dc40ac4d1f004ee6d26, type: 3}
-    - {fileID: 21300000, guid: 86f5faa21d63dc34295f08be6fea9111, type: 3}
-    - {fileID: 21300000, guid: cc4b17f356248ae42b111a1b3a69af83, type: 3}
     - {fileID: 21300000, guid: b6db62080526d2541a1d2a73efb91cfa, type: 3}
+    - {fileID: 21300000, guid: a3546682edb5f604fa4dc0b1a4851f44, type: 3}
+    - {fileID: 21300000, guid: cc4b17f356248ae42b111a1b3a69af83, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 14032131b0962dc40ac4d1f004ee6d26, type: 3}
-  - {fileID: 21300000, guid: 86f5faa21d63dc34295f08be6fea9111, type: 3}
+  - {fileID: 21300000, guid: a3546682edb5f604fa4dc0b1a4851f44, type: 3}
   - {fileID: 21300000, guid: cc4b17f356248ae42b111a1b3a69af83, type: 3}
   - {fileID: 21300000, guid: b6db62080526d2541a1d2a73efb91cfa, type: 3}
   m_PackedSpriteNamesToIndex:

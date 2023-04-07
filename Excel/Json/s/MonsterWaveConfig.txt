@@ -9,6 +9,6 @@
 {"_t":"MonsterWaveConfig","_id":8,"WaveCode":"Wave1","Group":6,"Timing":8000,"MonsterId":1001,"MonsterNumber":15,"MonsterInterval":1000,"RoadIndex":[1,2]},
 {"_t":"MonsterWaveConfig","_id":9,"WaveCode":"Wave1","Group":6,"Timing":1000,"MonsterId":1002,"MonsterNumber":6,"MonsterInterval":1000,"RoadIndex":[1,2]},
 {"_t":"MonsterWaveConfig","_id":10,"WaveCode":"Wave1","Group":6,"Timing":1000,"MonsterId":1003,"MonsterNumber":15,"MonsterInterval":1000,"RoadIndex":[1,2]},
-{"_t":"MonsterWaveConfig","_id":11,"WaveCode":"Wave2","Group":1,"Timing":0,"MonsterId":1001,"MonsterNumber":10,"MonsterInterval":2000,"RoadIndex":[1]},
-{"_t":"MonsterWaveConfig","_id":12,"WaveCode":"Wave2","Group":2,"Timing":0,"MonsterId":1001,"MonsterNumber":2,"MonsterInterval":2000,"RoadIndex":[2]},
+{"_t":"MonsterWaveConfig","_id":11,"WaveCode":"Wave2","Group":1,"Timing":0,"MonsterId":1002,"MonsterNumber":10,"MonsterInterval":2000,"RoadIndex":[1]},
+{"_t":"MonsterWaveConfig","_id":12,"WaveCode":"Wave2","Group":2,"Timing":0,"MonsterId":1002,"MonsterNumber":2,"MonsterInterval":2000,"RoadIndex":[2]},
 ]}

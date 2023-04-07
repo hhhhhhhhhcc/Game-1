@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
 namespace ET
 {
     public static class DlgMainHomeSystem
     {
         public static void RegisterUIEvent(this DlgMainHome self)
         {
-            self.View.EButton_UpButton.AddListenerAsync(() => { return self.OnClickUp(); });
+            //self.View.EButton_UpButton.AddListenerAsync(() => { return self.OnClickUp(); });
            /* self.View.ES_shuzhi1.RegisterEvent(NumericType.Power);
             self.View.ES_shuzhi2.RegisterEvent(NumericType.PhysicalStrength);
             self.View.ES_shuzhi3.RegisterEvent(NumericType.Agile);
             self.View.ES_shuzhi4.RegisterEvent(NumericType.Spirit);*/
             self.View.EButton_matchButton.AddListenerAsync(() => { return self.EnterMatch(); });
-            self.View.EButton_GetItemButton.AddListener(self.GetItem);
-            self.View.EButton_ReduceItemButton.AddListener(self.ReduceItem);
+            //self.View.EButton_GetItemButton.AddListener(self.GetItem);
+            //self.View.EButton_ReduceItemButton.AddListener(self.ReduceItem);
             self.View.EButton_SingeModeButton.AddListener(self.EnterSingleMode);
             self.View.E_OpenFightItemButton.AddListener(self.OpenFightItem);
         }
@@ -77,7 +76,8 @@ namespace ET
         {
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
             NumericComponent component = unit.GetComponent<NumericComponent>();
-
+            self.View.EText_CoinNumberTextMeshProUGUI.SetText("" + component.GetAsLong(NumericType.Gold).ToString());
+            int currentmoney = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>().GetAsInt(NumericType.Gold);
             /*self.View.ELabel_expText.SetText("Exp:" + component.GetAsInt(NumericType.Exp).ToString());
             self.View.ELabel_goldText.SetText("Gold:" + component.GetAsLong(NumericType.Gold).ToString());
             self.View.ELabel_levelText.SetText("Exp:" + component.GetAsInt(NumericType.Level).ToString());
