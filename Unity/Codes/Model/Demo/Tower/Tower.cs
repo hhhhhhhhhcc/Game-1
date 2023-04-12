@@ -9,6 +9,7 @@ namespace ET
     {
         NormalAttack = 1,
         SkillAttack = 2,
+        Crotrol = 3,
     }
     public class Tower : Entity, IAwake<int>,IDestroy
     {
@@ -22,6 +23,7 @@ namespace ET
         public int AttackInterval;
         public int PhysicsAttack;
         public int MagicAttack;
+        public int Type;
         public TowerConfig Config => TowerConfigCategory.Instance.Get(this.ConfigId);
 
         private WrapVector3 position = new WrapVector3(); //坐标

@@ -1,7 +1,7 @@
 {"list":[
-{"_t":"LevelConfig","_id":1,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000],"Reward":"1,100"},
-{"_t":"LevelConfig","_id":2,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000],"Reward":"1,100"},
-{"_t":"LevelConfig","_id":3,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000,7000,8000,9000,10000,11000,12000,13000],"Reward":"1,100"},
-{"_t":"LevelConfig","_id":4,"MapId":2,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,6000,7000,8000,9000,10000,11000,12000,13000],"Reward":"1,100"},
-{"_t":"LevelConfig","_id":1001,"MapId":1,"MonsterWaveCode":"Wave1","MonsterWaveInterval":[5000,5000,5000,5000,5000,5000],"Reward":""},
+{"_t":"LevelConfig","_id":1,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[15000,15000,15000,15000,15000,15000,15000],"InitGold":500,"Reward":"1,100","Percent":[],"LevelDis":"aaa","LevelName":"第一关","MonstersId":[6001,6002,6003]},
+{"_t":"LevelConfig","_id":2,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000],"InitGold":500,"Reward":"1,100","Percent":[],"LevelDis":"bbb","LevelName":"第二关","MonstersId":[6001,6002,6003]},
+{"_t":"LevelConfig","_id":3,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000],"InitGold":500,"Reward":"1,100","Percent":[],"LevelDis":"ccc","LevelName":"第三关","MonstersId":[6001,6002,6003]},
+{"_t":"LevelConfig","_id":4,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[5000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000,15000,9000],"InitGold":500,"Reward":"1,100","Percent":[],"LevelDis":"ddd","LevelName":"第四关","MonstersId":[6001,6002,6003]},
+{"_t":"LevelConfig","_id":1001,"MapId":1001,"MonsterWaveCode":"Wave1","MonsterWaveInterval":[5000,5000,5000,5000,5000,5000],"InitGold":500,"Reward":"1,100","Percent":[200,50],"LevelDis":"eee","LevelName":"","MonstersId":[]},
 ]}

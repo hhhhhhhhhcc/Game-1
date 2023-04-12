@@ -178,6 +178,7 @@ namespace ET
             public bool Result;
             public List<int> ItemId;
             public List<int> ItemNumber;
+            public int Star;
         }
         public struct ShowDamageValueMonster
         {

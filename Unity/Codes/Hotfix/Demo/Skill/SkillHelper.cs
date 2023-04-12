@@ -66,7 +66,7 @@ namespace ET
         }
         public static int GetBuildLossMoney(Scene zonescene,int ConfigId)
         {
-            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTalentIdByConfigId(ConfigId);
+            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTowerTalentIdByConfigId(ConfigId);
             for(int i = 0;i < TalentId.Count;i++)
             {
                 int skillid = TalentConfigCategory.Instance.Get(TalentId[i]).SkillId;
@@ -90,7 +90,7 @@ namespace ET
         }
         public static int GetSaleLoss(Scene zonescene, int ConfigId)
         {
-            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTalentIdByConfigId(ConfigId);
+            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTowerTalentIdByConfigId(ConfigId);
             for (int i = 0; i < TalentId.Count; i++)
             {
                 int skillid = TalentConfigCategory.Instance.Get(TalentId[i]).SkillId;
@@ -113,7 +113,7 @@ namespace ET
         }
         public static int GetBeforeBuildRange(Scene zonescene, int ConfigId)
         {
-            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTalentIdByConfigId(ConfigId);
+            List<int> TalentId = zonescene.GetComponent<FightItemComponent>().GetTowerTalentIdByConfigId(ConfigId);
             for (int i = 0; i < TalentId.Count; i++)
             {
                 int skillid = TalentConfigCategory.Instance.Get(TalentId[i]).SkillId;
@@ -133,6 +133,28 @@ namespace ET
                 }
             }
             return 0;
+        }
+        public static int GetExtraKillCoin(Scene currentscene)//玩家技能击杀额外金币
+        {
+            int AllExtraCoin = 0;
+            PlayerSkillComponent playerskillcomponent = currentscene.GetComponent<GameComponent>().GetComponent<PlayerSkillComponent>();
+            foreach (Type type in playerskillcomponent.Components.Keys)
+            {
+                if (typeof(PlayerAfterKillCoin).IsAssignableFrom(type))
+                {
+                    Entity component = playerskillcomponent.Components[type];
+                    Type system = Type.GetType(type.FullName + "System");
+                    MethodInfo method = system.GetMethod("GetExtraCoin");
+                    if (method == null) continue;
+                    object extracoin = method.Invoke(component, new object[] { component });
+                    AllExtraCoin = AllExtraCoin + (int)extracoin;
+                }
+            }
+            return AllExtraCoin;
+        }
+        public static void ReleasePlayerSkill(Scene currentscene)
+        {
+
         }
     }
 }

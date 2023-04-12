@@ -12,6 +12,10 @@ namespace ET
             if (a.index == 1)//显示
             {
                 line.gameObject.SetActive(true);
+                if (a.monster.Count == 0)
+                {
+                    line.positionCount = 0;
+                }
                 if (a.monster.Count == 1)
                 {
                     line.positionCount = 2;

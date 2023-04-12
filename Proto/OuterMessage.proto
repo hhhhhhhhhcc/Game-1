@@ -558,6 +558,7 @@ message G2C_WinGame //IActorLocationResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+
 }
 
 message G2C_ReturnWinGame // IActorMessage
@@ -567,6 +568,7 @@ message G2C_ReturnWinGame // IActorMessage
 	repeated int32 WinItemNumber = 3;
 	repeated int32 FailItemId = 4;
 	repeated int32 FailItemNumber = 5;
+	int32 Star = 6;
 }
 
 //ResponseType G2C_ExitGameAndEnterMainHome
@@ -611,6 +613,7 @@ message OptionEvent
 	int32 MonsterConfigId = 8;
 	int64 MonsterId = 9;
 	repeated int32 SkillIds = 10;
+	int32 MonsterRoadId = 11;
 }
 message FrameOpts 
 {

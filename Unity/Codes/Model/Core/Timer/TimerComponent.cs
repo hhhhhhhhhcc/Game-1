@@ -249,7 +249,7 @@ namespace ET
             {
                 return false;
             }
-
+            if (self == null) return false;
             TimerAction timerAction = self.GetChild<TimerAction>(id);
             if (timerAction == null)
             {

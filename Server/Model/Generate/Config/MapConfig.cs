@@ -96,6 +96,18 @@ namespace ET
 		/// <summary>UI地图塔的位置Y</summary>
 		[ProtoMember(7)]
 		public int[] PosY { get; set; }
+		/// <summary>出怪波次信息UI坐标X</summary>
+		[ProtoMember(8)]
+		public int[] WaveInfoX { get; set; }
+		/// <summary>出怪波次信息UI坐标Y</summary>
+		[ProtoMember(9)]
+		public int[] WaveInfoY { get; set; }
+		/// <summary>买怪入口UI坐标X</summary>
+		[ProtoMember(10)]
+		public int[] ReleaseX { get; set; }
+		/// <summary>买怪入口UI坐标Y</summary>
+		[ProtoMember(11)]
+		public int[] ReleaseY { get; set; }
 
 	}
 }

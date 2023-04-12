@@ -17,14 +17,6 @@ namespace ET
         }
     }
     [ObjectSystem]
-    public class PlayerOfflineOutTimeComponentDestroySystem : DestroySystem<PlayerOfflineOutTimeComponent>
-    {
-        public override void Destroy(PlayerOfflineOutTimeComponent self)
-        {
-            TimerComponent.Instance.Remove(ref self.Timer);
-        }
-    }
-    [ObjectSystem]
     public class PlayerOfflineOutTimeComponentAwakeSystem : AwakeSystem<PlayerOfflineOutTimeComponent>
     {
         public override void Awake(PlayerOfflineOutTimeComponent self)
@@ -32,7 +24,14 @@ namespace ET
             self.Timer = TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + 10000, TimerType.PlayerOfflineOutTime, self);
         }
     }
-
+    [ObjectSystem]
+    public class PlayerOfflineOutTimeComponentDestroySystem : DestroySystem<PlayerOfflineOutTimeComponent>
+    {
+        public override void Destroy(PlayerOfflineOutTimeComponent self)
+        {
+            TimerComponent.Instance.Remove(ref self.Timer);
+        }
+    }
     public static class PlayerOfflineOutTimeComponentSystem
     {
         public static void KickPlayer(this PlayerOfflineOutTimeComponent self)

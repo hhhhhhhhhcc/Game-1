@@ -82,7 +82,7 @@ namespace ET
                 }
                 else
                 {
-                    player.RemoveComponent<PlayerOfflineOutTimeComponent>();
+                    //player.RemoveComponent<PlayerOfflineOutTimeComponent>();
                 }
                 session.AddComponent<SessionPlayerComponent>().PlayerId = player.Id;
                 session.GetComponent<SessionPlayerComponent>().PlayerInstanceId = player.InstanceId;

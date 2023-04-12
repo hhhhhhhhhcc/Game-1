@@ -12,6 +12,9 @@
         WindowID_ServerChoose = 7,
         WindowID_GameUI = 8,
         WindowID_TalentUI = 9,
+        WindowID_Loading = 10,
+        WindowID_Form = 11,
+        WindowID_Select = 12,
         WindowID_Map1 = 101,
     }
 }

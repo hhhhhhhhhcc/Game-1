@@ -15,7 +15,9 @@ namespace ET
                 int DropMoney = args.Monster.ReturnMoney;
                 Unit unit = UnitHelper.GetMyUnitFromCurrentScene(args.currentscene);
                 NumericComponent unitnumeric = unit.GetComponent<NumericComponent>();
-                unitnumeric.Set(NumericType.GameMoney, unitnumeric.GetAsInt(NumericType.GameMoney) + DropMoney + args.ExtraCoin);
+                //添加一个全局金币组件  反射获取金币数量
+                int PlayerSkillExtraCoin = SkillHelper.GetExtraKillCoin(args.currentscene);
+                unitnumeric.Set(NumericType.GameMoney, unitnumeric.GetAsInt(NumericType.GameMoney) + DropMoney + args.ExtraCoin + PlayerSkillExtraCoin);
             }
             AnimatorComponent animator = args.Monster.GetComponent<AnimatorComponent>();
             string animatorname;

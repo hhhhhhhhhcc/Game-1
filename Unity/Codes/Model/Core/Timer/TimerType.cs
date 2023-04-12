@@ -12,6 +12,8 @@
         public const int TowerAttackTimer = 6;
         public const int OnLogicFrame = 7;
         public const int SaveChangeDBDate = 8;
+        public const int HallAutoGenerateMonster = 9;
+        public const int HallLogic = 10;
         // 不能超过1000
     }
 }

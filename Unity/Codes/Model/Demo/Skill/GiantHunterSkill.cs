@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class GiantHunterSkill  : Entity,IAwake,IDestroy,LogicSkill,Skill
+    public class GiantHunterSkill  : Entity,IAwake,IUpdate,IDestroy,LogicSkill,Skill
     {
         public int SkillTimer;
         public int SkillTime;

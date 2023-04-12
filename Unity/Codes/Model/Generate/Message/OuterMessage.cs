@@ -1236,6 +1236,9 @@ namespace ET
 		[ProtoMember(5)]
 		public List<int> FailItemNumber = new List<int>();
 
+		[ProtoMember(6)]
+		public int Star { get; set; }
+
 	}
 
 	[ResponseType(nameof(G2C_ExitGameAndEnterMainHome))]
@@ -1336,6 +1339,9 @@ namespace ET
 
 		[ProtoMember(10)]
 		public List<int> SkillIds = new List<int>();
+
+		[ProtoMember(11)]
+		public int MonsterRoadId { get; set; }
 
 	}
 

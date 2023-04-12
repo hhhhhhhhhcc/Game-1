@@ -97,9 +97,12 @@ namespace ET
         }
         public static void ClearLogicComponent(this GameRoomComponent self,int roomindex)//清空帧同步组件
         {
-            long logicid = self.logics[roomindex];
-            LogicComponent logiccomponent = self.GetChild<LogicComponent>(logicid);
-            logiccomponent.Dispose();
+            if(self.logics.ContainsKey(roomindex))
+            {
+                long logicid = self.logics[roomindex];
+                LogicComponent logiccomponent = self.GetChild<LogicComponent>(logicid);
+                logiccomponent.Dispose();
+            }
         }
     }
 }

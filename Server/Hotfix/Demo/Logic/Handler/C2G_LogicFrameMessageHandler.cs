@@ -9,9 +9,12 @@
             Scene scene = unit.DomainScene();
             int roomid = unit.GetComponent<NumericComponent>().GetAsInt(NumericType.RoomIndex);
             GameRoomComponent roomComponent = scene.GetComponent<GameRoomComponent>();
-            long logiccomponentid = roomComponent.logics[roomid];
-            LogicComponent logiccomponent = roomComponent.GetChild<LogicComponent>(logiccomponentid);
-            logiccomponent.AddNextFrameOpt(unit, message);
+            if(roomComponent.logics.ContainsKey(roomid))
+            {
+                long logiccomponentid = roomComponent.logics[roomid];
+                LogicComponent logiccomponent = roomComponent.GetChild<LogicComponent>(logiccomponentid);
+                logiccomponent.AddNextFrameOpt(unit, message);
+            }
             await ETTask.CompletedTask;
         }
     }

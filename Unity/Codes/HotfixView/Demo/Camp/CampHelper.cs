@@ -14,7 +14,7 @@ namespace ET
                 hpbar1.fillOrigin = (int)Image.OriginHorizontal.Left;
                 hpbar2.sprite = IconHelper.LoadIconSprite("GameElement", "OtherHpBar");
                 hpbar2.transform.rotation = Quaternion.Euler(0, 0, 0);
-                hpbar2.fillOrigin = (int)Image.OriginHorizontal.Left;
+                hpbar2.fillOrigin = (int)Image.OriginHorizontal.Right;
                 RightText.SetText("???");
             }
             if(position == 2)//在右边
@@ -24,7 +24,7 @@ namespace ET
                 hpbar2.fillOrigin = (int)Image.OriginHorizontal.Right;
                 hpbar1.sprite = IconHelper.LoadIconSprite("GameElement", "OtherHpBar");
                 hpbar1.transform.rotation = Quaternion.Euler(0, 180, 0);
-                hpbar1.fillOrigin = (int)Image.OriginHorizontal.Right;
+                hpbar1.fillOrigin = (int)Image.OriginHorizontal.Left;
                 LeftText.SetText("???");
             }
         }

@@ -41,6 +41,8 @@ namespace ET
         public static void OnLogicMoveUpdate(this MonsterMoveComponent self, int dt_ms)
         {
             self.JudgeDir();
+            if (self == null) return;
+            if (self.GetParent<Monster>() == null) return;
             if (self.GetParent<Monster>().State != MonsterState.Run) return;
             self.GetParent<Monster>().Position = self.LogicPos;
             Vector3 src = self.GetParent<Monster>().Position;
@@ -108,6 +110,10 @@ namespace ET
                     Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Monster>(), AnimatorName = "RUSJ" }).Coroutine();
                 }
             }
+            else if(self.GetParent<Monster>().State == MonsterState.NormalAttack)
+            {
+
+            }
             else if(self.GetParent<Monster>().State == MonsterState.Run)//走路
             {
                 Vector3 dir = self.GetDir();
@@ -131,7 +137,14 @@ namespace ET
         }
         public static Vector3 GetDir(this MonsterMoveComponent self)
         {
-            return self.NavPos[self.CurrentPos] - self.GetParent<Monster>().Position;
+            if(self.CurrentPos < self.NavPos.Length)
+            {
+                return self.NavPos[self.CurrentPos] - self.GetParent<Monster>().Position;
+            }
+            else
+            {
+                return new Vector3(0, 0, 0);
+            }
         }
         public static void Move(this MonsterMoveComponent self)
         {

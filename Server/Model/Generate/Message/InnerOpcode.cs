@@ -48,5 +48,7 @@ namespace ET
 		 public const ushort G2M_ChangeRoomState = 20045;
 		 public const ushort G2M_GetRoomIndex = 20046;
 		 public const ushort M2G_GetRoomIndex = 20047;
+		 public const ushort G2G_GetRoomStateRequest = 20048;
+		 public const ushort G2G_GetRoomStateResponse = 20049;
 	}
 }

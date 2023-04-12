@@ -116,6 +116,23 @@ namespace ET
             int TowerId4 = numeric.GetAsInt(NumericType.TowerId4);
             float X = self.EButton_CreateTowerButton.transform.position.x;
             float Y = self.EButton_CreateTowerButton.transform.position.y;
+            //根据TowerId判断能不能造塔的显示或者隐藏
+            if (TowerId1 == 0) 
+            {
+                self.Ecreatebt1Image.gameObject.SetActive(false);
+            }
+            if (TowerId2 == 0)
+            {
+                self.Ecreatebt2Image.gameObject.SetActive(false);
+            }
+            if (TowerId3 == 0)
+            {
+                self.Ecreatebt3Image.gameObject.SetActive(false);
+            }
+            if (TowerId4 == 0)
+            {
+                self.Ecreatebt4Image.gameObject.SetActive(false);
+            }
             //绑定造塔按钮
             self.Espritetower1Button.AddListener(() =>
             {

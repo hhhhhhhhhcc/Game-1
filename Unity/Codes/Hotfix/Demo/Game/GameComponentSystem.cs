@@ -58,6 +58,7 @@ namespace ET
             self.waves = MonsterWaveConfigCategory.Instance.GetAllConfigByWaveCode(levelConfig.MonsterWaveCode);
             self.ListToDictionary();
             self.DictionaryToTimerMonster();
+            self.AddComponent<PlayerSkillComponent>();
             await Game.EventSystem.PublishAsync(new EventType.ShowGameUI() { ZoneScene = self.ZoneScene(), MatchMode = MatchMode });
             await Game.EventSystem.PublishAsync(new EventType.ShowMapUI() { currentscene = self.ZoneScene().CurrentScene(), MapName = mapconfig.MapName });
         }
@@ -322,6 +323,10 @@ namespace ET
                 }
             }
         }
+        public static void OnLogicMonsterFactory(this GameComponent self,int dt)
+        {
+            self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().OnLogic(dt);
+        }
         public static void OnHandlerLogicEvent(this GameComponent self,FrameOpts frameopt)
         {
             if (self.GameEnding == false) return;
@@ -331,8 +336,12 @@ namespace ET
             self.OnLogicBullet(self.FrameDt);
             //怪走路和buff
             self.OnLogicMonster(self.FrameDt);
+            //怪物生成工厂
+            self.OnLogicMonsterFactory(self.FrameDt);
             //塔发射子弹和充能
             self.OnLogicTower(self.FrameDt);
+            //玩家技能发动和时间迭代
+            self.OnLogicPlayerSkill(self.FrameDt);
             //玩家操作
             for(int i = 0; i < frameopt.opts.Count;i++)
             {
@@ -344,6 +353,10 @@ namespace ET
             self.OnLogicMoney(self.FrameDt);
             //判断是否上传frameid
             self.OnLogicUpLoadFrameId();
+        }
+        public static void OnLogicPlayerSkill(this GameComponent self,int dt)
+        {
+            self.GetComponent<PlayerSkillComponent>().OnLogic(dt);
         }
         public static async void OnLogicMonster(this GameComponent self,int dt)
         {
@@ -422,7 +435,6 @@ namespace ET
                             MonsterRoadId.Add(self.MonsterNavDict[i][j]);
                         }
                     }
-      			  Log.Debug("1111");
                 }
                 return (MonsterConfigId, MonsterRoadId);
             }
@@ -517,20 +529,25 @@ namespace ET
             }
             if (opttype == (int)OptType.CreateMonster)//买怪
             {
-                if(option.position == position)//是自己买的
+                MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(option.MonsterConfigId);
+                if (option.position == position)//是自己买的
                 {
-                    MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(option.MonsterConfigId);
                     int needmoney = monsterconfig.NeedMoney;
                     num.Set(NumericType.GameMoney, gamemoney - needmoney);
                 }
-                if(option.position == 1)
+                MonsterFactory monsterfactory = self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().AddChildWithId<MonsterFactory>(IdGenerater.Instance.GenerateId());
+                FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monsterconfig.MonsterConfigId);
+                int number = fightitemconfig.PetNumber;
+                int interval = fightitemconfig.PetInterval;
+                if (option.position == 1)
                 {
-                    await UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), option.MonsterConfigId,IdGenerater.Instance.GenerateId(), self.RoadNumber / 2, 2);
+                    monsterfactory.Init(option.MonsterConfigId, number, interval, option.MonsterRoadId - 1, 2);
                 }
                 if(option.position == 2)
                 {
-                    await UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), option.MonsterConfigId,IdGenerater.Instance.GenerateId(), 0, 1);
+                    monsterfactory.Init(option.MonsterConfigId, number, interval, option.MonsterRoadId - 1, 1);
                 }
+                self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().AddMonsterFactory(monsterfactory);
             }
         }
         public static async void OnLogicMoney(this GameComponent self,int dt)
@@ -610,6 +627,7 @@ namespace ET
             self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<BulletComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<BaseComponent>().Dispose();
+            self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<NavVectorComponent>().Dispose();
         }
     }

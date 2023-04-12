@@ -17,12 +17,18 @@ namespace ET
             self.View.EButton_matchButton.AddListenerAsync(() => { return self.EnterMatch(); });
             //self.View.EButton_GetItemButton.AddListener(self.GetItem);
             //self.View.EButton_ReduceItemButton.AddListener(self.ReduceItem);
-            self.View.EButton_SingeModeButton.AddListener(self.EnterSingleMode);
+           /*self.View.EButton_SingeModeButton.AddListener(self.EnterSingleMode);*/
+            self.View.EButton_SingeModeButton.AddListener(self.Select);
             self.View.E_OpenFightItemButton.AddListener(self.OpenFightItem);
         }
         public static void EnterSingleMode(this DlgMainHome self)
         {
             MatchHelper.EnterSingleMode(self.ZoneScene(),1).Coroutine();
+        }
+
+        public static void Select(this DlgMainHome self)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Select);
         }
         public static void GetItem(this DlgMainHome self)
         {

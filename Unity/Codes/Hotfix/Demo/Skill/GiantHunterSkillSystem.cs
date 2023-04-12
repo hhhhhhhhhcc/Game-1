@@ -20,6 +20,19 @@ namespace ET
             self.AttackMonster = null;
         }
     }
+    [FriendClass(typeof(Tower))]
+    public class GiantHunterSkillUpdateSystem : UpdateSystem<GiantHunterSkill>
+    {
+        public override void Update(GiantHunterSkill self)
+        {
+            if(self.GetParent<Tower>().state == TowerState.SkillAttack)
+            {
+                self.GetParent<Tower>().AttackTargetList.Clear();//重置怪物列表
+                self.GetParent<Tower>().OnLogicGetAttackMonsterList();//获取所有攻击怪物列表
+                self.UpdateLaser();
+            }
+        }
+    }
     [FriendClass(typeof(GiantHunterSkill))]
     [FriendClass(typeof(Tower))]
     [FriendClass(typeof(GameComponent))]
@@ -57,7 +70,7 @@ namespace ET
             {
                 attackmonster.Add(allmonster[0]);
                 allmonster.Remove(allmonster[0]);
-                if(allmonster.Count > 1)
+                if(allmonster.Count > 0)
                 {
                     if (!allmonster.Contains(self.AttackMonster))//如果跑出了范围就选择使attackmonster为null 方便下一个判断为空 添加新的怪
                     {
@@ -133,9 +146,7 @@ namespace ET
                     BuffHelper.MonsterAddBuff(m, SkillConfigCategory.Instance.Get(1016).Params).Coroutine();
                 }
             }
-            Log.Debug(attackmonster.Count.ToString());
-            Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Run" }).Coroutine();
-            Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = attackmonster, index = 1 }).Coroutine();
+
         }
         public static int Method(Monster a,Monster b)
         {
@@ -151,6 +162,44 @@ namespace ET
             {
                 return -1;
             }
+        }
+        public static void UpdateLaser(this GiantHunterSkill self)
+        {
+            List<Monster> allmonster = self.GetParent<Tower>().AttackTargetList;
+            List<Monster> attackmonster = new List<Monster>();
+            if (allmonster.Count > 0)
+            {
+                attackmonster.Add(allmonster[0]);
+                if (allmonster.Count > 1)
+                {
+                    if (!allmonster.Contains(self.AttackMonster))//如果跑出了范围就选择使attackmonster为null 方便下一个判断为空 添加新的怪
+                    {
+                        self.AttackMonster = null;
+                    }
+                    if (self.AttackMonster == null)
+                    {
+                        allmonster.Sort(Method);
+                        self.AttackMonster = allmonster[1];
+                        attackmonster.Add(self.AttackMonster);
+                    }
+                    else
+                    {
+                        if (self.AttackMonster.Hp > 0)
+                        {
+                            attackmonster.Add(self.AttackMonster);
+                        }
+                        if (self.AttackMonster.Hp == 0)//Hp为0选择新的目标
+                        {
+                            allmonster.Sort(Method);
+                            self.AttackMonster = allmonster[1];
+                            attackmonster.Add(self.AttackMonster);
+                        }
+                    }
+                }        
+            }
+            Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Run" }).Coroutine();
+            Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = attackmonster, index = 1 }).Coroutine();
+
         }
     }
 }

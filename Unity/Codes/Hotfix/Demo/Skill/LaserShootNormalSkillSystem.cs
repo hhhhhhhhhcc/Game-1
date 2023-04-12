@@ -12,6 +12,20 @@ namespace ET
             self.param = SkillHelper.GetSkillString(SkillConfigCategory.Instance.Get(1015).Params);
         }
     }
+    [FriendClass(typeof(Tower))]
+    public class LaserShootNormalSkillUpdateSystem : UpdateSystem<LaserShootNormalSkill>
+    {
+        public override void Update(LaserShootNormalSkill self)
+        {
+            if(self.GetParent<Tower>().state == TowerState.NormalAttack)
+            {
+                int AttackNumber = self.GetParent<Tower>().AttackNumber;
+                List<Monster> AttackTargetList = self.GetParent<Tower>().AttackTargetList;
+                self.UpdateLaser(AttackNumber, AttackTargetList);
+            }
+        }
+    }
+
     [FriendClass(typeof(LaserShootNormalSkill))]
     [FriendClass(typeof(Tower))]
     [FriendClass(typeof(Monster))]
@@ -27,9 +41,7 @@ namespace ET
         public static async void Attack(this LaserShootNormalSkill self,int AttackNumber,List<Monster> AttackTargetList)
         {
             if (AttackTargetList.Count <= 0)//攻击列表没怪
-            {
-                Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Idle" }).Coroutine();
-                Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = null, index = 2 }).Coroutine();
+            { 
                 return;
             }
             else
@@ -49,10 +61,7 @@ namespace ET
                             {
                                 attackmonsterlist.Add(AttackTargetList[i]);
                             }
-                        }
-                        Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Run" }).Coroutine();
-                        Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = attackmonsterlist, index = 1 }).Coroutine();
-
+                        }    
                         for (int i = 0; i < attackmonsterlist.Count; i++)
                         {
                             if (self.GetParent<Tower>().GetComponent<MeltSkill>() != null)
@@ -93,6 +102,34 @@ namespace ET
             }
             await ETTask.CompletedTask;
         }
-
+        public static void UpdateLaser(this LaserShootNormalSkill self, int AttackNumber, List<Monster> AttackTargetList)
+        {
+            if (AttackTargetList.Count <= 0)//攻击列表没怪
+            {
+                Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Idle" }).Coroutine();
+                Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = null, index = 2 }).Coroutine();
+                return;
+            }
+            else
+            {
+                if (self.GetParent<Tower>().state == TowerState.NormalAttack)
+                {
+                    List<Monster> attackmonsterlist = new List<Monster>();
+                    if (AttackNumber >= AttackTargetList.Count)//攻击数量大于等于总数则全攻击
+                    {
+                        attackmonsterlist = AttackTargetList;
+                    }
+                    else//攻击数量小于总数则部分攻击
+                    {
+                        for (int i = 0; i < AttackNumber; i++)
+                        {
+                            attackmonsterlist.Add(AttackTargetList[i]);
+                        }
+                    }
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = self.ZoneScene().CurrentScene(), entity = self.GetParent<Tower>(), AnimatorName = "Run" }).Coroutine();
+                    Game.EventSystem.PublishAsync(new EventType.TowerLaser() { currentscene = self.ZoneScene().CurrentScene(), tower = self.GetParent<Tower>(), monster = attackmonsterlist, index = 1 }).Coroutine();
+                }
+            }
+        }
     }
 }

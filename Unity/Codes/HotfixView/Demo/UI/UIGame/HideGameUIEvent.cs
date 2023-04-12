@@ -1,7 +1,9 @@
 ﻿using ET.EventType;
+using UnityEngine;
 
 namespace ET
 {
+    [FriendClass(typeof(MapComponent))]
     public class HideGameUIEvent : AEventAsync<EventType.HideGameUI>
     {
         protected override async ETTask Run(HideGameUI args)
@@ -10,9 +12,20 @@ namespace ET
             {
                 args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_Login);
             }
+            if (args.ZoneScene.GetComponent<UIComponent>().IsWindowVisible(WindowID.WindowID_GameUI))
+            {
+                args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_GameUI);
+            }
             args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_MainHome);
             GlobalComponent.Instance.MainCamera.transform.position = new UnityEngine.Vector3(0, 0, -35.2f);
-            args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_GameUI);
+
+            //展示地图
+            GameObject bundleGameObject = (GameObject)ResourcesComponent.Instance.GetAsset("Unit.unity3d", "Unit");
+            GameObject prefab = bundleGameObject.Get<GameObject>("Map1");
+            GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
+            go.transform.position = new Vector3(0, 0, 0);
+            MapComponent mapcomponent = args.CurrentScene.AddComponent<MapComponent>();
+            mapcomponent.MapObject = go;
             await ETTask.CompletedTask;
         }
     }

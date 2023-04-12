@@ -11,13 +11,13 @@
             {
                 //刷新胜利UI和下发奖励
                 RewardHelper.AddReward(UnitHelper.GetMyUnitFromCurrentScene(session.ZoneScene().CurrentScene()),message.WinItemId,message.WinItemNumber);
-                await Game.EventSystem.PublishAsync(new EventType.ShowGameResult() { zonescene = session.ZoneScene(), Result = true,ItemId = message.WinItemId,ItemNumber = message.WinItemNumber });
+                await Game.EventSystem.PublishAsync(new EventType.ShowGameResult() { zonescene = session.ZoneScene(), Result = true,ItemId = message.WinItemId,ItemNumber = message.WinItemNumber ,Star = message.Star});
             }
             else if(IsWin == 2)
             {
                 //刷新失败UI和下发奖励
                 RewardHelper.AddReward(UnitHelper.GetMyUnitFromCurrentScene(session.ZoneScene().CurrentScene()), message.FailItemId, message.FailItemNumber);
-                await Game.EventSystem.PublishAsync(new EventType.ShowGameResult() { zonescene = session.ZoneScene(), Result = false,ItemId = message.FailItemId,ItemNumber = message.FailItemNumber});
+                await Game.EventSystem.PublishAsync(new EventType.ShowGameResult() { zonescene = session.ZoneScene(), Result = false,ItemId = message.FailItemId,ItemNumber = message.FailItemNumber,Star = message.Star});
             }
         }
     }

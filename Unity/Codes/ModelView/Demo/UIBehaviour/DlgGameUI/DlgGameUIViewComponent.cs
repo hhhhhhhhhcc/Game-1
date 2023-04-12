@@ -5,7 +5,7 @@ namespace ET
 {
 	[ComponentOf(typeof(UIBaseWindow))]
 	[EnableMethod]
-	public  class DlgGameUIViewComponent : Entity,IAwake,IDestroy 
+	public  class DlgGameUIViewComponent : Entity,IAwake,IUpdate,IDestroy 
 	{
 		public UnityEngine.UI.Image EInfoLeftImage
      	{
@@ -2296,23 +2296,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image E_ExtraStarImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_ExtraStarImage == null )
-     			{
-		    		this.m_E_ExtraStarImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EResultWinBackground/E_ExtraStar");
-     			}
-     			return this.m_E_ExtraStarImage;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_StarAnimatorAllImage
      	{
      		get
@@ -2687,6 +2670,380 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_NextWave3Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave3Button == null )
+     			{
+		    		this.m_E_NextWave3Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave3");
+     			}
+     			return this.m_E_NextWave3Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave3Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave3Image == null )
+     			{
+		    		this.m_E_NextWave3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave3");
+     			}
+     			return this.m_E_NextWave3Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextWave4Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave4Button == null )
+     			{
+		    		this.m_E_NextWave4Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave4");
+     			}
+     			return this.m_E_NextWave4Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave4Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave4Image == null )
+     			{
+		    		this.m_E_NextWave4Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave4");
+     			}
+     			return this.m_E_NextWave4Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextWave5Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave5Button == null )
+     			{
+		    		this.m_E_NextWave5Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave5");
+     			}
+     			return this.m_E_NextWave5Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave5Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave5Image == null )
+     			{
+		    		this.m_E_NextWave5Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave5");
+     			}
+     			return this.m_E_NextWave5Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextWave6Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave6Button == null )
+     			{
+		    		this.m_E_NextWave6Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave6");
+     			}
+     			return this.m_E_NextWave6Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextWave6Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextWave6Image == null )
+     			{
+		    		this.m_E_NextWave6Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllNextWave/E_NextWave6");
+     			}
+     			return this.m_E_NextWave6Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_AllReleaseMonsterImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AllReleaseMonsterImage == null )
+     			{
+		    		this.m_E_AllReleaseMonsterImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster");
+     			}
+     			return this.m_E_AllReleaseMonsterImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster1Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster1Button == null )
+     			{
+		    		this.m_E_ReleaseMonster1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster1");
+     			}
+     			return this.m_E_ReleaseMonster1Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster1Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster1Image == null )
+     			{
+		    		this.m_E_ReleaseMonster1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster1");
+     			}
+     			return this.m_E_ReleaseMonster1Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster2Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster2Button == null )
+     			{
+		    		this.m_E_ReleaseMonster2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster2");
+     			}
+     			return this.m_E_ReleaseMonster2Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster2Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster2Image == null )
+     			{
+		    		this.m_E_ReleaseMonster2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster2");
+     			}
+     			return this.m_E_ReleaseMonster2Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster3Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster3Button == null )
+     			{
+		    		this.m_E_ReleaseMonster3Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster3");
+     			}
+     			return this.m_E_ReleaseMonster3Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster3Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster3Image == null )
+     			{
+		    		this.m_E_ReleaseMonster3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster3");
+     			}
+     			return this.m_E_ReleaseMonster3Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster4Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster4Button == null )
+     			{
+		    		this.m_E_ReleaseMonster4Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster4");
+     			}
+     			return this.m_E_ReleaseMonster4Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster4Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster4Image == null )
+     			{
+		    		this.m_E_ReleaseMonster4Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster4");
+     			}
+     			return this.m_E_ReleaseMonster4Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster5Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster5Button == null )
+     			{
+		    		this.m_E_ReleaseMonster5Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster5");
+     			}
+     			return this.m_E_ReleaseMonster5Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster5Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster5Image == null )
+     			{
+		    		this.m_E_ReleaseMonster5Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster5");
+     			}
+     			return this.m_E_ReleaseMonster5Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_ReleaseMonster6Button
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster6Button == null )
+     			{
+		    		this.m_E_ReleaseMonster6Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster6");
+     			}
+     			return this.m_E_ReleaseMonster6Button;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ReleaseMonster6Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ReleaseMonster6Image == null )
+     			{
+		    		this.m_E_ReleaseMonster6Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_AllReleaseMonster/E_ReleaseMonster6");
+     			}
+     			return this.m_E_ReleaseMonster6Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_RangeSkillImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RangeSkillImage == null )
+     			{
+		    		this.m_E_RangeSkillImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_RangeSkill");
+     			}
+     			return this.m_E_RangeSkillImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EInfoLeftImage = null;
@@ -2850,7 +3207,6 @@ namespace ET
 			this.m_E_Star1Image = null;
 			this.m_E_Star2Image = null;
 			this.m_E_Star3Image = null;
-			this.m_E_ExtraStarImage = null;
 			this.m_E_StarAnimatorAllImage = null;
 			this.m_E_StarAnimator1Image = null;
 			this.m_E_StarAnimator2Image = null;
@@ -2873,6 +3229,28 @@ namespace ET
 			this.m_E_NextWave1Image = null;
 			this.m_E_NextWave2Button = null;
 			this.m_E_NextWave2Image = null;
+			this.m_E_NextWave3Button = null;
+			this.m_E_NextWave3Image = null;
+			this.m_E_NextWave4Button = null;
+			this.m_E_NextWave4Image = null;
+			this.m_E_NextWave5Button = null;
+			this.m_E_NextWave5Image = null;
+			this.m_E_NextWave6Button = null;
+			this.m_E_NextWave6Image = null;
+			this.m_E_AllReleaseMonsterImage = null;
+			this.m_E_ReleaseMonster1Button = null;
+			this.m_E_ReleaseMonster1Image = null;
+			this.m_E_ReleaseMonster2Button = null;
+			this.m_E_ReleaseMonster2Image = null;
+			this.m_E_ReleaseMonster3Button = null;
+			this.m_E_ReleaseMonster3Image = null;
+			this.m_E_ReleaseMonster4Button = null;
+			this.m_E_ReleaseMonster4Image = null;
+			this.m_E_ReleaseMonster5Button = null;
+			this.m_E_ReleaseMonster5Image = null;
+			this.m_E_ReleaseMonster6Button = null;
+			this.m_E_ReleaseMonster6Image = null;
+			this.m_E_RangeSkillImage = null;
 			this.uiTransform = null;
 		}
 
@@ -3009,7 +3387,6 @@ namespace ET
 		private UnityEngine.UI.Image m_E_Star1Image = null;
 		private UnityEngine.UI.Image m_E_Star2Image = null;
 		private UnityEngine.UI.Image m_E_Star3Image = null;
-		private UnityEngine.UI.Image m_E_ExtraStarImage = null;
 		private UnityEngine.UI.Image m_E_StarAnimatorAllImage = null;
 		private UnityEngine.UI.Image m_E_StarAnimator1Image = null;
 		private UnityEngine.UI.Image m_E_StarAnimator2Image = null;
@@ -3032,6 +3409,28 @@ namespace ET
 		private UnityEngine.UI.Image m_E_NextWave1Image = null;
 		private UnityEngine.UI.Button m_E_NextWave2Button = null;
 		private UnityEngine.UI.Image m_E_NextWave2Image = null;
+		private UnityEngine.UI.Button m_E_NextWave3Button = null;
+		private UnityEngine.UI.Image m_E_NextWave3Image = null;
+		private UnityEngine.UI.Button m_E_NextWave4Button = null;
+		private UnityEngine.UI.Image m_E_NextWave4Image = null;
+		private UnityEngine.UI.Button m_E_NextWave5Button = null;
+		private UnityEngine.UI.Image m_E_NextWave5Image = null;
+		private UnityEngine.UI.Button m_E_NextWave6Button = null;
+		private UnityEngine.UI.Image m_E_NextWave6Image = null;
+		private UnityEngine.UI.Image m_E_AllReleaseMonsterImage = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster1Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster1Image = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster2Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster2Image = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster3Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster3Image = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster4Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster4Image = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster5Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster5Image = null;
+		private UnityEngine.UI.Button m_E_ReleaseMonster6Button = null;
+		private UnityEngine.UI.Image m_E_ReleaseMonster6Image = null;
+		private UnityEngine.UI.Image m_E_RangeSkillImage = null;
 		public Transform uiTransform = null;
 	}
 }

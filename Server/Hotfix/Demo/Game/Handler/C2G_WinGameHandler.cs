@@ -26,6 +26,7 @@ namespace ET
                     int unitposition = num.GetAsInt(NumericType.Position);
                     bool IsWin = false;
                     if (winposition == unitposition) IsWin = true;
+                    int Star = 0;
                     //下发奖励
                     if (LevelId <= 1000)//单人模式
                     {
@@ -38,6 +39,7 @@ namespace ET
                             else if (basehp >= 40) NewLevelData = 2;
                             else if (basehp > 0) NewLevelData = 1;
                             else if (basehp == 0) NewLevelData = 0;
+                            Star = NewLevelData;
                             if (LevelId <= levelcomponent.LevelData.Count)//当前大的关卡比总数少或者等于 说明是已经打过的关卡 levelid = 3 count = 4 老关卡
                             {
                                 int LevelData = levelcomponent.LevelData[LevelId - 1];
@@ -68,15 +70,33 @@ namespace ET
                     }
                     else if (LevelId >= 1001 && LevelId <= 2000)//双人对战
                     {
+                        int[] Percent = RewardHelper.GetPercentByLevelId(LevelId);
                         if (IsWin)
                         {
+                            Dictionary<int, int> Rewards = RewardHelper.GetRewardByLevelId(LevelId);
+                            foreach (int id in Rewards.Keys)
+                            {
+                                int number = Rewards[id];
+                                g2C_ReturnWinGame.WinItemId.Add(id);
+                                g2C_ReturnWinGame.WinItemNumber.Add(number * Percent[0] / 100);
+                            }
+                            RewardHelper.AddReward(unit, g2C_ReturnWinGame.WinItemId, g2C_ReturnWinGame.WinItemNumber);
                             g2C_ReturnWinGame.IsWin = 1;//表示获胜
                         }
                         else
                         {
+                            Dictionary<int, int> Rewards = RewardHelper.GetRewardByLevelId(LevelId);
+                            foreach (int id in Rewards.Keys)
+                            {
+                                int number = Rewards[id];
+                                g2C_ReturnWinGame.WinItemId.Add(id);
+                                g2C_ReturnWinGame.WinItemNumber.Add(number * Percent[1] / 100);
+                            }
+                            RewardHelper.AddReward(unit, g2C_ReturnWinGame.WinItemId, g2C_ReturnWinGame.WinItemNumber);
                             g2C_ReturnWinGame.IsWin = 2;//失败
                         }
                     }
+                    g2C_ReturnWinGame.Star = Star;
                     num.Set(NumericType.RoomIndex, 0);
                     num.Set(NumericType.IsReadyGame, 0);
                     num.Set(NumericType.IsStartGame, 0);

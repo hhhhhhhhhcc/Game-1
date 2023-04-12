@@ -102,6 +102,12 @@ namespace ET
 		/// <summary>美术资源</summary>
 		[ProtoMember(9)]
 		public string ResourceCode { get; set; }
+		/// <summary>简介</summary>
+		[ProtoMember(10)]
+		public string Introduction { get; set; }
+		/// <summary>攻击类型</summary>
+		[ProtoMember(11)]
+		public int Type { get; set; }
 
 	}
 }

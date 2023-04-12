@@ -23,9 +23,10 @@ namespace ET
     {
         public static async void OnLogicUpdate(this Tower self, int dt)
         {
+            if (self.state == TowerState.Crotrol) return;
+            self.AttackTargetList.Clear();//重置怪物列表
             self.OnLogicGetAttackMonsterList();//获取所有攻击怪物列表
             self.OnLogic(dt);
-            self.AttackTargetList.Clear();//重置怪物列表
             await ETTask.CompletedTask;
         }
         public static void OnLogic(this Tower self, int dt)
@@ -60,8 +61,11 @@ namespace ET
                     float dis = Vector2.Distance(new Vector2(MonsterPx, MonsterPy), new Vector2(TowerPx, TowerPy));
                     if (dis <= TowerRange)
                     {
-                        self.AddMonster(monster);
-                        monster.DeathEvent = monster.DeathEvent + self.RemoveMonster;
+                        if(self.Type >= monster.Type)
+                        {
+                            self.AddMonster(monster);
+                            monster.DeathEvent = monster.DeathEvent + self.RemoveMonster;
+                        }
                     }
                     else
                     {

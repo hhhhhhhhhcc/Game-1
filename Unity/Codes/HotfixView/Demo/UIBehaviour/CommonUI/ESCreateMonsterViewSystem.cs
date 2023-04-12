@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ namespace ET
             {
                 self.EMonsterInfoBaseSpriteImage.gameObject.SetActive(true);
             }
+            Log.Debug("123");
         }
     }
 
@@ -47,13 +49,50 @@ namespace ET
     [FriendClass(typeof(ESCreateMonster))]
     public static class ESCreateMonsterViewSystem
     {
-        public static void RegisterEvenet(this ESCreateMonster self, int MonsterConfigId)
+        public static void RegisterEvent(this ESCreateMonster self, int MonsterConfigId)
         {
+            self.MonsterConfigId = MonsterConfigId;
+            self.InitMonsterInfo();
             self.ECreateMonsterButtonButton.AddListenerAsync(() =>
             {
-                return self.CreateMonster(MonsterConfigId);
+                return self.SelectMonster();
             });
             self.RegisterMonsterInfo();
+        }
+        public static void InitMonsterInfo(this ESCreateMonster self)
+        {
+            int MonsterConfigId = self.MonsterConfigId;
+            MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(MonsterConfigId);
+            self.ECreateMonsterMoneyNumberTextText.SetText(monsterconfig.NeedMoney.ToString());
+            FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monsterconfig.MonsterConfigId);
+            self.EMonsterNameTextText.SetText(fightitemconfig.FightItemName);
+            self.EMonsterLvTextText.SetText("1");
+            self.EMonsterAttackTextText.SetText(monsterconfig.MonsterAttack.ToString());//攻击
+            self.EMonsterHpTextText.SetText(monsterconfig.Hp.ToString());//血量
+            string speed;
+            if (monsterconfig.Speed <= 400) speed = "慢";
+            else if (monsterconfig.Speed <= 800) speed = "中";
+            else speed = "快";
+            self.EMonsterAttackTextText.SetText(speed);//移速
+            List<int> PetSkills = self.ZoneScene().GetComponent<FightItemComponent>().GetPetTalentIdByConfigId(MonsterConfigId);
+            if(PetSkills.Count == 0)
+            {
+                self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(false);
+                self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(false);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 180);
+            }
+            if(PetSkills.Count == 1)
+            {
+                self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(false);
+                self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(true);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 330);
+            }
+            if(PetSkills.Count == 2)
+            {
+                self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(true);
+                self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(true);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 480);
+            }
         }
         public static void RegisterMonsterInfo(this ESCreateMonster self)
         {
@@ -85,11 +124,6 @@ namespace ET
         public static void ShowWindow(this ESCreateMonster self, int MonsterConfigId)
         {
             self.uiTransform.gameObject.SetActive(true);
-            MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(MonsterConfigId);
-            if(monsterconfig != null)
-            {
-                self.ECreateMonsterMoneyNumberTextText.SetText(monsterconfig.NeedMoney.ToString());
-            }
             self.EMonsterInfoBaseSpriteImage.transform.gameObject.SetActive(false);
             //self.ELabelMonsterNameText.SetText(Monster.ToString());
         }
@@ -98,10 +132,11 @@ namespace ET
             self.uiTransform.gameObject.SetActive(false);
 
         }
-        public static async ETTask CreateMonster(this ESCreateMonster self, int MonsterConfigId)
+        public static async ETTask SelectMonster(this ESCreateMonster self)
         {
             self.CloseInfos();
-            MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(MonsterConfigId);
+            self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SetSelectMonster(self.MonsterConfigId);
+            /*MonsterConfig monsterconfig = MonsterConfigCategory.Instance.Get(MonsterConfigId);
             int needmoney = monsterconfig.NeedMoney;
             int currentmoney = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>().GetAsInt(NumericType.GameMoney);
             if (needmoney > currentmoney) return;
@@ -118,7 +153,8 @@ namespace ET
             {
                 Log.Error(e.ToString());
                 return;
-            }
+            }*/
+            await ETTask.CompletedTask;
         }
     }
 }

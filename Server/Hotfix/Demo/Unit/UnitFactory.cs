@@ -30,10 +30,14 @@ namespace ET
                         fightitemcomponent.AddFightItemByConfigId(3007);
                         fightitemcomponent.AddFightItemByConfigId(3010);
                         fightitemcomponent.AddFightItemByConfigId(3013);
-                        fightitemcomponent.AddFightItemByConfigId(4001);
-                        fightitemcomponent.AddFightItemByConfigId(4002);
-                        fightitemcomponent.AddFightItemByConfigId(4003);
-                        fightitemcomponent.AddFightItemByConfigId(4004);
+                        fightitemcomponent.AddFightItemByConfigId(6001);
+                        fightitemcomponent.AddFightItemByConfigId(6002);
+                        fightitemcomponent.AddFightItemByConfigId(6003);
+                        fightitemcomponent.AddFightItemByConfigId(6004);
+                        fightitemcomponent.AddFightItemByConfigId(9001);
+                        fightitemcomponent.AddFightItemByConfigId(9002);
+                        fightitemcomponent.AddFightItemByConfigId(9003);
+                        fightitemcomponent.AddFightItemByConfigId(9004);
                         foreach (var config in PlayerNumericConfigCategory.Instance.GetAll())
                         {
                             if(config.Value.BaseValue == 0)

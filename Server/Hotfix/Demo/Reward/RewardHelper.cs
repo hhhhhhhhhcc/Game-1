@@ -36,5 +36,13 @@ namespace ET
             }
             return RewardDict;
         }
+        public static int[] GetPercentByLevelId(int LevelId)
+        {
+            int[] percents = new int[2];
+            LevelConfig levelconfig = LevelConfigCategory.Instance.Get(LevelId);
+            percents[0] = levelconfig.Percent[0];
+            percents[1] = levelconfig.Percent[1];
+            return percents;
+        }
     }
 }

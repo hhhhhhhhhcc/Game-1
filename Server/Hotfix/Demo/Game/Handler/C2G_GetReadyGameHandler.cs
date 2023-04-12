@@ -31,7 +31,9 @@ namespace ET
                 {
                     //向客户端发起开始游戏
                     NumericComponent num = units[i].GetComponent<NumericComponent>();
-                    num.Set(NumericType.GameMoney, 1000);
+                    int levelid = num.GetAsInt(NumericType.LevelId);
+                    int InitGold = LevelConfigCategory.Instance.Get(levelid).InitGold;
+                    num.Set(NumericType.GameMoney, InitGold);
                     num.Set(NumericType.IsStartGame, 1);
                     num.Set(NumericType.Frameid, 0);
                     await num.AddOrUpdateUnitCache(UnitHelper.GetUnitServerId(units[i]));

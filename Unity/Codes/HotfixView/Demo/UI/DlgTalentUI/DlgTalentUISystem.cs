@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.ComponentModel;
+using static UnityEngine.UI.CanvasScaler;
 
 namespace ET
 {
@@ -121,6 +123,8 @@ namespace ET
         public static void UpgradeFightItem(this DlgTalentUI self)
         {
             FightItem fightitem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+    		 Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
+            NumericComponent component = unit.GetComponent<NumericComponent>();
             int talentlevel = fightitem.AddedTalent.Count;
             if ((fightitem.Upgrading + talentlevel) < 3 && (fightitem.Upgrading + talentlevel) >= 0)//可升级
             {
@@ -139,15 +143,18 @@ namespace ET
         public static void RefreshTowerLoop(this DlgTalentUI self)
         {
             int count = self.towerfightitem.Count - (self.CurrentTowerPage - 1) * 4;
+            if (count > 4) count = 4;
             self.AddUIScrollItems(ref self.TowerItems, count);
             self.View.E_TowersLoopVerticalScrollRect.SetVisible(true, count);
         }
         public static void RefreshMonsterLoop(this DlgTalentUI self)
         {
             int count = self.monsterfightitem.Count - (self.CurrentMonsterPage - 1) * 16;
+            if (count > 16) count = 16;
             self.AddUIScrollItems(ref self.MonsterItems, count);
             self.View.E_MonstersLoopVerticalScrollRect.SetVisible(true, count);
         }
+        //塔图鉴页数增多
         public static void TowerPageAdd(this DlgTalentUI self)
         {
             int alltowernumber = self.towerfightitem.Count;
@@ -157,22 +164,21 @@ namespace ET
                 self.CurrentTowerPage++;
                 self.currentId = self.towerfightitem[(self.CurrentTowerPage - 1) * 4].Id;
                 self.RefreshTowerLoop();
-                self.View.E_TowersLoopVerticalScrollRect.RefillCells();
                 self.RefreshByTab();
             }
         }
+        //塔图鉴页数减少
         public static void TowerPageReduce(this DlgTalentUI self)
         {
-            int alltowernumber = self.towerfightitem.Count;
             if (self.CurrentTowerPage > 1)
             {
                 self.CurrentTowerPage--;
                 self.currentId = self.towerfightitem[(self.CurrentTowerPage - 1) * 4].Id;
                 self.RefreshTowerLoop();
-                self.View.E_TowersLoopVerticalScrollRect.RefillCells();
                 self.RefreshByTab();
             }
         }
+        //怪物图鉴页数增多
         public static void MonsterPageAdd(this DlgTalentUI self)
         {
             int allmonsternumber = self.monsterfightitem.Count;
@@ -182,10 +188,10 @@ namespace ET
                 self.CurrentMonsterPage++;
                 self.currentId = self.monsterfightitem[(self.CurrentMonsterPage - 1) * 16].Id;
                 self.RefreshMonsterLoop();
-                self.View.E_MonstersLoopVerticalScrollRect.RefillCells();
                 self.RefreshByTab();
             }
         }
+        //怪物图鉴页数减少
         public static void MonsterPageReduce(this DlgTalentUI self)
         {
             int allmonsternumber = self.monsterfightitem.Count;
@@ -194,20 +200,22 @@ namespace ET
                 self.CurrentMonsterPage--;
                 self.currentId = self.monsterfightitem[(self.CurrentMonsterPage - 1) * 16].Id;
                 self.RefreshMonsterLoop();
-                self.View.E_MonstersLoopVerticalScrollRect.RefillCells();
                 self.RefreshByTab();
             }
         }
+        //选择塔的信息界面
         public static void ChooseTowerInfo(this DlgTalentUI self)
         {
             self.TalentTowerState = TalentTowerState.Info;
             self.RefreshByTab();
         }
+        //选择塔的天赋界面
         public static void ChooseTowerTalent(this DlgTalentUI self)
         {
             self.TalentTowerState = TalentTowerState.Talent;
             self.RefreshByTab();
         }
+        //选择塔标签
         public static void ChooseTowerTab(this DlgTalentUI self)
         {
             self.CurrentTowerPage = 1;
@@ -215,16 +223,15 @@ namespace ET
             self.type = FightItemType.Tower;
             self.TalentTowerState = TalentTowerState.Info;
             self.RefreshTowerLoop();
-            self.View.E_TowersLoopVerticalScrollRect.RefillCells();
             self.RefreshByTab();
         }
+        //选择怪物标签
         public static void ChooseMonsterTab(this DlgTalentUI self)
         {
             self.CurrentMonsterPage = 1;
             self.currentId = self.monsterfightitem[0].Id;
             self.type = FightItemType.Monster;
             self.RefreshMonsterLoop();
-            self.View.E_MonstersLoopVerticalScrollRect.RefillCells();
             self.RefreshByTab();
         }
         public static void OnScrollTowerItemRefreshHandler(this DlgTalentUI self, Transform transform, int index)
@@ -277,13 +284,13 @@ namespace ET
         {
             self.TowerConfigLevel = ConfigLevel;
             self.currentId = id;
-            self.View.E_TowersLoopVerticalScrollRect.RefillCells();
+            self.View.E_TowersLoopVerticalScrollRect.RefreshCells();
             self.RefreshByTab();
         }
         public static void SelectMonster(this DlgTalentUI self,long id)
         {
             self.currentId = id;
-            self.View.E_MonstersLoopVerticalScrollRect.RefillCells();
+            self.View.E_MonstersLoopVerticalScrollRect.RefreshCells();
             self.RefreshByTab();
         }
         public static void HideWindow(this DlgTalentUI self)
@@ -378,6 +385,47 @@ namespace ET
                 self.View.E_TowerTalentImage.transform.localPosition = new Vector3(80, -4, 0);
             }
             //end
+
+            //塔的信息展示
+            if (self.type == FightItemType.Tower)
+            {
+                FightItem FightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+                int fightItemId = FightItem.Config.Id;
+                int configId = fightItemId - 1 + self.TowerConfigLevel;
+                TowerConfig towerconfig = TowerConfigCategory.Instance.Get(configId);
+                self.View.E_TowerInfoDescriptionText.text = towerconfig.Introduction;
+
+                string attack, attackInterval, range;
+                if (towerconfig.Attack[0] + towerconfig.Attack[1] < 10) attack = "低";
+                else if (towerconfig.Attack[0] + towerconfig.Attack[1] < 20) attack = "中";
+                else attack = "高";
+
+                if (towerconfig.AttackInterval < 1000) attackInterval = "低";
+                else if (towerconfig.AttackInterval < 2000) attackInterval = "中";
+                else attackInterval = "高";
+
+                if (towerconfig.Range < 2300) range = "低";
+                else if (towerconfig.Attack[0] + towerconfig.Attack[1] < 2500) range = "中";
+                else range = "高";
+
+                self.View.E_TowerProperties1NumberText.text = attack;
+                self.View.E_TowerProperties2NumberText.text = attackInterval;
+                self.View.E_TowerProperties3NumberText.text = range;
+                self.View.E_TowerProperties4NumberText.text = towerconfig.Price.ToString();
+            }
+
+            //怪的信息展示
+            if (self.type == FightItemType.Monster)
+            {
+                FightItem FightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+                int fightItemId = FightItem.Config.Id;
+                FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(fightItemId);
+                self.View.E_MonsterDescriptionText.text = fightitemconfig.Introduction;
+                self.View.E_MonsterProperties1NumberText.text = fightitemconfig.Hp;
+                self.View.E_MonsterProperties2NumberText.text = fightitemconfig.speed;
+                self.View.E_MonsterProperties3NumberText.text = fightitemconfig.damage;
+                self.View.E_MonsterProperties4NumberText.text = fightitemconfig.defence;
+            }
 
             //初始化天赋面板
             self.View.E_TowerTalent1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TalentBaseDark");//灰色背景
@@ -509,7 +557,6 @@ namespace ET
                     }
                 }
             }
-
         }
     }
 }

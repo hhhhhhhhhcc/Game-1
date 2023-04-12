@@ -695,4 +695,35 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(G2G_GetRoomStateResponse))]
+	[Message(InnerOpcode.G2G_GetRoomStateRequest)]
+	[ProtoContract]
+	public partial class G2G_GetRoomStateRequest: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int RoomIndex { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2G_GetRoomStateResponse)]
+	[ProtoContract]
+	public partial class G2G_GetRoomStateResponse: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public int RoomState { get; set; }
+
+	}
+
 }

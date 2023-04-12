@@ -11,12 +11,13 @@ namespace ET
             // Unit View层
             // 这里可以改成异步加载，demo就不搞了
             GameObject bundleGameObject = (GameObject)ResourcesComponent.Instance.GetAsset("Unit.unity3d", "Unit");
-            GameObject prefab = bundleGameObject.Get<GameObject>(args.Monster.Config.PrefabName);
+            string PrefabOrIconName = FightItemConfigCategory.Instance.Get(args.Monster.Config.MonsterConfigId).ResourceCode;
+            GameObject prefab = bundleGameObject.Get<GameObject>(PrefabOrIconName);
             GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
             
             args.Monster.AddComponent<GameObjectComponent>().GameObject = go;
             args.Monster.GetComponent<GameObjectComponent>().SpriteRender = go.GetComponent<SpriteRenderer>();
-            args.Monster.GetComponent<GameObjectComponent>().SpriteRender.sprite = IconHelper.LoadIconSprite("monster", args.Monster.Config.PrefabName);
+            args.Monster.GetComponent<GameObjectComponent>().SpriteRender.sprite = IconHelper.LoadIconSprite("monster", PrefabOrIconName);
             args.Monster.AddComponent<AnimatorComponent>();
             args.Monster.AddComponent<HeadHpViewComponent>();
             args.Monster.GetComponent<HeadHpViewComponent>().Init(1);

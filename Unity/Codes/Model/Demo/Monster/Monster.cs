@@ -9,10 +9,9 @@ namespace ET
     {
         Run = 0,
         Control = 1,
-        ReleaseSkill = 2,
-        GetHurt = 3
+        NormalAttack = 2,
+        ReleaseSkill = 3,
     }
-
     public class Monster : Entity, IAwake<int>
     {
         public int ConfigId; //配置表id
@@ -25,6 +24,7 @@ namespace ET
         public int MagicDefense;
         public int MaxHp;
         public int Hp;
+        public int Type;
         public bool IsDead;
         public Action<Monster> DeathEvent;
         public int DelayAnimatorLogic;

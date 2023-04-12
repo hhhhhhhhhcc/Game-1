@@ -78,9 +78,9 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>怪物的美术资源</summary>
+		/// <summary>对应fightitem怪物configId</summary>
 		[ProtoMember(2)]
-		public string PrefabName { get; set; }
+		public int MonsterConfigId { get; set; }
 		/// <summary>血量</summary>
 		[ProtoMember(3)]
 		public int Hp { get; set; }

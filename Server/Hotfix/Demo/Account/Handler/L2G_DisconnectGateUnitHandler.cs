@@ -30,7 +30,7 @@ namespace ET
                     session.Send(new A2C_Disconnect(){ Error = ErrorCode.ERR_OtherAccountlogin });
                     session?.Disconnect().Coroutine();
                 }
-                player.AddComponent<PlayerOfflineOutTimeComponent>();
+                //player.AddComponent<PlayerOfflineOutTimeComponent>();
             }
 
             await ETTask.CompletedTask;

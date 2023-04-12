@@ -269,7 +269,6 @@ namespace ET
                 return g2C_EnterGame.Error;
             }
             zoneScene.GetComponent<PlayerComponent>().MyId = g2C_EnterGame.MyId;
-            await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneChangeFinish>();   
             return ErrorCode.ERR_Success;
         }
     }

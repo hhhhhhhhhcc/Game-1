@@ -124,7 +124,10 @@ namespace ET
                     }
                     if (opttype == (int)OptType.CreateMonster)
                     {
+                        long MonsterId = IdGenerater.Instance.GenerateId();
+                        newoptevent.MonsterId = MonsterId;
                         newoptevent.MonsterConfigId = optevent.MonsterConfigId;
+                        newoptevent.MonsterRoadId = optevent.MonsterRoadId;
                     }
                     self.NextFrameOpt.opts.Add(newoptevent);
                 }

@@ -93,6 +93,30 @@ namespace ET
 		/// <summary>解锁条件</summary>
 		[ProtoMember(6)]
 		public string UnlockCondition { get; set; }
+		/// <summary>简介</summary>
+		[ProtoMember(7)]
+		public string Introduction { get; set; }
+		/// <summary>血量</summary>
+		[ProtoMember(8)]
+		public string Hp { get; set; }
+		/// <summary>移速</summary>
+		[ProtoMember(9)]
+		public string speed { get; set; }
+		/// <summary>伤害</summary>
+		[ProtoMember(10)]
+		public string damage { get; set; }
+		/// <summary>防御</summary>
+		[ProtoMember(11)]
+		public string defence { get; set; }
+		/// <summary>走路类型(地面1，飞行2)</summary>
+		[ProtoMember(12)]
+		public int Type { get; set; }
+		/// <summary>召唤物的数量</summary>
+		[ProtoMember(13)]
+		public int PetNumber { get; set; }
+		/// <summary>召唤物间隔时间</summary>
+		[ProtoMember(14)]
+		public int PetInterval { get; set; }
 
 	}
 }

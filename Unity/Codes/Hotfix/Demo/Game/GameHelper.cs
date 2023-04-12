@@ -54,7 +54,7 @@ namespace ET
         public static async ETTask<int> CreateTower(Scene zonescene, int TowerConfigId, float PX, float PY)
         {
             FightItemComponent fightitemcomponent = zonescene.GetComponent<FightItemComponent>();
-            List<int> skillids = fightitemcomponent.GetTalentIdByConfigId(TowerConfigId);
+            List<int> skillids = fightitemcomponent.GetTowerTalentIdByConfigId(TowerConfigId);
             NextFrameOpts nextframeopts = new NextFrameOpts();
             List<OptionEvent> opts = new List<OptionEvent>();
             NumericComponent num = UnitHelper.GetMyUnitFromCurrentScene(zonescene.CurrentScene()).GetComponent<NumericComponent>();
@@ -71,7 +71,7 @@ namespace ET
         public static async ETTask<int> UpTower(Scene zonescene, int TowerConfigId, long TowerId, float PX, float PY)
         {
             FightItemComponent fightitemcomponent = zonescene.GetComponent<FightItemComponent>();
-            List<int> skillids = fightitemcomponent.GetTalentIdByConfigId(TowerConfigId);
+            List<int> skillids = fightitemcomponent.GetTowerTalentIdByConfigId(TowerConfigId);
             NextFrameOpts nextframeopts = new NextFrameOpts();
             List<OptionEvent> opts = new List<OptionEvent>();
             NumericComponent num = UnitHelper.GetMyUnitFromCurrentScene(zonescene.CurrentScene()).GetComponent<NumericComponent>();
@@ -139,7 +139,7 @@ namespace ET
             await ETTask.CompletedTask;
             return ErrorCode.ERR_Success;
         }
-        public static async ETTask<int> CreateMonster(Scene zonescene, int MonsterConfigId) // roomindex后续删除 position后续删除
+        public static async ETTask<int> CreateMonster(Scene zonescene, int MonsterConfigId,int MonsterRoadId)
         {
             NextFrameOpts nextframeopts = new NextFrameOpts();
             List<OptionEvent> opts = new List<OptionEvent>();
@@ -147,8 +147,7 @@ namespace ET
             int frameid = num.GetAsInt(NumericType.Frameid);
             int gameroomframeid = zonescene.CurrentScene().GetComponent<GameComponent>().Frameid;
             nextframeopts.frameid = gameroomframeid;
-            Log.Debug(nextframeopts.frameid.ToString());
-            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.CreateMonster), MonsterConfigId = MonsterConfigId };
+            OptionEvent opt = new OptionEvent() { position = num.GetAsInt(NumericType.Position), optType = (int)(OptType.CreateMonster), MonsterConfigId = MonsterConfigId,MonsterRoadId = MonsterRoadId };
             opts.Add(opt);
             nextframeopts.opts = opts;
             zonescene.GetComponent<SessionComponent>().Session.Send(nextframeopts);
@@ -234,12 +233,25 @@ namespace ET
             currentScene.AddComponent<TowerComponent>();
             currentScene.AddComponent<BaseComponent>();
             currentScene.AddComponent<BulletComponent>();
+            currentScene.AddComponent<MonsterFactoryComponent>();
             currentScene.AddComponent<NavVectorComponent>();
             NumericComponent UnitNumeric = unit.GetComponent<NumericComponent>();
             int LevelId = UnitNumeric.GetAsInt(NumericType.LevelId);
             int MatchMode = UnitNumeric.GetAsInt(NumericType.MatchMode);
             GameComponent gamecomponent = currentScene.AddComponent<GameComponent>();
             gamecomponent.InitLevel(LevelId, MatchMode).Coroutine();
+        }
+        public static void InitMainHomeComponent(Scene currentscene)
+        {
+            currentscene.AddComponent<NavVectorComponent>();
+            currentscene.AddComponent<TowerComponent>();
+            currentscene.AddComponent<MonsterComponent>();
+            currentscene.AddComponent<BulletComponent>();
+            currentscene.AddComponent<GameComponent>();
+            currentscene.AddComponent<HallComponent>();
+            UnitFactory.CreateTower(currentscene, 3001, 62400, 30000, 1, IdGenerater.Instance.GenerateId(), new List<int>()).Coroutine();
+            UnitFactory.CreateTower(currentscene, 3004, 12700, 29000, 1, IdGenerater.Instance.GenerateId(), new List<int>()).Coroutine();
+            UnitFactory.CreateTower(currentscene, 3007, 42700, 9300, 1, IdGenerater.Instance.GenerateId(), new List<int>()).Coroutine();
         }
     }
 }

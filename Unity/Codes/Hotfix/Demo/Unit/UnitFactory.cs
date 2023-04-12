@@ -61,6 +61,8 @@ namespace ET
 			Monster monster = monstercomponent.AddChildWithId<Monster, int>(monsterid, monsterconfigId);
 			monstercomponent.Add(monster);
 			monster.MaxHp = monster.Config.Hp;
+			FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monster.Config.MonsterConfigId);
+			monster.Type = fightitemconfig.Type;
 			monster.Hp = monster.Config.Hp;
 			monster.Speed = monster.Config.Speed / 1000.0f;
 			monster.ReturnMoney = monster.Config.DropMoney;
@@ -84,6 +86,7 @@ namespace ET
             tower.MagicAttack = tower.Config.Attack[1];
             tower.AttackInterval = tower.Config.AttackInterval;
             tower.Zone = TowerZone;
+			tower.Type = tower.Config.Type;
 			int NormalSkillId;
 			SkillConfig skill;
 			string skillname;
@@ -127,6 +130,7 @@ namespace ET
             bullet.BulletZone = tower.Zone;
             bullet.ExtraCoin = ExtraCoin;
 			bullet.BuffParam = BuffParam;
+			bullet.Type = tower.Type;
             SingleDamageBullet param = bullet.AddComponent<SingleDamageBullet>();
 			param.Multiplier = multiplier;
 			param.IsAP = IsAP;
@@ -146,6 +150,7 @@ namespace ET
             bullet.BulletZone = tower.Zone;
             bullet.ExtraCoin = ExtraCoin;
 			bullet.BuffParam = BuffParam;
+            bullet.Type = tower.Type;
             RangeDamageBullet param = bullet.AddComponent<RangeDamageBullet>();
             param.Multiplier = multiplier;
             param.IsAP = IsAP;
@@ -167,6 +172,7 @@ namespace ET
             bullet.BulletZone = tower.Zone;
             bullet.ExtraCoin = ExtraCoin;
 			bullet.BuffParam = BuffParam;
+            bullet.Type = tower.Type;
             MulRangeDamageBullet param = bullet.AddComponent<MulRangeDamageBullet>();
             param.Multiplier = multiplier;
             param.IsAP = IsAP;

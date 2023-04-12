@@ -29,7 +29,7 @@ namespace ET
         public string BuffParam;
         public Vector3 LogicPos;
         public int ExtraCoin;
-
+        public int Type;
         private WrapVector3 position = new WrapVector3(); //坐标
 
         public Vector3 Position

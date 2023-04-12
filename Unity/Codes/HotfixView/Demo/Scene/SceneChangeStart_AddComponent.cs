@@ -10,11 +10,12 @@ namespace ET
         private async ETTask RunAsync(EventType.SceneChangeStart args)
         {
             Scene currentScene = args.ZoneScene.CurrentScene();
-            
+
 
             // 加载场景资源
-            await ResourcesComponent.Instance.LoadBundleAsync($"{currentScene.Name}.unity3d");
+            args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Loading);
             // 切换到map场景
+            await ResourcesComponent.Instance.LoadBundleAsync($"{currentScene.Name}.unity3d");
 
             SceneChangeComponent sceneChangeComponent = null;
             try

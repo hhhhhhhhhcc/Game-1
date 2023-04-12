@@ -33,7 +33,7 @@ namespace ET
             }
             self.FightItemDict[fightitem.Id] = fightitem;
         }
-        public static List<int> GetTalentIdByConfigId(this FightItemComponent self,int configid)//(3001 3002 3003) (3001,3004)
+        public static List<int> GetTowerTalentIdByConfigId(this FightItemComponent self,int configid)//(3001 3002 3003) (3001,3004)
         {
             List<int> skillids = new List<int>();
             foreach(FightItem item in self.FightItemDict.Values)
@@ -65,6 +65,18 @@ namespace ET
             int level = self.FightItemDict[id].AddedTalent.Count + self.FightItemDict[id].Upgrading;
             self.FightItemDict[id].AddedTalent.Clear();
             self.FightItemDict[id].Upgrading = level;
+        }
+        public static List<int> GetPetTalentIdByConfigId(this FightItemComponent self, int configid)//(3001 3002 3003) (3001,3004)
+        {
+            List<int> skillids = new List<int>();
+            foreach (FightItem item in self.FightItemDict.Values)
+            {
+                if (configid == item.ConfigId)
+                {
+                    skillids = item.AddedTalent;
+                }
+            }
+            return skillids;
         }
     }
 }

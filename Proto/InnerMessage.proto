@@ -323,3 +323,16 @@ message M2G_GetRoomIndex //IActorResponse
 	string Message = 92; 
 	int32 RoomIndex = 1;
 }
+//ResponseType G2G_GetRoomStateResponse
+message G2G_GetRoomStateRequest //IActorRequest
+{
+	int32 RpcId = 90;
+	int32 RoomIndex = 1;
+}
+message G2G_GetRoomStateResponse //IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92; 
+	int32 RoomState = 1;
+}

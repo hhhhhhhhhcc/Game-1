@@ -45,14 +45,14 @@ namespace ET
                 n.Set(NumericType.TowerId6, 3016);
                 n.Set(NumericType.TowerId7, 3019);
                 n.Set(NumericType.TowerId8, 3022);
-                n.Set(NumericType.Monster1, 4001);
-                n.Set(NumericType.Monster2, 4002);
-                n.Set(NumericType.Monster3, 4003);
-                n.Set(NumericType.Monster4, 4004);
-                n.Set(NumericType.Monster5, 4005);
-                n.Set(NumericType.Monster6, 4006);
-                n.Set(NumericType.Monster7, 4007);
-                n.Set(NumericType.Monster8, 4008);
+                n.Set(NumericType.Monster1, 9001);
+                n.Set(NumericType.Monster2, 9002);
+                n.Set(NumericType.Monster3, 9003);
+                n.Set(NumericType.Monster4, 9004);
+                n.Set(NumericType.Monster5, 9005);
+                n.Set(NumericType.Monster6, 9006);
+                n.Set(NumericType.Monster7, 9007);
+                n.Set(NumericType.Monster8, 9008);
                 n.Set(NumericType.Frameid, 0);
                 n.Set(NumericType.MatchMode, 1);
                 await n.AddOrUpdateUnitCache(UnitHelper.GetUnitServerId(unit));
@@ -65,7 +65,7 @@ namespace ET
             {
                 component.Set(NumericType.IsInMatch, 1);
                 matchcomponent.Add(unit);
-                if (matchcomponent.MatchUnits.Count >= 2)//匹配成功  获取Unit
+                if (matchcomponent.MatchUnits.Count >= 1)//匹配成功  获取Unit
                 {
                     int roomindex = matchcomponent.NextIndex();//房间号++
                     //抽取MapId
@@ -73,7 +73,7 @@ namespace ET
                     M2G_ChangeRoomState m2G_ChangeRoomState = new M2G_ChangeRoomState() { RoomIndex = roomindex };
                     StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(unit.DomainZone(), "Game");
                     await MessageHelper.CallActor(startSceneConfig.InstanceId, m2G_ChangeRoomState);
-                    for (int i = 1; i >= 0; i--)
+                    for (int i = 0; i >= 0; i--)
                     {
                         Unit u = matchcomponent.MatchUnits[i];
                         NumericComponent n = u.GetComponent<NumericComponent>();
@@ -89,14 +89,14 @@ namespace ET
                         n.Set(NumericType.TowerId6, 3016);
                         n.Set(NumericType.TowerId7, 3019);
                         n.Set(NumericType.TowerId8, 3022);
-                        n.Set(NumericType.Monster1, 4001);
-                        n.Set(NumericType.Monster2, 4002);
-                        n.Set(NumericType.Monster3, 4003);
-                        n.Set(NumericType.Monster4, 4004);
-                        n.Set(NumericType.Monster5, 4005);
-                        n.Set(NumericType.Monster6, 4006);
-                        n.Set(NumericType.Monster7, 4007);
-                        n.Set(NumericType.Monster8, 4008);
+                        n.Set(NumericType.Monster1, 9001);
+                        n.Set(NumericType.Monster2, 9002);
+                        n.Set(NumericType.Monster3, 9003);
+                        n.Set(NumericType.Monster4, 9004);
+                        n.Set(NumericType.Monster5, 9005);
+                        n.Set(NumericType.Monster6, 9006);
+                        n.Set(NumericType.Monster7, 9007);
+                        n.Set(NumericType.Monster8, 9008);
                         n.Set(NumericType.Frameid, 0);
                         n.Set(NumericType.MatchMode, 2);
                         unit.GetComponent<UnitSaveDBComponent>()?.SaveChange();

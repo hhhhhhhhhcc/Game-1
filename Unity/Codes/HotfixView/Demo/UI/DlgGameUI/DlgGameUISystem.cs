@@ -14,7 +14,6 @@ namespace ET
     [FriendClass(typeof(Base))]
     public static class DlgGameUISystem
     {
-       
         public static void InitUI(this DlgGameUI self)
         {
             //获取所有塔为一个集合
@@ -74,6 +73,62 @@ namespace ET
                     e.uiTransform.gameObject.GetComponent<RectTransform>().position = new Vector3(20000, 20000);
                 }
             }
+            //初始化波次信息UI
+            for(int i=0;i<mapconfig.WaveInfoX.Length;i++)
+            {
+                self.View.E_AllNextWaveImage.transform.GetChild(i).transform.position = new Vector3((float)(mapconfig.WaveInfoX[i]/100.0f), (float)(mapconfig.WaveInfoY[i]/100.0f), 0);
+            }
+            //初始化买怪入口UI
+            for(int i=0;i<mapconfig.ReleaseX.Length;i++)
+            {
+                int roadindex = i;
+                self.View.E_AllReleaseMonsterImage.transform.GetChild(i).position = new Vector3((float)(mapconfig.ReleaseX[i]/100.0f), (float)(mapconfig.ReleaseY[i]/100.0f), 0);
+                self.View.E_AllReleaseMonsterImage.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => { self.ReleaseMonster(roadindex + 1); });
+            }
+        }
+        public static void ReleaseMonster(this DlgGameUI self,int RoadIndex)
+        {
+            self.HideAllReleaseMonster();
+            GameHelper.CreateMonster(self.ZoneScene(), self.CurrentSelectMonster, RoadIndex).Coroutine();
+        }
+        public static void SetSelectMonster(this DlgGameUI self,int MonsterConfigId)
+        {
+            int roadnumber = self.ZoneScene().CurrentScene().GetComponent<GameComponent>().RoadNumber;
+            if (self.CurrentSelectMonster == MonsterConfigId)//相同为再次点击 /则关闭
+            {
+                for (int i = 0; i < roadnumber; i++)
+                {
+                    self.View.E_AllReleaseMonsterImage.transform.GetChild(i).transform.gameObject.SetActive(false);
+                }
+                self.CurrentSelectMonster = 0;
+                return;
+            }
+            else
+            {
+                self.CurrentSelectMonster = MonsterConfigId;
+            }
+            int position = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>().GetAsInt(NumericType.Position);
+            if(position == 1)//左边 右边亮
+            {
+                for (int i = roadnumber / 2; i < roadnumber; i++)
+                {
+                    self.View.E_AllReleaseMonsterImage.transform.GetChild(i).transform.gameObject.SetActive(true);
+                }
+            }
+            if(position == 2)//右边 左边亮
+            {
+                for (int i = 0; i < roadnumber / 2; i++)
+                {
+                    self.View.E_AllReleaseMonsterImage.transform.GetChild(i).transform.gameObject.SetActive(true);
+                }
+            }
+        }
+        public static void HideAllReleaseMonster(this DlgGameUI self)
+        {
+            for(int i=0;i<self.View.E_AllReleaseMonsterImage.transform.childCount;i++)
+            {
+                self.View.E_AllReleaseMonsterImage.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
         /*public static void PauseSingleGameMode(this DlgGameUI self)
         {
@@ -124,17 +179,35 @@ namespace ET
                 self.CurrentTowers[i].CloseListInfo().Coroutine();
             }
         }
-
+        public static void InputToAction(this DlgGameUI self,int InputIndex)
+        {
+            if (InputIndex == 1)
+            {
+                self.View.ESCreateMonster1.SelectMonster().Coroutine();
+            }
+            if (InputIndex == 2)
+            {
+                self.View.ESCreateMonster2.SelectMonster().Coroutine();
+            }
+            if (InputIndex == 3)
+            {
+                self.View.ESCreateMonster3.SelectMonster().Coroutine();
+            }
+            if (InputIndex == 4)
+            {
+                self.View.ESCreateMonster4.SelectMonster().Coroutine();
+            }
+        }
         public static void RegisterUIEvent(this DlgGameUI self)
         {
             self.View.EButton_readyButton.AddListener(() => { self.onclick(); });
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
             NumericComponent num = unit.GetComponent<NumericComponent>();
 
-            self.View.ESCreateMonster1.RegisterEvenet(num.GetAsInt(NumericType.Monster1));
-            self.View.ESCreateMonster2.RegisterEvenet(num.GetAsInt(NumericType.Monster2));
-            self.View.ESCreateMonster3.RegisterEvenet(num.GetAsInt(NumericType.Monster3));
-            self.View.ESCreateMonster4.RegisterEvenet(num.GetAsInt(NumericType.Monster4));
+            self.View.ESCreateMonster1.RegisterEvent(num.GetAsInt(NumericType.Monster1));
+            self.View.ESCreateMonster2.RegisterEvent(num.GetAsInt(NumericType.Monster2));
+            self.View.ESCreateMonster3.RegisterEvent(num.GetAsInt(NumericType.Monster3));
+            self.View.ESCreateMonster4.RegisterEvent(num.GetAsInt(NumericType.Monster4));
             //self.View.ESCreateMonster5.RegisterEvenet(num.GetAsInt(NumericType.Monster5));
             //self.View.ESCreateMonster6.RegisterEvenet(num.GetAsInt(NumericType.Monster6));
             //self.View.ESCreateMonster7.RegisterEvenet(num.GetAsInt(NumericType.Monster7));
@@ -158,6 +231,10 @@ namespace ET
             {
                 self.View.E_NextWave1Button.AddListener(() => { self.NextWave(); });
                 self.View.E_NextWave2Button.AddListener(() => { self.NextWave(); });
+                self.View.E_NextWave3Button.AddListener(() => { self.NextWave(); });
+                self.View.E_NextWave4Button.AddListener(() => { self.NextWave(); });
+                self.View.E_NextWave5Button.AddListener(() => { self.NextWave(); });
+                self.View.E_NextWave6Button.AddListener(() => { self.NextWave(); });
             }
         }
         public static void GiveUp(this DlgGameUI self)
@@ -368,16 +445,29 @@ namespace ET
         }
         public static void ShowWindow(this DlgGameUI self, Entity contextData = null)
         {
-            //self.View.ELabel_Text.SetText("准备");
             self.InitUI();
-            self.View.EButton_readyImage.transform.gameObject.SetActive(true);
+            if (self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode != 1)
+            {
+                self.View.EButton_readyImage.transform.gameObject.SetActive(true);
+            }
             self.View.EButton_readyImage.sprite = IconHelper.LoadIconSprite("GameElement", "GameReady");
             //self.HideSkillAndMonster();
             self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(false);
             self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(false);
             CampHelper.InitCamp(self.ZoneScene(), self.View.ELeftPlayerHpBarImage, self.View.ERightPlayerHpBarImage,
                 self.View.ELeftPlayerMoneyTextText,self.View.ERightPlayerMoneyTextText,
-                self.View.ELeftPlayerNameTextText,self.View.ERightPlayerNameTextText);//初始化
+                self.View.ELeftPlayerNameTextText,self.View.ERightPlayerNameTextText);//初始化基地
+            self.HideAllReleaseMonster();//隐藏所有释放怪物入口
+            self.HideAllNextWave();//隐藏所有波次信息
+            //获取当前关卡初始金币
+            int InitGold = LevelConfigCategory.Instance.Get(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().LevelId).InitGold;
+            self.GameMoneyRefresh(InitGold);
+
+            //单人直接开始游戏
+            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            {
+                self.GetReady();
+            }
         }
         public static void HideSkillAndMonster(this DlgGameUI self)
         {
@@ -409,7 +499,7 @@ namespace ET
         {
             self.RemoveUIScrollItems(ref self.Items);
         }
-        public static void ShowResultUI(this DlgGameUI self, bool Result, List<int> ItemId, List<int> ItemNumber)
+        public static void ShowResultUI(this DlgGameUI self, bool Result, List<int> ItemId, List<int> ItemNumber,int Star)
         {
             if (Result)//胜利
             {
@@ -433,29 +523,53 @@ namespace ET
             }
             self.HideAllNextWave();
         }
+        public static void RefreshStar(this DlgGameUI self,int Star)
+        {
+            if (Star >= 1) 
+            {
+                self.View.E_Star1Image.sprite = IconHelper.LoadIconSprite("GameElement", "StarBright");
+            }
+            if (Star >= 2)
+            {
+                self.View.E_Star2Image.sprite = IconHelper.LoadIconSprite("GameElement", "StarBright");
+            }
+            if (Star >= 3)
+            {
+                self.View.E_Star3Image.sprite = IconHelper.LoadIconSprite("GameElement", "StarBright");
+            }
+        }
         public static void DisReadyAndShowWindow(this DlgGameUI self)
         {
             self.View.EButton_readyImage.transform.gameObject.SetActive(false);
 
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
-            NumericComponent num = unit.GetComponent<NumericComponent>();
-            self.View.ESCreateMonster1.ShowWindow(num.GetAsInt(NumericType.Monster1));
-            self.View.ESCreateMonster2.ShowWindow(num.GetAsInt(NumericType.Monster2));
-            self.View.ESCreateMonster3.ShowWindow(num.GetAsInt(NumericType.Monster3));
-            self.View.ESCreateMonster4.ShowWindow(num.GetAsInt(NumericType.Monster4));
         }
-        public static async void GameMoneyRefresh(this DlgGameUI self)
+        public static async void GameMoneyRefresh(this DlgGameUI self,int money = 0)
         {
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
             NumericComponent num = unit.GetComponent<NumericComponent>();
             int position = num.GetAsInt(NumericType.Position);
-            if(position == 1)
+            if(money == 0)
             {
-                self.View.ELeftPlayerMoneyTextText.SetText(num.GetAsInt(NumericType.GameMoney).ToString());
+                if (position == 1)
+                {
+                    self.View.ELeftPlayerMoneyTextText.SetText(num.GetAsInt(NumericType.GameMoney).ToString());
+                }
+                if (position == 2)
+                {
+                    self.View.ERightPlayerMoneyTextText.SetText(num.GetAsInt(NumericType.GameMoney).ToString());
+                }
             }
-            if(position == 2)
+            else
             {
-                self.View.ERightPlayerMoneyTextText.SetText(num.GetAsInt(NumericType.GameMoney).ToString());
+                if (position == 1)
+                {
+                    self.View.ELeftPlayerMoneyTextText.SetText(money.ToString());
+                }
+                if (position == 2)
+                {
+                    self.View.ERightPlayerMoneyTextText.SetText(money.ToString());
+                }
             }
             await ETTask.CompletedTask;
         }
@@ -564,16 +678,9 @@ namespace ET
             {
                 foreach(int configid in MonsterIdNumberDict[roadid].Keys)
                 {
-                    if (roadid == 1)
-                    {
-                        self.View.E_NextWave1Image.gameObject.SetActive(true);
-                    }
-                    if (roadid == 2)
-                    {
-                        self.View.E_NextWave2Image.gameObject.SetActive(true);
-                    }
-                    Log.Debug(configid.ToString());
-                    Log.Debug(MonsterIdNumberDict[roadid][configid].ToString());    
+                    self.View.E_AllNextWaveImage.transform.GetChild(roadid - 1).gameObject.SetActive(true);
+                    //Log.Debug(configid.ToString());
+                    //Log.Debug(MonsterIdNumberDict[roadid][configid].ToString());    
                 }
             }
             await ETTask.CompletedTask;

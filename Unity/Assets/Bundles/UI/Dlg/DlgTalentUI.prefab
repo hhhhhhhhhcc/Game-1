@@ -2915,7 +2915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2514565665537117886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6171,7 +6171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSource:
     prefabName: Item_Tower
-    poolSize: 5
+    poolSize: 6
   totalCount: 0
   reverseDirection: 0
   m_Content: {fileID: 6158116778157689632}

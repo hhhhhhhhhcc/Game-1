@@ -26,19 +26,19 @@ namespace ET
             unitComponent.Add(unit);
 
             //zoneScene.RemoveComponent<AIComponent>();
-            Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() { ZoneScene = zoneScene, CurrentScene = currentScene }).Coroutine();
-
+            //Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() { ZoneScene = zoneScene, CurrentScene = currentScene }).Coroutine();
+            await TimerComponent.Instance.WaitAsync(1000);
             if (sceneName == "Map1")
             {
-                // 通知 等待场景切换的协程
-                zoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_SceneChangeFinish());
-                await Game.EventSystem.PublishAsync(new EventType.HideGameUI() { ZoneScene = zoneScene, CurrentScene = currentScene });
+                GameHelper.InitMainHomeComponent(currentScene);
+                Game.EventSystem.PublishAsync(new EventType.HideGameUI() { ZoneScene = zoneScene, CurrentScene = currentScene }).Coroutine();
             }
             if(sceneName == "Game")
             {
-                GameHelper.InitGameComponent(currentScene);
                 GameHelper.AddRoomIndex(zoneScene);
+                GameHelper.InitGameComponent(currentScene);
             }
+            Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() { ZoneScene = zoneScene }).Coroutine();
         }
     }
 }

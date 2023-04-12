@@ -7,7 +7,7 @@ namespace ET
         protected override async ETTask Run(ShowGameResult args)
         {
             Scene zonescene = args.zonescene;
-            zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().ShowResultUI(args.Result,args.ItemId,args.ItemNumber);
+            zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().ShowResultUI(args.Result,args.ItemId,args.ItemNumber,args.Star);
             await ETTask.CompletedTask;
         }
     }

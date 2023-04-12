@@ -641,5 +641,6 @@ namespace ET
 		public Transform uiTransform = null;
         public bool InfoIsTrigger;
         public float InfoTimer;
+        public int MonsterConfigId;
 	}
 }

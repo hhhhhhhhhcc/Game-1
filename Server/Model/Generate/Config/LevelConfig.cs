@@ -87,9 +87,24 @@ namespace ET
 		/// <summary>每波次的时间间隔</summary>
 		[ProtoMember(4)]
 		public int[] MonsterWaveInterval { get; set; }
-		/// <summary>获胜奖励</summary>
+		/// <summary>初始金币</summary>
 		[ProtoMember(5)]
+		public int InitGold { get; set; }
+		/// <summary>获胜奖励</summary>
+		[ProtoMember(6)]
 		public string Reward { get; set; }
+		/// <summary>比例系数(双人专用，赢输)(100的倍数)</summary>
+		[ProtoMember(7)]
+		public int[] Percent { get; set; }
+		/// <summary>关卡描述</summary>
+		[ProtoMember(8)]
+		public string LevelDis { get; set; }
+		/// <summary>关卡名称</summary>
+		[ProtoMember(9)]
+		public string LevelName { get; set; }
+		/// <summary>怪种类Id</summary>
+		[ProtoMember(10)]
+		public int[] MonstersId { get; set; }
 
 	}
 }
