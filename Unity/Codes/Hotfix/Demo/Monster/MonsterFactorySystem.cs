@@ -28,7 +28,7 @@
                 {
                     self.Timer = self.Timer - self.Interval;
                     self.Number--;
-                    UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), self.ConfigId, IdGenerater.Instance.GenerateId(), self.NavId, self.Zone).Coroutine();
+                    UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), self.ConfigId, IdGenerater.Instance.GenerateId(), self.NavId, self.Zone,true).Coroutine();
                 }
                 if (self.Number == 0) return true;
             }

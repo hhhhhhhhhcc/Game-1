@@ -14,7 +14,7 @@ namespace ET
 
 		public static void RegisterUIEvent(this DlgMap1 self)
 		{
-            self.View.ESButton_CreateTower1.RegisterEventAndShowLabelAndRegisterPosition(1);
+            /*self.View.ESButton_CreateTower1.RegisterEventAndShowLabelAndRegisterPosition(1);
             self.View.ESButton_CreateTower2.RegisterEventAndShowLabelAndRegisterPosition(1);
             self.View.ESButton_CreateTower3.RegisterEventAndShowLabelAndRegisterPosition(1);
             self.View.ESButton_CreateTower4.RegisterEventAndShowLabelAndRegisterPosition(1);
@@ -46,9 +46,8 @@ namespace ET
             self.eSButton_CreateTowers.Add(self.View.ESButton_CreateTower13);
             self.eSButton_CreateTowers.Add(self.View.ESButton_CreateTower14);
             self.eSButton_CreateTowers.Add(self.View.ESButton_CreateTower15);
-            self.eSButton_CreateTowers.Add(self.View.ESButton_CreateTower16);
+            self.eSButton_CreateTowers.Add(self.View.ESButton_CreateTower16);*/
         }
-
 		public static void ShowWindow(this DlgMap1 self, Entity contextData = null)
 		{
 
@@ -73,7 +72,7 @@ namespace ET
                 float distance = UnityEngine.Vector3.Distance(new UnityEngine.Vector2(px, py), new UnityEngine.Vector2((float)(TowerX/10000.0f), (float)(TowerY/10000.0f)));
                 if(distance < 0.02f)
                 {
-                    es.SettingTower(tower,TowerId,opttype).Coroutine();
+                    //es.SettingTower(tower,TowerId,opttype).Coroutine();
                 }
             }
 

@@ -1,0 +1,7 @@
+{"list":[
+{"_t":"PlayerSkillConfig","_id":1,"SkillConfigId":6001,"ReleaseType":3},
+{"_t":"PlayerSkillConfig","_id":2,"SkillConfigId":6002,"ReleaseType":2},
+{"_t":"PlayerSkillConfig","_id":3,"SkillConfigId":6003,"ReleaseType":4},
+{"_t":"PlayerSkillConfig","_id":4,"SkillConfigId":6004,"ReleaseType":1},
+{"_t":"PlayerSkillConfig","_id":5,"SkillConfigId":6005,"ReleaseType":5},
+]}

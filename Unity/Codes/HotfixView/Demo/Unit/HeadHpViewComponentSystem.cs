@@ -65,7 +65,10 @@ namespace ET
             int hp = self.GetParent<Monster>().Hp;
 
             self.HpText.text = hp.ToString() + "/" + maxhp.ToString();
-            self.HpBar.size = new Vector2((float)hp / maxhp * 76.0f / 10.0f, self.HpBar.size.y);
+            float value = (float)hp / (float)maxhp;
+            Material mat = self.HpBar.material;
+            mat.SetFloat("_FillType", 0);
+            mat.SetFloat("_FillAmount", value);
         }
         public static void ShowHpBar(this HeadHpViewComponent self)
         {

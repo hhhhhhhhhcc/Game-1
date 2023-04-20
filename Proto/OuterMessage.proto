@@ -607,13 +607,18 @@ message OptionEvent
 	int32 optType = 2;
 	int32 TowerConfigId = 3;
 	int64 TowerId = 4;
-	int64 NewTowerId = 5;
-	float TowerX = 6;
-	float TowerY = 7;
-	int32 MonsterConfigId = 8;
-	int64 MonsterId = 9;
-	repeated int32 SkillIds = 10;
-	int32 MonsterRoadId = 11;
+	float TowerX = 5;
+	float TowerY = 6;
+	int32 MonsterConfigId = 7;
+	int64 MonsterId = 8;
+	repeated int32 TalentIds = 9;
+	int32 MonsterRoadId = 10;
+	int32 PlayerSkillId = 11;
+	int32 PlayerSkillZone = 12;
+	int32 PlayerSkillPosX = 13;
+	int32 PlayerSkillPosY = 14;
+	repeated int64 UnitIds = 15;
+	int32 OptId = 16;
 }
 message FrameOpts 
 {
@@ -714,4 +719,17 @@ message G2C_UpdateLevelData //IActorMessage
 {
 	int32 RpcId = 90;
 	repeated int32 LevelData = 1;
+}
+
+message C2M_AdjustForm //IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int32 Tower1 = 1;
+	int32 Tower2 = 2;
+	int32 Tower3 = 3;
+	int32 Tower4 = 4;
+	int32 Pet1 = 5;
+	int32 Pet2 = 6;
+	int32 Pet3 = 7;
+	int32 Pet4 = 8;
 }

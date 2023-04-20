@@ -152,9 +152,35 @@ namespace ET
             }
             return AllExtraCoin;
         }
-        public static void ReleasePlayerSkill(Scene currentscene)
+        public static void ReleasePlayerSkill(Scene currentscene,int SkillId,int SkillZone,float PosX,float PosY,List<long> unitIds)
         {
-
+            PlayerSkillComponent playerskillcomponent = currentscene.GetComponent<GameComponent>().GetComponent<PlayerSkillComponent>();
+            PlayerSkillConfig playerskillconfig = PlayerSkillConfigCategory.Instance.Get(SkillId);
+            SkillConfig skillconfig = SkillConfigCategory.Instance.Get(playerskillconfig.SkillConfigId);
+            string scriptname = skillconfig.Script;
+            Type type = Type.GetType("ET." + scriptname);
+            if (playerskillcomponent.Components.ContainsKey(type)) return;
+            Entity component = playerskillcomponent.AddComponent(type);
+            //反射遍历方法
+            Type system = Type.GetType(type.FullName + "System");
+            MethodInfo tempmethod = system.GetMethod("InitZone");
+            if(tempmethod != null)//先调用zone
+            {
+                tempmethod.Invoke(component, new object[] { component, SkillZone });
+            }
+            tempmethod = system.GetMethod("InitPos");
+            if(tempmethod != null)
+            {
+                List<float> posxy = new List<float>();
+                posxy.Add(PosX);
+                posxy.Add(PosY);
+                tempmethod.Invoke(component, new object[] { component, posxy });
+            }
+            tempmethod = system.GetMethod("InitUnits");
+            if(tempmethod != null)
+            {
+                tempmethod.Invoke(component, new object[] { component, unitIds });
+            }
         }
     }
 }

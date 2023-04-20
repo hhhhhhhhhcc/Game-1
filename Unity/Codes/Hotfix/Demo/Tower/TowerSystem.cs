@@ -9,8 +9,10 @@ namespace ET
         public override void Awake(Tower self, int configId)
         {
             self.ConfigId = configId;
+            self.Config = TowerConfigCategory.Instance.Get(configId);
             self.AttackTargetList = new List<Monster>();
             self.state = TowerState.NormalAttack;
+            self.UpFrame = 23;
             self.AttackNumber = 1;
             self.ExtraCoin = 0;
         }
@@ -23,6 +25,11 @@ namespace ET
     {
         public static async void OnLogicUpdate(this Tower self, int dt)
         {
+            if(self.UpFrame != 0)
+            {
+                self.UpFrame--;
+                return;
+            }
             if (self.state == TowerState.Crotrol) return;
             self.AttackTargetList.Clear();//重置怪物列表
             self.OnLogicGetAttackMonsterList();//获取所有攻击怪物列表
@@ -75,6 +82,32 @@ namespace ET
                 self.AttackTargetList.Sort(SortMethod);
             }
             await ETTask.CompletedTask;
+        }
+        public static Vector3 GetDir(this Tower self)
+        {
+            return self.AttackTargetList[0].Position - self.Position;
+        }
+        public static string getanimatorname(this Tower self)
+        {
+            Vector3 dir = self.GetDir();
+            int LevelId = (self.ConfigId - 1) % 3 + 1;
+            if (dir.x >= 0 && dir.y > 0)//第一象限 +  45  -135
+            {
+                return "RUGJ" + LevelId.ToString();
+            }
+            if (dir.x < 0 && dir.y >= 0)//第二象限 -  135   -45
+            {
+                return "LUGJ" + LevelId.ToString();
+            }
+            if (dir.x <= 0 && dir.y < 0)//第三象限 + -135  45
+            {
+                return "LDGJ" + LevelId.ToString();
+            }
+            if (dir.x > 0 && dir.y <= 0)//第四象限 -  -45  135
+            {
+                return "RDGJ" + LevelId.ToString();
+            }
+            return "";
         }
         public static int SortMethod(Monster a,Monster b)
         {

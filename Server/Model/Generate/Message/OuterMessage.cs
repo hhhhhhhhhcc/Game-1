@@ -1323,25 +1323,40 @@ namespace ET
 		public long TowerId { get; set; }
 
 		[ProtoMember(5)]
-		public long NewTowerId { get; set; }
-
-		[ProtoMember(6)]
 		public float TowerX { get; set; }
 
-		[ProtoMember(7)]
+		[ProtoMember(6)]
 		public float TowerY { get; set; }
 
-		[ProtoMember(8)]
+		[ProtoMember(7)]
 		public int MonsterConfigId { get; set; }
 
-		[ProtoMember(9)]
+		[ProtoMember(8)]
 		public long MonsterId { get; set; }
 
+		[ProtoMember(9)]
+		public List<int> TalentIds = new List<int>();
+
 		[ProtoMember(10)]
-		public List<int> SkillIds = new List<int>();
+		public int MonsterRoadId { get; set; }
 
 		[ProtoMember(11)]
-		public int MonsterRoadId { get; set; }
+		public int PlayerSkillId { get; set; }
+
+		[ProtoMember(12)]
+		public int PlayerSkillZone { get; set; }
+
+		[ProtoMember(13)]
+		public int PlayerSkillPosX { get; set; }
+
+		[ProtoMember(14)]
+		public int PlayerSkillPosY { get; set; }
+
+		[ProtoMember(15)]
+		public List<long> UnitIds = new List<long>();
+
+		[ProtoMember(16)]
+		public int OptId { get; set; }
 
 	}
 
@@ -1565,6 +1580,39 @@ namespace ET
 
 		[ProtoMember(1)]
 		public List<int> LevelData = new List<int>();
+
+	}
+
+	[Message(OuterOpcode.C2M_AdjustForm)]
+	[ProtoContract]
+	public partial class C2M_AdjustForm: Object, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Tower1 { get; set; }
+
+		[ProtoMember(2)]
+		public int Tower2 { get; set; }
+
+		[ProtoMember(3)]
+		public int Tower3 { get; set; }
+
+		[ProtoMember(4)]
+		public int Tower4 { get; set; }
+
+		[ProtoMember(5)]
+		public int Pet1 { get; set; }
+
+		[ProtoMember(6)]
+		public int Pet2 { get; set; }
+
+		[ProtoMember(7)]
+		public int Pet3 { get; set; }
+
+		[ProtoMember(8)]
+		public int Pet4 { get; set; }
 
 	}
 

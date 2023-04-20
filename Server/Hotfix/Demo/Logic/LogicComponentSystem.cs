@@ -96,6 +96,7 @@ namespace ET
                     int opttype = optevent.optType;
                     newoptevent.position = optevent.position;
                     newoptevent.optType = optevent.optType;
+                    newoptevent.OptId = optevent.OptId;
                     if (opttype == (int)OptType.CreateTower)
                     {
                         long TowerId = IdGenerater.Instance.GenerateId();
@@ -103,24 +104,16 @@ namespace ET
                         newoptevent.TowerConfigId = optevent.TowerConfigId;
                         newoptevent.TowerX = optevent.TowerX;
                         newoptevent.TowerY = optevent.TowerY;
-                        newoptevent.SkillIds = optevent.SkillIds;
+                        newoptevent.TalentIds = optevent.TalentIds;
                     }
                     if (opttype == (int)OptType.UpTower)
                     {
-                        newoptevent.TowerId = optevent.TowerId;//老的塔的Id
-                        newoptevent.TowerConfigId = optevent.TowerConfigId;//新的塔configId
-                        long NewTowerId = IdGenerater.Instance.GenerateId();//新的塔的Id
-                        newoptevent.NewTowerId = NewTowerId;
-                        newoptevent.TowerX = optevent.TowerX;
-                        newoptevent.TowerY = optevent.TowerY;
-                        newoptevent.SkillIds = optevent.SkillIds;
+                        newoptevent.TowerId = optevent.TowerId;
+                        newoptevent.TalentIds = optevent.TalentIds;
                     }
                     if (opttype == (int)OptType.DeleteTower)
                     {
                         newoptevent.TowerId = optevent.TowerId;
-                        newoptevent.TowerConfigId = optevent.TowerConfigId;
-                        newoptevent.TowerX = optevent.TowerX;
-                        newoptevent.TowerY = optevent.TowerY;
                     }
                     if (opttype == (int)OptType.CreateMonster)
                     {
@@ -129,6 +122,15 @@ namespace ET
                         newoptevent.MonsterConfigId = optevent.MonsterConfigId;
                         newoptevent.MonsterRoadId = optevent.MonsterRoadId;
                     }
+                    if (opttype == (int)OptType.ReleasePlayerSkill) 
+                    {
+                        newoptevent.PlayerSkillId = optevent.PlayerSkillId;
+                        newoptevent.PlayerSkillZone = optevent.PlayerSkillZone;
+                        newoptevent.PlayerSkillPosX = optevent.PlayerSkillPosX;
+                        newoptevent.PlayerSkillPosY = optevent.PlayerSkillPosY;
+                        newoptevent.UnitIds = optevent.UnitIds;
+                    }
+                    
                     self.NextFrameOpt.opts.Add(newoptevent);
                 }
             }

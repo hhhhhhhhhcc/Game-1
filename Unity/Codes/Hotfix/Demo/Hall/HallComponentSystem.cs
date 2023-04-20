@@ -7,7 +7,7 @@ namespace ET
     {
         public override void Run(HallComponent self)
         {
-            UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), 6001, IdGenerater.Instance.GenerateId(), 0, 1).Coroutine();
+            UnitFactory.CreateMonster(self.ZoneScene().CurrentScene(), 6001, IdGenerater.Instance.GenerateId(), 0, 1,false).Coroutine();
         }
     }
     [Timer(TimerType.HallLogic)]

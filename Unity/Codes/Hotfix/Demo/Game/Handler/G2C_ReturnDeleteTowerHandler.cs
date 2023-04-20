@@ -7,7 +7,7 @@ namespace ET
         protected override async void Run(Session session, G2C_ReturnDeleteTower message)
         {
             long towerId = message.TowerId;
-            await UnitFactory.DeleteTower(session.ZoneScene().CurrentScene(), towerId);
+            //UnitFactory.DeleteTower(session.ZoneScene().CurrentScene(), towerId);
         }
     }
 }

@@ -64,12 +64,24 @@ SpriteAtlas:
     - {fileID: 21300000, guid: dcfb6c0dea2e2624788f387e91386105, type: 3}
     - {fileID: 21300000, guid: 39c0ed767b754c04aa6ebeafb825d076, type: 3}
     - {fileID: 21300000, guid: 00a624d531bdac0448b4cd61450be6fd, type: 3}
+    - {fileID: 21300000, guid: 760611310889b034a802b0656c0e8a91, type: 3}
+    - {fileID: 21300000, guid: e5d2c96b2519c3948bea781d60a1da93, type: 3}
+    - {fileID: 21300000, guid: 4d7057818e552a441bc7227acb03cc7d, type: 3}
+    - {fileID: 21300000, guid: 9b33d9ae785878542932b39854c33f9b, type: 3}
+    - {fileID: 21300000, guid: 0c22c4acabfee904094e9a0e3981f018, type: 3}
+    - {fileID: 21300000, guid: 07e5f15e6592c6f45a374f2fde88815a, type: 3}
+    - {fileID: 21300000, guid: e0d9506be50f7b346a176d16c7522740, type: 3}
+    - {fileID: 21300000, guid: 26a1c43a90266e8499560796a3650475, type: 3}
+    - {fileID: 21300000, guid: baa79f95397fb2f42b88043b9375e570, type: 3}
+    - {fileID: 21300000, guid: daae7577485288f4592addc5f36ee4bf, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: cd836b8066ab81544bb56d7aed676e50, type: 3}
+  - {fileID: 21300000, guid: 760611310889b034a802b0656c0e8a91, type: 3}
+  - {fileID: 21300000, guid: 4d7057818e552a441bc7227acb03cc7d, type: 3}
   - {fileID: 21300000, guid: 59bae791ffac46e4896837e62f726a9f, type: 3}
   - {fileID: 21300000, guid: 2fce7ac1a70a6b845a7547e660308534, type: 3}
   - {fileID: 21300000, guid: 2f496a325ed00c5439329bf4ba7932f3, type: 3}
@@ -82,27 +94,37 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 09a39d6444741db4b988a2d0ce8d4a11, type: 3}
   - {fileID: 21300000, guid: aa7f2074c23ea1b49b0692e8d100ca58, type: 3}
   - {fileID: 21300000, guid: f2bdae254cc56244b9398049856e91ed, type: 3}
+  - {fileID: 21300000, guid: baa79f95397fb2f42b88043b9375e570, type: 3}
   - {fileID: 21300000, guid: 2560ebc5d98e77e4186e9c5432c9613b, type: 3}
   - {fileID: 21300000, guid: 00a624d531bdac0448b4cd61450be6fd, type: 3}
   - {fileID: 21300000, guid: 39c0ed767b754c04aa6ebeafb825d076, type: 3}
   - {fileID: 21300000, guid: 875c6ee6dd875dd45a1b70a7778f6674, type: 3}
   - {fileID: 21300000, guid: d010d1f60eec20a42a2b0a11c63c5ca9, type: 3}
   - {fileID: 21300000, guid: 30ff7b470b728ec41bcd478e0b3eaa10, type: 3}
+  - {fileID: 21300000, guid: daae7577485288f4592addc5f36ee4bf, type: 3}
   - {fileID: 21300000, guid: 860059973a5bffa40a05055fa12da8f5, type: 3}
   - {fileID: 21300000, guid: 3b2f4cb7f89060a4385cd350b1d98521, type: 3}
+  - {fileID: 21300000, guid: 26a1c43a90266e8499560796a3650475, type: 3}
   - {fileID: 21300000, guid: 4faa327a322e17d41b8dde78bcbe71f0, type: 3}
+  - {fileID: 21300000, guid: e0d9506be50f7b346a176d16c7522740, type: 3}
+  - {fileID: 21300000, guid: e5d2c96b2519c3948bea781d60a1da93, type: 3}
   - {fileID: 21300000, guid: 2b53c32cc5b7c7545bd26bcc06351344, type: 3}
   - {fileID: 21300000, guid: f79cbe8c4ab4eca42b29d7686aef58e2, type: 3}
+  - {fileID: 21300000, guid: 0c22c4acabfee904094e9a0e3981f018, type: 3}
   - {fileID: 21300000, guid: 91f489ac59b848c49a979ad8984638c4, type: 3}
   - {fileID: 21300000, guid: dcfb6c0dea2e2624788f387e91386105, type: 3}
   - {fileID: 21300000, guid: 3e4878bd470218642a87d857a84c25ca, type: 3}
   - {fileID: 21300000, guid: e8648ffd25afdfa4da46eb829fa09fb2, type: 3}
   - {fileID: 21300000, guid: f42e7d1edf4d53a4ea00660b63fee97c, type: 3}
+  - {fileID: 21300000, guid: 07e5f15e6592c6f45a374f2fde88815a, type: 3}
   - {fileID: 21300000, guid: 59b163aee0be5224892d62092e3fd3d9, type: 3}
   - {fileID: 21300000, guid: 62db75aeee1398a4e9de71b2c9a9cf26, type: 3}
+  - {fileID: 21300000, guid: 9b33d9ae785878542932b39854c33f9b, type: 3}
   - {fileID: 21300000, guid: 3b01da7fff6c1a64eaf64a9d512e14e2, type: 3}
   m_PackedSpriteNamesToIndex:
   - TalentBaseNormal
+  - attackAethod
+  - attackSpeed
   - ChooseInfo
   - TowerBright
   - LabelDark
@@ -115,24 +137,32 @@ SpriteAtlas:
   - TalentBaseBright
   - ArrowDark
   - ChooseTalent
+  - magicalDefense
   - ArrowChoose
   - TowerNormal
   - TowerChoose
   - ArrowBright
   - TalentBright
   - MonsterDark
+  - bloodVolume
   - BookDark
   - TalentBoxChoose
+  - physicalDefense
   - Reset
+  - monsterSpeed
+  - range
   - TalentBaseDark
   - BookBright
+  - physicalAttack
   - TowerDark
   - TalentBoxNormal
   - PetDark
   - MonsterNormal
   - MonsterBright
+  - harm
   - TalentDark
   - MonsterChoose
+  - lawAttack
   - InfoBright
   m_RenderDataMap: {}
   m_Tag: TalentUIRes

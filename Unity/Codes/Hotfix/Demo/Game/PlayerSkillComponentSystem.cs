@@ -15,7 +15,7 @@ namespace ET
             for (int i = types.Count - 1; i >= 0; i--)
             {
                 Type type = types[i];
-                if (typeof(PlayerLogic).IsAssignableFrom(type))
+                if (typeof(LogicSkill).IsAssignableFrom(type))
                 {
                     Entity component = self.Components[type];
                     object[] param = new object[] { component, dt };

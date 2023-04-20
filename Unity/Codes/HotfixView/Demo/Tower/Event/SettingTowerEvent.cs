@@ -7,7 +7,7 @@ namespace ET
         protected override async ETTask Run(SettingTower args)
         {
             Scene zonescene = args.zonescene;
-            zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SettingTower(args.tower,args.TowerId,args.opttype,args.towerX,args.towerY);
+            zonescene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SettingTower(args.tower,args.TowerId,args.opttype,args.optId,args.invalid);
             await ETTask.CompletedTask;
         }
     }

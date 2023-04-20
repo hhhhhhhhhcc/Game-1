@@ -211,6 +211,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image Ecreatemoneybase1Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_Ecreatemoneybase1Image == null )
+     			{
+		    		this.m_Ecreatemoneybase1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EList/Ecreatebt1/Ecreatemoneybase1");
+     			}
+     			return this.m_Ecreatemoneybase1Image;
+     		}
+     	}
+
 		public UnityEngine.UI.Text Ecreatemoneytext1Text
      	{
      		get
@@ -293,6 +310,23 @@ namespace ET
 		    		this.m_Espritetower2EventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"EList/Ecreatebt2/Espritetower2");
      			}
      			return this.m_Espritetower2EventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image Ecreatemoneybase2Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_Ecreatemoneybase2Image == null )
+     			{
+		    		this.m_Ecreatemoneybase2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EList/Ecreatebt2/Ecreatemoneybase2");
+     			}
+     			return this.m_Ecreatemoneybase2Image;
      		}
      	}
 
@@ -381,6 +415,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image Ecreatemoneybase3Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_Ecreatemoneybase3Image == null )
+     			{
+		    		this.m_Ecreatemoneybase3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EList/Ecreatebt3/Ecreatemoneybase3");
+     			}
+     			return this.m_Ecreatemoneybase3Image;
+     		}
+     	}
+
 		public UnityEngine.UI.Text Ecreatemoneytext3Text
      	{
      		get
@@ -466,6 +517,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image Ecreatemoneybase4Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_Ecreatemoneybase4Image == null )
+     			{
+		    		this.m_Ecreatemoneybase4Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EList/Ecreatebt4/Ecreatemoneybase4");
+     			}
+     			return this.m_Ecreatemoneybase4Image;
+     		}
+     	}
+
 		public UnityEngine.UI.Text Ecreatemoneytext4Text
      	{
      		get
@@ -483,57 +551,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button EclosebtButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EclosebtButton == null )
-     			{
-		    		this.m_EclosebtButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EList/Eclosebt");
-     			}
-     			return this.m_EclosebtButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image EclosebtImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EclosebtImage == null )
-     			{
-		    		this.m_EclosebtImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EList/Eclosebt");
-     			}
-     			return this.m_EclosebtImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Text EclosetextText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_EclosetextText == null )
-     			{
-		    		this.m_EclosetextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EList/Eclosebt/Eclosetext");
-     			}
-     			return this.m_EclosetextText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image EUpListImage
      	{
      		get
@@ -548,40 +565,6 @@ namespace ET
 		    		this.m_EUpListImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList");
      			}
      			return this.m_EUpListImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Button ECloseUpButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_ECloseUpButton == null )
-     			{
-		    		this.m_ECloseUpButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EUpList/ECloseUp");
-     			}
-     			return this.m_ECloseUpButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image ECloseUpImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_ECloseUpImage == null )
-     			{
-		    		this.m_ECloseUpImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList/ECloseUp");
-     			}
-     			return this.m_ECloseUpImage;
      		}
      	}
 
@@ -619,7 +602,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text ELabel_UpText
+		public UnityEngine.EventSystems.EventTrigger EUpEventTrigger
      	{
      		get
      		{
@@ -628,11 +611,62 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELabel_UpText == null )
+     			if( this.m_EUpEventTrigger == null )
      			{
-		    		this.m_ELabel_UpText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EUpList/EUp/ELabel_Up");
+		    		this.m_EUpEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"EUpList/EUp");
      			}
-     			return this.m_ELabel_UpText;
+     			return this.m_EUpEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EUpArrowImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EUpArrowImage == null )
+     			{
+		    		this.m_EUpArrowImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList/EUp/EUpArrow");
+     			}
+     			return this.m_EUpArrowImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EUpMoneyImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EUpMoneyImage == null )
+     			{
+		    		this.m_EUpMoneyImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList/EUp/EUpMoney");
+     			}
+     			return this.m_EUpMoneyImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text EUPMoneyTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EUPMoneyTextText == null )
+     			{
+		    		this.m_EUPMoneyTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EUpList/EUp/EUPMoneyText");
+     			}
+     			return this.m_EUPMoneyTextText;
      		}
      	}
 
@@ -670,7 +704,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text EDeleteMoneyText
+		public UnityEngine.EventSystems.EventTrigger EDeleteUpEventTrigger
      	{
      		get
      		{
@@ -679,11 +713,62 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EDeleteMoneyText == null )
+     			if( this.m_EDeleteUpEventTrigger == null )
      			{
-		    		this.m_EDeleteMoneyText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EUpList/EDeleteUp/EDeleteMoney");
+		    		this.m_EDeleteUpEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"EUpList/EDeleteUp");
      			}
-     			return this.m_EDeleteMoneyText;
+     			return this.m_EDeleteUpEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EDeleteSaleImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EDeleteSaleImage == null )
+     			{
+		    		this.m_EDeleteSaleImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList/EDeleteUp/EDeleteSale");
+     			}
+     			return this.m_EDeleteSaleImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EDeleteMoneyImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EDeleteMoneyImage == null )
+     			{
+		    		this.m_EDeleteMoneyImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EUpList/EDeleteUp/EDeleteMoney");
+     			}
+     			return this.m_EDeleteMoneyImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text EDeleteMoneyTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EDeleteMoneyTextText == null )
+     			{
+		    		this.m_EDeleteMoneyTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"EUpList/EDeleteUp/EDeleteMoneyText");
+     			}
+     			return this.m_EDeleteMoneyTextText;
      		}
      	}
 
@@ -721,7 +806,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text ELabel_TowerNameText
+		public UnityEngine.UI.Image ETowerInfoNameBaseImage
      	{
      		get
      		{
@@ -730,15 +815,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELabel_TowerNameText == null )
+     			if( this.m_ETowerInfoNameBaseImage == null )
      			{
-		    		this.m_ELabel_TowerNameText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ELabel_TowerName");
+		    		this.m_ETowerInfoNameBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoNameBase");
      			}
-     			return this.m_ELabel_TowerNameText;
+     			return this.m_ETowerInfoNameBaseImage;
      		}
      	}
 
-		public UnityEngine.UI.Text ELabel_TowerAttackValueText
+		public UnityEngine.UI.Text ETowerInfoNameTextText
      	{
      		get
      		{
@@ -747,15 +832,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELabel_TowerAttackValueText == null )
+     			if( this.m_ETowerInfoNameTextText == null )
      			{
-		    		this.m_ELabel_TowerAttackValueText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ELabel_TowerAttackValue");
+		    		this.m_ETowerInfoNameTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoNameBase/ETowerInfoNameText");
      			}
-     			return this.m_ELabel_TowerAttackValueText;
+     			return this.m_ETowerInfoNameTextText;
      		}
      	}
 
-		public UnityEngine.UI.Text ELabel_TowerAttackIntervalText
+		public UnityEngine.UI.Text ETowerInfoDescriptionText
      	{
      		get
      		{
@@ -764,15 +849,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELabel_TowerAttackIntervalText == null )
+     			if( this.m_ETowerInfoDescriptionText == null )
      			{
-		    		this.m_ELabel_TowerAttackIntervalText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ELabel_TowerAttackInterval");
+		    		this.m_ETowerInfoDescriptionText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoDescription");
      			}
-     			return this.m_ELabel_TowerAttackIntervalText;
+     			return this.m_ETowerInfoDescriptionText;
      		}
      	}
 
-		public UnityEngine.UI.Text ELabel_TowerNextMoneyText
+		public UnityEngine.UI.Image ETowerInfoAttackBaseImage
      	{
      		get
      		{
@@ -781,11 +866,130 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELabel_TowerNextMoneyText == null )
+     			if( this.m_ETowerInfoAttackBaseImage == null )
      			{
-		    		this.m_ELabel_TowerNextMoneyText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ELabel_TowerNextMoney");
+		    		this.m_ETowerInfoAttackBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackBase");
      			}
-     			return this.m_ELabel_TowerNextMoneyText;
+     			return this.m_ETowerInfoAttackBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text ETowerInfoAttackValueText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ETowerInfoAttackValueText == null )
+     			{
+		    		this.m_ETowerInfoAttackValueText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackBase/ETowerInfoAttackValue");
+     			}
+     			return this.m_ETowerInfoAttackValueText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image ETowerInfoAttackIntervalBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ETowerInfoAttackIntervalBaseImage == null )
+     			{
+		    		this.m_ETowerInfoAttackIntervalBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackIntervalBase");
+     			}
+     			return this.m_ETowerInfoAttackIntervalBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text ETowerInfoAttackIntervalValueText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ETowerInfoAttackIntervalValueText == null )
+     			{
+		    		this.m_ETowerInfoAttackIntervalValueText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackIntervalBase/ETowerInfoAttackIntervalValue");
+     			}
+     			return this.m_ETowerInfoAttackIntervalValueText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image ETowerInfoAttackTypeBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ETowerInfoAttackTypeBaseImage == null )
+     			{
+		    		this.m_ETowerInfoAttackTypeBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackTypeBase");
+     			}
+     			return this.m_ETowerInfoAttackTypeBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text ETowerInfoAttackTypeValueText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_ETowerInfoAttackTypeValueText == null )
+     			{
+		    		this.m_ETowerInfoAttackTypeValueText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ETowerInfo/ETowerInfoAttackTypeBase/ETowerInfoAttackTypeValue");
+     			}
+     			return this.m_ETowerInfoAttackTypeValueText;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_PlayerSkillButtonButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PlayerSkillButtonButton == null )
+     			{
+		    		this.m_E_PlayerSkillButtonButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_PlayerSkillButton");
+     			}
+     			return this.m_E_PlayerSkillButtonButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_PlayerSkillButtonImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PlayerSkillButtonImage == null )
+     			{
+		    		this.m_E_PlayerSkillButtonImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_PlayerSkillButton");
+     			}
+     			return this.m_E_PlayerSkillButtonImage;
      		}
      	}
 
@@ -803,40 +1007,52 @@ namespace ET
 			this.m_Espritetower1Button = null;
 			this.m_Espritetower1Image = null;
 			this.m_Espritetower1EventTrigger = null;
+			this.m_Ecreatemoneybase1Image = null;
 			this.m_Ecreatemoneytext1Text = null;
 			this.m_Ecreatebt2Image = null;
 			this.m_Espritetower2Button = null;
 			this.m_Espritetower2Image = null;
 			this.m_Espritetower2EventTrigger = null;
+			this.m_Ecreatemoneybase2Image = null;
 			this.m_Ecreatemoneytext2Text = null;
 			this.m_Ecreatebt3Image = null;
 			this.m_Espritetower3Button = null;
 			this.m_Espritetower3Image = null;
 			this.m_Espritetower3EventTrigger = null;
+			this.m_Ecreatemoneybase3Image = null;
 			this.m_Ecreatemoneytext3Text = null;
 			this.m_Ecreatebt4Image = null;
 			this.m_Espritetower4Button = null;
 			this.m_Espritetower4Image = null;
 			this.m_Espritetower4EventTrigger = null;
+			this.m_Ecreatemoneybase4Image = null;
 			this.m_Ecreatemoneytext4Text = null;
-			this.m_EclosebtButton = null;
-			this.m_EclosebtImage = null;
-			this.m_EclosetextText = null;
 			this.m_EUpListImage = null;
-			this.m_ECloseUpButton = null;
-			this.m_ECloseUpImage = null;
 			this.m_EUpButton = null;
 			this.m_EUpImage = null;
-			this.m_ELabel_UpText = null;
+			this.m_EUpEventTrigger = null;
+			this.m_EUpArrowImage = null;
+			this.m_EUpMoneyImage = null;
+			this.m_EUPMoneyTextText = null;
 			this.m_EDeleteUpButton = null;
 			this.m_EDeleteUpImage = null;
-			this.m_EDeleteMoneyText = null;
+			this.m_EDeleteUpEventTrigger = null;
+			this.m_EDeleteSaleImage = null;
+			this.m_EDeleteMoneyImage = null;
+			this.m_EDeleteMoneyTextText = null;
 			this.m_ETowerInfoButton = null;
 			this.m_ETowerInfoImage = null;
-			this.m_ELabel_TowerNameText = null;
-			this.m_ELabel_TowerAttackValueText = null;
-			this.m_ELabel_TowerAttackIntervalText = null;
-			this.m_ELabel_TowerNextMoneyText = null;
+			this.m_ETowerInfoNameBaseImage = null;
+			this.m_ETowerInfoNameTextText = null;
+			this.m_ETowerInfoDescriptionText = null;
+			this.m_ETowerInfoAttackBaseImage = null;
+			this.m_ETowerInfoAttackValueText = null;
+			this.m_ETowerInfoAttackIntervalBaseImage = null;
+			this.m_ETowerInfoAttackIntervalValueText = null;
+			this.m_ETowerInfoAttackTypeBaseImage = null;
+			this.m_ETowerInfoAttackTypeValueText = null;
+			this.m_E_PlayerSkillButtonButton = null;
+			this.m_E_PlayerSkillButtonImage = null;
 			this.uiTransform = null;
 		}
 
@@ -852,41 +1068,57 @@ namespace ET
 		private UnityEngine.UI.Button m_Espritetower1Button = null;
 		private UnityEngine.UI.Image m_Espritetower1Image = null;
 		private UnityEngine.EventSystems.EventTrigger m_Espritetower1EventTrigger = null;
+		private UnityEngine.UI.Image m_Ecreatemoneybase1Image = null;
 		private UnityEngine.UI.Text m_Ecreatemoneytext1Text = null;
 		private UnityEngine.UI.Image m_Ecreatebt2Image = null;
 		private UnityEngine.UI.Button m_Espritetower2Button = null;
 		private UnityEngine.UI.Image m_Espritetower2Image = null;
 		private UnityEngine.EventSystems.EventTrigger m_Espritetower2EventTrigger = null;
+		private UnityEngine.UI.Image m_Ecreatemoneybase2Image = null;
 		private UnityEngine.UI.Text m_Ecreatemoneytext2Text = null;
 		private UnityEngine.UI.Image m_Ecreatebt3Image = null;
 		private UnityEngine.UI.Button m_Espritetower3Button = null;
 		private UnityEngine.UI.Image m_Espritetower3Image = null;
 		private UnityEngine.EventSystems.EventTrigger m_Espritetower3EventTrigger = null;
+		private UnityEngine.UI.Image m_Ecreatemoneybase3Image = null;
 		private UnityEngine.UI.Text m_Ecreatemoneytext3Text = null;
 		private UnityEngine.UI.Image m_Ecreatebt4Image = null;
 		private UnityEngine.UI.Button m_Espritetower4Button = null;
 		private UnityEngine.UI.Image m_Espritetower4Image = null;
 		private UnityEngine.EventSystems.EventTrigger m_Espritetower4EventTrigger = null;
+		private UnityEngine.UI.Image m_Ecreatemoneybase4Image = null;
 		private UnityEngine.UI.Text m_Ecreatemoneytext4Text = null;
-		private UnityEngine.UI.Button m_EclosebtButton = null;
-		private UnityEngine.UI.Image m_EclosebtImage = null;
-		private UnityEngine.UI.Text m_EclosetextText = null;
 		private UnityEngine.UI.Image m_EUpListImage = null;
-		private UnityEngine.UI.Button m_ECloseUpButton = null;
-		private UnityEngine.UI.Image m_ECloseUpImage = null;
 		private UnityEngine.UI.Button m_EUpButton = null;
 		private UnityEngine.UI.Image m_EUpImage = null;
-		private UnityEngine.UI.Text m_ELabel_UpText = null;
+		private UnityEngine.EventSystems.EventTrigger m_EUpEventTrigger = null;
+		private UnityEngine.UI.Image m_EUpArrowImage = null;
+		private UnityEngine.UI.Image m_EUpMoneyImage = null;
+		private UnityEngine.UI.Text m_EUPMoneyTextText = null;
 		private UnityEngine.UI.Button m_EDeleteUpButton = null;
 		private UnityEngine.UI.Image m_EDeleteUpImage = null;
-		private UnityEngine.UI.Text m_EDeleteMoneyText = null;
+		private UnityEngine.EventSystems.EventTrigger m_EDeleteUpEventTrigger = null;
+		private UnityEngine.UI.Image m_EDeleteSaleImage = null;
+		private UnityEngine.UI.Image m_EDeleteMoneyImage = null;
+		private UnityEngine.UI.Text m_EDeleteMoneyTextText = null;
 		private UnityEngine.UI.Button m_ETowerInfoButton = null;
 		private UnityEngine.UI.Image m_ETowerInfoImage = null;
-		private UnityEngine.UI.Text m_ELabel_TowerNameText = null;
-		private UnityEngine.UI.Text m_ELabel_TowerAttackValueText = null;
-		private UnityEngine.UI.Text m_ELabel_TowerAttackIntervalText = null;
-		private UnityEngine.UI.Text m_ELabel_TowerNextMoneyText = null;
+		private UnityEngine.UI.Image m_ETowerInfoNameBaseImage = null;
+		private UnityEngine.UI.Text m_ETowerInfoNameTextText = null;
+		private UnityEngine.UI.Text m_ETowerInfoDescriptionText = null;
+		private UnityEngine.UI.Image m_ETowerInfoAttackBaseImage = null;
+		private UnityEngine.UI.Text m_ETowerInfoAttackValueText = null;
+		private UnityEngine.UI.Image m_ETowerInfoAttackIntervalBaseImage = null;
+		private UnityEngine.UI.Text m_ETowerInfoAttackIntervalValueText = null;
+		private UnityEngine.UI.Image m_ETowerInfoAttackTypeBaseImage = null;
+		private UnityEngine.UI.Text m_ETowerInfoAttackTypeValueText = null;
+		private UnityEngine.UI.Button m_E_PlayerSkillButtonButton = null;
+		private UnityEngine.UI.Image m_E_PlayerSkillButtonImage = null;
 		public Transform uiTransform = null;
+        public int BeforeTowerConfigId1;
+        public int BeforeTowerConfigId2;
+        public int BeforeTowerConfigId3;
+        public int BeforeTowerConfigId4;
         public int TowerConfigId;
         public long TowerId;
         public int TowerLevel;
@@ -894,10 +1126,14 @@ namespace ET
         public Tower tower;
         public EventTrigger ShowTowerInfo;
         public GameObject TowerInfoObj;
-        public bool InfoIsTrigger;
-        public float InfoTimer;
-        public bool RangeTrigger;
-        public float RangeTimer;
+        public bool UpInfoTrigger;
+        public float UpInfoTimer;
+        public bool BeforeBuildTrigger;
+        public float BeforeBuildTimer;
+        public bool SaleTirgger;
+        public float SaleTimer;
+        public bool IsSale;
         public int beforebuildconfigId;
+        public int optId;
     }
 }

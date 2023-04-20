@@ -8,9 +8,8 @@ namespace ET
     {
         public override void Awake(ArrowShootNormalSkill self)
         {
-            self.AttackInterval = self.GetParent<Tower>().AttackInterval;
             self.AttackIntervalTimer = 0;
-            self.PrefabName = "Bullet1";
+            self.PrefabName = "Arrow";
             self.FlySpeed = 5;
             self.RemainAttackNumber = 0;
             self.RemainAttackLogic = 0;
@@ -31,7 +30,14 @@ namespace ET
                 self.RemainAttackLogic--;
                 if (self.RemainAttackLogic == 0)
                 {
-                    self.Attack(attacktargetlist);
+                    if (self.GetParent<Tower>().state == TowerState.NormalAttack)
+                    {
+                        self.Attack(attacktargetlist);
+                    }
+                    if (self.GetParent<Tower>().state == TowerState.SkillAttack)
+                    {
+                        SkillHelper.OnSkill(self.GetParent<Tower>());
+                    }
                     self.RemainAttackNumber--;
                     if (self.RemainAttackNumber > 0)
                     {
@@ -44,24 +50,25 @@ namespace ET
                 self.RemainAttackLogic = 0;
                 self.RemainAttackNumber = 0;
             }
-            if (self.AttackIntervalTimer >= self.AttackInterval)
+            if (self.AttackIntervalTimer >= self.GetParent<Tower>().AttackInterval)
             {
                 if(attacktargetlist.Count > 0)
                 {
-                    if(self.GetParent<Tower>().state == TowerState.NormalAttack)
-                    {
-                        self.Attack(attacktargetlist);//直接攻击
+                    /*self.Attack(attacktargetlist);//直接攻击
                         self.RemainAttackNumber = self.GetParent<Tower>().AttackNumber;//获得攻击数量
                         self.RemainAttackNumber--;//攻击数量--
                         if (self.RemainAttackNumber > 0)//若攻击了还大于0 则给延时攻击帧赋值为2 例如攻击两个 攻击了之后number = 1，logic = 2
                         {
                             self.RemainAttackLogic = 2;
-                        }
-                    }
-                    if(self.GetParent<Tower>().state == TowerState.SkillAttack)
+                        }*/
+                    self.RemainAttackNumber = 1;
+                    self.RemainAttackLogic = 2;
+                    Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState()
                     {
-                        SkillHelper.OnSkill(self.GetParent<Tower>());
-                    }
+                        currentscene = self.ZoneScene().CurrentScene(),
+                        entity = self.GetParent<Tower>(),
+                        AnimatorName = self.GetParent<Tower>().getanimatorname()
+                    }).Coroutine();
                     self.AttackIntervalTimer = 0;//初始化攻击时间
                 }
             }

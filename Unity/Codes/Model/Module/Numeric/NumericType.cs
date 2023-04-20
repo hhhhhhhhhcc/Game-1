@@ -35,6 +35,10 @@
         public const int Monster6 = 6015;
         public const int Monster7 = 6016;
         public const int Monster8 = 6017;
-		public const int Frameid = 6101;
+        public const int Frameid = 6101;
+        public const int PlayerSkillId1 = 7001;
+        public const int PlayerSkillId2 = 7002;
+        public const int PlayerSkillId3 = 7003;
+        public const int PlayerSkillId4 = 7004;
     }
 }

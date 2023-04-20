@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.ComponentModel;
 using static UnityEngine.UI.CanvasScaler;
+using JetBrains.Annotations;
+//using static UnityEditor.PlayerSettings;
 
 namespace ET
 {
@@ -237,10 +239,10 @@ namespace ET
         public static void OnScrollTowerItemRefreshHandler(this DlgTalentUI self, Transform transform, int index)
         {
             Scroll_Item_Tower toweritem = self.TowerItems[index].BindTrans(transform);
-            toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
-            toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
-            toweritem.E_TowerBookLevel3BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
             FightItem fightitem = self.towerfightitem[index + (self.CurrentTowerPage - 1) * 4];
+            toweritem.E_TowerBookLevel1Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
+            toweritem.E_TowerBookLevel2Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
+            toweritem.E_TowerBookLevel3Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
             if(fightitem.Id == self.currentId)//表示选中
             {
                 if(self.TowerConfigLevel == 1)
@@ -270,6 +272,7 @@ namespace ET
         {
             Scroll_Item_Monster monsteritem = self.MonsterItems[index].BindTrans(transform);
             FightItem fightitem = self.monsterfightitem[index + (self.CurrentMonsterPage - 1) * 16];
+            monsteritem.E_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", fightitem.Config.ResourceCode);
             if (fightitem.Id == self.currentId)//表示选中
             {
                 monsteritem.E_MonsterBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "MonsterChoose");//选中亮颜色
@@ -389,42 +392,110 @@ namespace ET
             //塔的信息展示
             if (self.type == FightItemType.Tower)
             {
-                FightItem FightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
-                int fightItemId = FightItem.Config.Id;
+                FightItem fightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+                int fightItemId = fightItem.Config.Id;
                 int configId = fightItemId - 1 + self.TowerConfigLevel;
                 TowerConfig towerconfig = TowerConfigCategory.Instance.Get(configId);
                 self.View.E_TowerInfoDescriptionText.text = towerconfig.Introduction;
+                self.View.E_TowerInfoIconImage.sprite = IconHelper.LoadIconSprite("Tower", fightItem.Config.ResourceCode);
 
-                string attack, attackInterval, range;
-                if (towerconfig.Attack[0] + towerconfig.Attack[1] < 10) attack = "低";
-                else if (towerconfig.Attack[0] + towerconfig.Attack[1] < 20) attack = "中";
-                else attack = "高";
+                string physicalAttack, lawAttack, attackSpeed, range, attackAethod;
+                
+                //攻击
+                if (towerconfig.Attack[0] == 0)
+                {
+                    if (towerconfig.Attack[1] < 10) lawAttack = "低";
+                    else if (towerconfig.Attack[1] < 20) lawAttack = "中";
+                    else lawAttack = "高";
+                    self.View.E_TowerProperties1NumberText.text = lawAttack;
+                    self.View.E_AttackIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "lawAttack");
+                }
+                else if (towerconfig.Attack[1] == 0)
+                {
+                    if (towerconfig.Attack[0] < 10) physicalAttack = "低";
+                    else if (towerconfig.Attack[0] < 20) physicalAttack = "中";
+                    else physicalAttack = "高";
+                    self.View.E_TowerProperties1NumberText.text = physicalAttack;
+                    self.View.E_AttackIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "physicalAttack");
+                }
 
-                if (towerconfig.AttackInterval < 1000) attackInterval = "低";
-                else if (towerconfig.AttackInterval < 2000) attackInterval = "中";
-                else attackInterval = "高";
+                //射速
+                if (towerconfig.AttackInterval < 1000) attackSpeed = "低";
+                else if (towerconfig.AttackInterval < 2000) attackSpeed = "中";
+                else attackSpeed = "高";
+                self.View.E_TowerProperties2NumberText.text = attackSpeed;
+                self.View.E_AttackSpeedIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "attackSpeed");
 
+                //范围
                 if (towerconfig.Range < 2300) range = "低";
                 else if (towerconfig.Attack[0] + towerconfig.Attack[1] < 2500) range = "中";
                 else range = "高";
-
-                self.View.E_TowerProperties1NumberText.text = attack;
-                self.View.E_TowerProperties2NumberText.text = attackInterval;
                 self.View.E_TowerProperties3NumberText.text = range;
-                self.View.E_TowerProperties4NumberText.text = towerconfig.Price.ToString();
+                self.View.E_RangeIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "range");
+
+                //攻击方式
+                if(towerconfig.IsRangeAttack == 0)
+                {
+                    self.View.E_TowerProperties4NumberText.text = "单体";
+                }
+                else
+                {
+                    self.View.E_TowerProperties4NumberText.text = "AOE";
+                }
+                self.View.E_AttackMethodIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "attackAethod");
+
+
             }
 
             //怪的信息展示
             if (self.type == FightItemType.Monster)
             {
-                FightItem FightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
-                int fightItemId = FightItem.Config.Id;
+                FightItem fightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+                int fightItemId = fightItem.Config.Id;
                 FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(fightItemId);
+                MonsterConfig monsterConfig = MonsterConfigCategory.Instance.Get(fightItemId);
+
+                self.View.E_MonsterChooseIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItem.Config.ResourceCode);
                 self.View.E_MonsterDescriptionText.text = fightitemconfig.Introduction;
-                self.View.E_MonsterProperties1NumberText.text = fightitemconfig.Hp;
-                self.View.E_MonsterProperties2NumberText.text = fightitemconfig.speed;
-                self.View.E_MonsterProperties3NumberText.text = fightitemconfig.damage;
-                self.View.E_MonsterProperties4NumberText.text = fightitemconfig.defence;
+
+                string harm, monsterSpeed, physicalDefense, magicalDefense, monsterAttack, bloodVolume;
+
+                //血量
+                if (monsterConfig.Hp < 50) bloodVolume = "低";
+                else if (monsterConfig.Hp < 100) bloodVolume = "中";
+                else bloodVolume = "高";
+                self.View.E_MonsterProperties1NumberText.text = bloodVolume;
+                self.View.E_BloodVolumeIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "bloodVolume");
+                //速度
+                if (monsterConfig.Speed < 508) monsterSpeed = "低";
+                else if (monsterConfig.Speed < 800) monsterSpeed = "中";
+                else monsterSpeed = "高";
+                self.View.E_MonsterProperties2NumberText.text = monsterSpeed;
+                self.View.E_MonsterSpeedIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "bloodVolume");
+                //对塔伤害
+                if (monsterConfig.MonsterAttack < 5) harm = "低";
+                else if (monsterConfig.MonsterAttack < 7) harm = "中";
+                else harm = "高";
+                self.View.E_MonsterProperties3NumberText.text = harm;
+                self.View.E_HarmImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "harm");
+                //物理防御
+                if (monsterConfig.Defense[0] < 4) physicalDefense = "低";
+                else if (monsterConfig.Defense[0] < 6) physicalDefense = "中";
+                else physicalDefense = "高";
+                self.View.E_MonsterProperties4NumberText.text = physicalDefense;
+                self.View.E_PhysicalDefenseIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "physicalDefense");
+                //魔法防御
+                if (monsterConfig.Defense[1] < 4) magicalDefense = "低";
+                else if (monsterConfig.Defense[1] < 6) magicalDefense = "中";
+                else magicalDefense = "高";
+                self.View.E_MonsterProperties5NumberText.text = magicalDefense;
+                self.View.E_MagicalDefenseIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "magicalDefense");
+                //攻击力
+                if (monsterConfig.AttackToMonster < 4) monsterAttack = "低";
+                else if (monsterConfig.AttackToMonster < 7) monsterAttack = "中";
+                else monsterAttack = "高";
+                self.View.E_MonsterProperties6NumberText.text = monsterAttack;
+                self.View.E_MonsterAttackIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "physicalAttack");
             }
 
             //初始化天赋面板
@@ -442,6 +513,54 @@ namespace ET
             self.View.E_TowerTalentLevel3LockImage.gameObject.SetActive(true);
             FightItem CurrentFightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
             int TalentLevel = CurrentFightItem.AddedTalent.Count;
+
+            if (self.type == FightItemType.Tower)
+            {
+                for (int i = 1; i <= 6; i++)
+                {
+                    int talentLevel = (i - 1) / 2 + 1;//层级
+                    int sn = (i - 1) % 2 + 1;//左右
+                    FightItem fightItem = self.ZoneScene().GetComponent<FightItemComponent>().FightItemDict[self.currentId];
+                    Log.Debug(fightItem.Config.TalentCode + "   " + talentLevel + "   " + sn);
+                    int talentId = TalentConfigCategory.Instance.GetTalentId(fightItem.Config.TalentCode, talentLevel, sn);
+                    TalentConfig talentConfig = TalentConfigCategory.Instance.Get(talentId);
+                    switch (i)
+                    {
+                        case 1:
+                            {
+                                self.View.E_TowerTalentLevel1LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                        case 2:
+                            {
+                                self.View.E_TowerTalentLevel1RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                        case 3:
+                            {
+                                self.View.E_TowerTalentLevel2LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                        case 4:
+                            {
+                                self.View.E_TowerTalentLevel2RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                        case 5:
+                            {
+                                self.View.E_TowerTalentLevel3LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                        case 6:
+                            {
+                                self.View.E_TowerTalentLevel3RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                break;
+                            }
+                    }
+                }
+            }
+   
+
             if ((TalentLevel + CurrentFightItem.Upgrading) >= 1)//1级
             {
                 self.View.E_TowerTalent1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TalentBaseBright");//亮色背景
@@ -482,9 +601,10 @@ namespace ET
             }
             if (needmoney == 0)
             {
-                self.View.E_TowerSpendMoneyNumberText.SetText("最高级");
+                self.View.E_TowerSpendMoneyBaseImage.gameObject.SetActive(false);
+/*                self.View.E_TowerSpendMoneyNumberText.SetText("最高级");
                 self.View.E_TowerTalentUpgradeBaseImage.gameObject.SetActive(false);
-                self.View.E_TowerTalentMaxBaseImage.gameObject.SetActive(true);
+                self.View.E_TowerTalentMaxBaseImage.gameObject.SetActive(true);*/
             }
             //初始化天赋外框
             self.View.E_TowerTalentLevel1LeftBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TalentBoxNormal");

@@ -13,6 +13,7 @@ namespace ET
         PauseSingleGameMode = 5,
         ContinueSingleGameMode = 6,
         NextWave = 7,
+        ReleasePlayerSkill = 8,
     }
     [ComponentOf(typeof(Scene))]
     public class GameComponent : Entity,IAwake,IDestroy
@@ -22,6 +23,7 @@ namespace ET
         public List<MonsterWaveConfig> waves;
         public Dictionary<int, List<MonsterWaveConfig>> wavedic;
         public List<int> WaveNumber;
+        public List<Troop> AllTroop;
         public List<Monster> AllEnemy;
         public List<Tower> AllTower;
         public List<Bullet> AllBullet;

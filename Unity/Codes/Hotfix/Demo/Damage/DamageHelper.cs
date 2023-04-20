@@ -124,6 +124,22 @@ namespace ET
 
             await ETTask.CompletedTask;
         }
+        public static void PlayerSkillAttackMonster(Scene currentscene, int PhysicsDamage, int MagicDamage, Monster monster)
+        {
+            int hp = monster.Hp; ;
+            if (hp == 0) return;
+            int AllAttack = DamageHelper.ReturnValue(PhysicsDamage, MagicDamage, monster, 0, 100);
+            hp = hp - AllAttack;
+            //BuffHelper.MonsterAddBuff(monster , BuffId).Coroutine();
+            if (hp <= 0)
+            {
+                hp = 0;
+                //抛出死亡事件    延时死亡
+            }
+            monster.Hp = hp; ;//监听生命数值 刷新怪物UI
+            Game.EventSystem.PublishAsync(new EventType.ShowDamageValueMonster() { currentscene = currentscene, damagevalue = AllAttack, monster = monster }).Coroutine();
+            Game.EventSystem.PublishAsync(new EventType.MonsterDeath() { Monster = monster, currentscene = currentscene, IsAdd = true, ExtraCoin = 0 }).Coroutine();
+        }
         public static int ReturnValue(int PhysicsDamage,int MagicDamage,Monster monster,int IsAP,int Multiplier)
         {
             int MonsterPhysicsDefence = monster.PhysicsDefense;//怪物物理防御

@@ -7,7 +7,6 @@ namespace ET
     {
         public override void Awake(LaserShootNormalSkill self)
         {
-            self.AttackInterval = self.GetParent<Tower>().AttackInterval;
             self.AttackIntervalTimer = 0;
             self.param = SkillHelper.GetSkillString(SkillConfigCategory.Instance.Get(1015).Params);
         }
@@ -46,7 +45,7 @@ namespace ET
             }
             else
             {
-                if (self.AttackIntervalTimer >= self.AttackInterval)//激光直接攻击
+                if (self.AttackIntervalTimer >= self.GetParent<Tower>().AttackInterval)//激光直接攻击
                 {
                     if(self.GetParent<Tower>().state == TowerState.NormalAttack)
                     {

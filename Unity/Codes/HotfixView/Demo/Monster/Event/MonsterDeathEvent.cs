@@ -8,6 +8,10 @@ namespace ET
     {
         protected override async ETTask Run(EventType.MonsterDeath args)
         {
+            if(args.currentscene.ZoneScene().GetComponent<UIComponent>().IsWindowVisible(WindowID.WindowID_GameUI))
+            {
+                args.currentscene.ZoneScene().GetComponent<UIComponent>()?.GetDlgLogic<DlgGameUI>()?.RefreshMonsterInfo(args.Monster.Id, false);
+            }
             int hp = args.Monster.Hp;
             if (hp > 0) return;
             if(args.IsAdd && args.Monster.Zone==UnitHelper.GetMyUnitFromCurrentScene(args.currentscene).GetComponent<NumericComponent>().GetAsInt(NumericType.Position))//添加金币

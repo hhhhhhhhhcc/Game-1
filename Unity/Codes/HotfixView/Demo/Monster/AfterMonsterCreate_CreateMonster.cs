@@ -4,6 +4,7 @@ namespace ET
 {
     [FriendClass(typeof(GlobalComponent))]
     [FriendClass(typeof(MonsterMoveComponent))]
+    [FriendClass(typeof(Monster))]
     public class AfterMonsterCreate_CreateMonster: AEventAsync<EventType.AfterUnitCreateMonster>
     {
         protected override async ETTask Run(EventType.AfterUnitCreateMonster args)
@@ -18,6 +19,12 @@ namespace ET
             args.Monster.AddComponent<GameObjectComponent>().GameObject = go;
             args.Monster.GetComponent<GameObjectComponent>().SpriteRender = go.GetComponent<SpriteRenderer>();
             args.Monster.GetComponent<GameObjectComponent>().SpriteRender.sprite = IconHelper.LoadIconSprite("monster", PrefabOrIconName);
+            if(args.Monster.PlayerBuy == true)
+            {
+                GameObject Material = (GameObject)ResourcesComponent.Instance.GetAsset("Unit.unity3d", "Material");
+                string material = args.Monster.Zone != UnitHelper.GetMyUnitFromCurrentScene(args.CurrentScene).GetComponent<NumericComponent>().GetAsInt(NumericType.Position) ? "GreenOutLine" : "RedOutLine";
+                args.Monster.GetComponent<GameObjectComponent>().SpriteRender.material = Material.Get<Material>(material);
+            }
             args.Monster.AddComponent<AnimatorComponent>();
             args.Monster.AddComponent<HeadHpViewComponent>();
             args.Monster.GetComponent<HeadHpViewComponent>().Init(1);

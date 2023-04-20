@@ -14,6 +14,7 @@ namespace ET
             if (args.Tower != null) gameObjectComponent = args.Tower.GetComponent<GameObjectComponent>();
             if(args.Bullet!=null) gameObjectComponent = args.Bullet.GetComponent<GameObjectComponent>();
             if (args.Base != null) gameObjectComponent = args.Base.GetComponent<GameObjectComponent>();
+            if (args.troop != null) gameObjectComponent = args.troop.GetComponent<GameObjectComponent>();
             if (gameObjectComponent == null)
             {
                 return;
@@ -24,6 +25,7 @@ namespace ET
             if (args.Tower != null) transform.position = args.Tower.Position;
             if (args.Bullet != null) transform.position = args.Bullet.Position;
             if (args.Base != null) transform.position = args.Base.Position;
+            if (args.troop != null) transform.position = args.troop.Position;
         }
     }
 }

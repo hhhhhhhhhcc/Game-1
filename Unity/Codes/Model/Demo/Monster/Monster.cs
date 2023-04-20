@@ -28,6 +28,7 @@ namespace ET
         public bool IsDead;
         public Action<Monster> DeathEvent;
         public int DelayAnimatorLogic;
+        public bool PlayerBuy;
         public MonsterConfig Config => MonsterConfigCategory.Instance.Get(this.ConfigId);
         private WrapVector3 position = new WrapVector3(); //坐标
 

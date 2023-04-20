@@ -12,6 +12,7 @@ namespace ET
             self.AllTower = new List<Tower>();
             self.AllBullet = new List<Bullet>();
             self.AllBase = new List<Base>();
+            self.AllTroop = new List<Troop>();
             self.waves = new List<MonsterWaveConfig>();
             self.WaveNumber = new List<int>();
             self.wavedic = new Dictionary<int, List<MonsterWaveConfig>>();
@@ -42,6 +43,7 @@ namespace ET
     }
     [FriendClass(typeof(GameComponent))]
     [FriendClass(typeof(Base))]
+    [FriendClass(typeof(Tower))]
     public static class GameComponentSystem 
     {
         public static async ETTask InitLevel(this GameComponent self, int LevelId,int MatchMode)
@@ -235,7 +237,7 @@ namespace ET
                         if (self.GameEnding == false || self?.ZoneScene() == null) return;
                         for(int i = 0; i < self.MonsterNavDict[self.CurrentMonsterIndex].Length;i++)
                         {
-                            await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 1);
+                            await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 1,false);
                         }
                     }
                     else
@@ -243,13 +245,13 @@ namespace ET
                         if (self.GameEnding == false || self?.ZoneScene() == null) return;
                         for (int i = 0; i < self.MonsterNavDict[self.CurrentMonsterIndex].Length; i++)
                         {
-                            if(i < self.MonsterNavDict[self.CurrentMonsterIndex].Length / 2)
+                            if(self.MonsterNavDict[self.CurrentMonsterIndex][i] / 2 < self.RoadNumber - 1 )
                             {
-                                await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 1);
+                                await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 1,false);
                             }
                             else
                             {
-                                await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 2);
+                                await UnitFactory.CreateMonster(self.ZoneScene()?.CurrentScene(), self.MonsterId[self.CurrentMonsterIndex], IdGenerater.Instance.GenerateId(), self.MonsterNavDict[self.CurrentMonsterIndex][i] - 1, 2,false);
                             }
                         }
                     }
@@ -327,6 +329,10 @@ namespace ET
         {
             self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().OnLogic(dt);
         }
+        public static void OnLogicTowerFactory(this GameComponent self, int dt)
+        {
+            self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().OnLogic(dt);
+        }
         public static void OnHandlerLogicEvent(this GameComponent self,FrameOpts frameopt)
         {
             if (self.GameEnding == false) return;
@@ -338,6 +344,8 @@ namespace ET
             self.OnLogicMonster(self.FrameDt);
             //怪物生成工厂
             self.OnLogicMonsterFactory(self.FrameDt);
+            //塔生成工厂
+            self.OnLogicTowerFactory(self.FrameDt);
             //塔发射子弹和充能
             self.OnLogicTower(self.FrameDt);
             //玩家技能发动和时间迭代
@@ -443,7 +451,6 @@ namespace ET
         public static async void OnHandlerPlayerControl(this GameComponent self,OptionEvent option)
         {
             int opttype = option.optType;
-
             NumericComponent num = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene()).GetComponent<NumericComponent>();
             int position = num.GetAsInt(NumericType.Position);
             int gamemoney = num.GetAsInt(NumericType.GameMoney);
@@ -461,71 +468,54 @@ namespace ET
                 self.MonsterTimer = self.MonsterTime[self.CurrentMonsterIndex];
             }
             if(opttype == (int)OptType.CreateTower)//造塔
-            {
-                Tower tower = await UnitFactory.CreateTower(self.ZoneScene().CurrentScene(), option.TowerConfigId, option.TowerX, option.TowerY, option.position, option.TowerId,option.SkillIds);
+            {        
                 if (option.position == position)//是自己买的
                 {
                     int NeedMoney = SkillHelper.GetBuildLossMoney(self.ZoneScene(), option.TowerConfigId);
                     num.Set(NumericType.GameMoney, gamemoney - NeedMoney);
-                    Game.EventSystem.PublishAsync(new EventType.SettingTower()
-                    {
-                        zonescene = self.ZoneScene(),
-                        tower = tower,
-                        TowerId = option.TowerId,
-                        opttype = opttype,
-                        towerX = option.TowerX,
-                        towerY = option.TowerY,
-                    }).Coroutine();
                 }
+                TowerFactory towerfactory = self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddChildWithId<TowerFactory>(IdGenerater.Instance.GenerateId());
+                towerfactory.Init(option.TowerId, option.TowerConfigId, 1, 0, option.position, option.TowerX, option.TowerY, option.TalentIds,option.OptId,opttype = option.optType);
+                self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddTowerFactory(towerfactory);
             }
 
-            if (opttype == (int)OptType.UpTower)//升级塔  这里的TowerConfigId是新的塔的Id
+            if (opttype == (int)OptType.UpTower)//升级塔
             {
-                await UnitFactory.DeleteTower(self.ZoneScene().CurrentScene(), option.TowerId);
-                Tower tower = await UnitFactory.CreateTower(self.ZoneScene().CurrentScene(), option.TowerConfigId, option.TowerX, option.TowerY, option.position, option.NewTowerId,option.SkillIds);
+                //TowerId optId  opttype
                 if (option.position == position)//是自己买的
                 {
-                    int NeedMoney = SkillHelper.GetBuildLossMoney(self.ZoneScene(), option.TowerConfigId);
+                    Tower tower = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().GetChild<Tower>(option.TowerId);
+                    int NeedMoney = SkillHelper.GetBuildLossMoney(self.ZoneScene(), tower.ConfigId + 1);
                     num.Set(NumericType.GameMoney, gamemoney - NeedMoney);
-                    Game.EventSystem.PublishAsync(new EventType.SettingTower()
-                    {
-                        zonescene = self.ZoneScene(),
-                        tower = tower,
-                        TowerId = option.NewTowerId,
-                        opttype = opttype,
-                        towerX = option.TowerX,
-                        towerY = option.TowerY,
-                    }).Coroutine();
-                } 
+                }
+                TowerFactory towerfactory = self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddChildWithId<TowerFactory>(IdGenerater.Instance.GenerateId());
+                towerfactory.Init(option.TowerId, 0, 1, 132, option.position, 0,0, option.TalentIds, option.OptId,option.optType);
+                self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddTowerFactory(towerfactory);
             }
-            if (opttype == (int)OptType.DeleteTower)//卖塔 //钱不一样
+            if (opttype == (int)OptType.DeleteTower)//卖塔
             {
-                TowerComponent towercomponent = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>();
-                Tower tower = towercomponent.Get(option.TowerId);
                 if (option.position == position)//是自己买的
                 {
-                    int level = (option.TowerConfigId - 1) % 3 + 1;
+                    Log.Debug("123");
+                    Tower tower = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().Get(option.TowerId);
+                    int TowerConfigId = tower.ConfigId;
+                    int level = (TowerConfigId - 1) % 3 + 1;
                     int allreturnmoney = 0;
                     int loss = 70;
                     if(tower.GetComponent<EcoMaterialSkill>() != null)
                     {
                         loss = 100 - tower.GetComponent<EcoMaterialSkill>().getsaleloss();
                     }
-                    for(int i=option.TowerConfigId - level + 1;i<=option.TowerConfigId;i++)
+                    for(int i= TowerConfigId - level + 1;i<= TowerConfigId; i++)
                     {
                         int NeedMoney = SkillHelper.GetBuildLossMoney(self.ZoneScene(), i);
                         allreturnmoney = allreturnmoney + NeedMoney * loss /100;
                     }
                     num.Set(NumericType.GameMoney, gamemoney + allreturnmoney);
-                    Game.EventSystem.PublishAsync(new EventType.SettingTower()
-                    {
-                        zonescene = self.ZoneScene(),
-                        opttype = opttype,
-                        towerX = option.TowerX,
-                        towerY = option.TowerY,
-                    }).Coroutine();
                 }
-                await UnitFactory.DeleteTower(self.ZoneScene().CurrentScene(), option.TowerId);
+                TowerFactory towerfactory = self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddChildWithId<TowerFactory>(IdGenerater.Instance.GenerateId());
+                towerfactory.Init(option.TowerId, 0, 1, 132, option.position, 0, 0, option.TalentIds, option.OptId, option.optType);
+                self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().AddTowerFactory(towerfactory);
             }
             if (opttype == (int)OptType.CreateMonster)//买怪
             {
@@ -539,16 +529,14 @@ namespace ET
                 FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monsterconfig.MonsterConfigId);
                 int number = fightitemconfig.PetNumber;
                 int interval = fightitemconfig.PetInterval;
-                if (option.position == 1)
-                {
-                    monsterfactory.Init(option.MonsterConfigId, number, interval, option.MonsterRoadId - 1, 2);
-                }
-                if(option.position == 2)
-                {
-                    monsterfactory.Init(option.MonsterConfigId, number, interval, option.MonsterRoadId - 1, 1);
-                }
+                monsterfactory.Init(option.MonsterConfigId, number, interval, option.MonsterRoadId - 1, 3 - option.position);
                 self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().AddMonsterFactory(monsterfactory);
             }
+            if (opttype == (int)OptType.ReleasePlayerSkill)
+            {
+                SkillHelper.ReleasePlayerSkill(self.ZoneScene().CurrentScene(), option.PlayerSkillId, option.PlayerSkillZone,(float)(option.PlayerSkillPosX/10000.0f), (float)(option.PlayerSkillPosY / 10000.0f), option.UnitIds);
+            }
+            await ETTask.CompletedTask;
         }
         public static async void OnLogicMoney(this GameComponent self,int dt)
         {
@@ -623,11 +611,13 @@ namespace ET
                 baseitem?.Dispose();
             }
             self.AllBase.Clear();*/
+            self.ZoneScene().CurrentScene().GetComponent<TroopComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<MonsterComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<BulletComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<BaseComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<MonsterFactoryComponent>().Dispose();
+            self.ZoneScene().CurrentScene().GetComponent<TowerFactoryComponent>().Dispose();
             self.ZoneScene().CurrentScene().GetComponent<NavVectorComponent>().Dispose();
         }
     }

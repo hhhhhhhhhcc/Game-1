@@ -26,9 +26,11 @@ namespace ET
     [FriendClass(typeof(TowerChargeComponent))]
     public static class TowerChargeComponentSystem
     {
-        public static void SetChargeBar(this TowerChargeComponent self,float SizeX)
+        public static void SetChargeBar(this TowerChargeComponent self,float value)
         {
-            self.ChargeBar.size = new Vector2(SizeX * 76.0f / 10.0f, 1f);
+            Material mat = self.ChargeBar.material;
+            mat.SetFloat("_FillType", 0);
+            mat.SetFloat("_FillAmount", value);
         }
         public static void JudgeChargeBar(this TowerChargeComponent self,List<int> TalentIds)
         {

@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System.Collections.Generic;
+
+namespace ET
 {
     public class InterferenceTowerSkillAwakeSystem : AwakeSystem<InterferenceTowerSkill>
     {
@@ -14,7 +16,14 @@
     {
         public override void Destroy(InterferenceTowerSkill self)
         {
-            self.Tower.state = TowerState.NormalAttack;
+            for(int i=0;i<self.Towers.Count;i++)
+            {
+                Tower tower = self.Towers[i];
+                if(tower != null)
+                {
+                    tower.state = TowerState.NormalAttack;
+                }
+            }
         }
     }
     [FriendClass(typeof(InterferenceTowerSkill))]
@@ -23,11 +32,16 @@
     public static class InterferenceTowerSkillSystem
     {
         
-        public static void InitTower(this InterferenceTowerSkill self,long TowerId)//towerid  位置X,Y
+        public static void InitUnits(this InterferenceTowerSkill self,List<long> TowerIdS)//towerid  位置X,Y
         {
-            Tower tower = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().GetChild<Tower>(TowerId);
-            self.Tower = tower;
-            self.Tower.state = TowerState.Crotrol;
+            for (int i = 0; i < TowerIdS.Count; i++)
+            {
+                long towerId = TowerIdS[i];
+                Tower tower = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().GetChild<Tower>(towerId);
+                self.Towers.Add(tower);
+                tower.state = TowerState.Crotrol;
+            }
+          
         }
         public static void InitZone(this InterferenceTowerSkill self,int Zone)
         {
@@ -38,7 +52,7 @@
             self.Timer = self.Timer + dt;
             if (self.Timer >= self.Time)
             {
-                self.Dispose();
+                self?.Dispose();
             }
         }
     }

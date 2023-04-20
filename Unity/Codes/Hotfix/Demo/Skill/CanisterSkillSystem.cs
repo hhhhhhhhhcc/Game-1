@@ -10,7 +10,7 @@ namespace ET
             self.param = SkillHelper.GetSkillString(SkillConfigCategory.Instance.Get(1002).Params);
             self.SkillTime = self.param["chargetime"];
             self.FlySpeed = 5;
-            self.PrefabName = "Bullet1";
+            self.PrefabName = "Arrow";
         }
     }
 

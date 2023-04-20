@@ -108,6 +108,9 @@ namespace ET
 		/// <summary>买怪入口UI坐标Y</summary>
 		[ProtoMember(11)]
 		public int[] ReleaseY { get; set; }
+		/// <summary>买怪区域(程序用)</summary>
+		[ProtoMember(12)]
+		public int[] ReleaseZone { get; set; }
 
 	}
 }

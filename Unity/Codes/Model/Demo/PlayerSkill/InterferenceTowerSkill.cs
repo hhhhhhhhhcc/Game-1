@@ -2,9 +2,9 @@
 
 namespace ET
 {
-    public class InterferenceTowerSkill : Entity,IAwake,IDestroy,PlayerLogic,PlayerInitTowerSkill,PlayerInitZoneSkill
+    public class InterferenceTowerSkill : Entity,IAwake,IDestroy, LogicSkill
     {
-        public Tower Tower;
+        public List<Tower> Towers = new List<Tower>();
         public int Timer;
         public int Time;
         public Dictionary<string,int> param = new Dictionary<string,int>();

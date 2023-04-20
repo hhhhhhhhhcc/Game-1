@@ -5,7 +5,6 @@ namespace ET
     [ComponentOf(typeof(Tower))]
     public class ArrowShootNormalSkill : Entity,IAwake,IDestroy,LogicSkill
     {
-        public int AttackInterval;
         public int AttackIntervalTimer;
         public string PrefabName;
         public int FlySpeed;

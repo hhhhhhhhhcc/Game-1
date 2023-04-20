@@ -33,7 +33,6 @@ namespace ET
             {
                 self.EMonsterInfoBaseSpriteImage.gameObject.SetActive(true);
             }
-            Log.Debug("123");
         }
     }
 
@@ -51,13 +50,16 @@ namespace ET
     {
         public static void RegisterEvent(this ESCreateMonster self, int MonsterConfigId)
         {
-            self.MonsterConfigId = MonsterConfigId;
-            self.InitMonsterInfo();
-            self.ECreateMonsterButtonButton.AddListenerAsync(() =>
+            if(MonsterConfigId != 0)
             {
-                return self.SelectMonster();
-            });
-            self.RegisterMonsterInfo();
+                self.MonsterConfigId = MonsterConfigId;
+                self.InitMonsterInfo();
+                self.ECreateMonsterButtonButton.AddListener(() =>
+                {
+                    self.SelectMonster();
+                });
+                self.RegisterMonsterInfo();
+            }
         }
         public static void InitMonsterInfo(this ESCreateMonster self)
         {
@@ -67,6 +69,9 @@ namespace ET
             FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monsterconfig.MonsterConfigId);
             self.EMonsterNameTextText.SetText(fightitemconfig.FightItemName);
             self.EMonsterLvTextText.SetText("1");
+            self.ECreateMonsterButtonImage.sprite = IconHelper.LoadIconSprite("monster", fightitemconfig.ResourceCode);
+            self.ECreateMonsterButtonImage.SetNativeSize();
+            self.ECreateMonsterButtonImage.gameObject.SetActive(true);
             self.EMonsterAttackTextText.SetText(monsterconfig.MonsterAttack.ToString());//攻击
             self.EMonsterHpTextText.SetText(monsterconfig.Hp.ToString());//血量
             string speed;
@@ -132,7 +137,7 @@ namespace ET
             self.uiTransform.gameObject.SetActive(false);
 
         }
-        public static async ETTask SelectMonster(this ESCreateMonster self)
+        public static void SelectMonster(this ESCreateMonster self)
         {
             self.CloseInfos();
             self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SetSelectMonster(self.MonsterConfigId);
@@ -154,7 +159,6 @@ namespace ET
                 Log.Error(e.ToString());
                 return;
             }*/
-            await ETTask.CompletedTask;
         }
     }
 }

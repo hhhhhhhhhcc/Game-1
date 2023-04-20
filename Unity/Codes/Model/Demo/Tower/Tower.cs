@@ -24,7 +24,8 @@ namespace ET
         public int PhysicsAttack;
         public int MagicAttack;
         public int Type;
-        public TowerConfig Config => TowerConfigCategory.Instance.Get(this.ConfigId);
+        public int UpFrame;
+        public TowerConfig Config;
 
         private WrapVector3 position = new WrapVector3(); //坐标
 

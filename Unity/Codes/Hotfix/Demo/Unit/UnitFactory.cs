@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace ET
@@ -12,6 +13,7 @@ namespace ET
 	[FriendClass(typeof(Tower))]
 	[FriendClass(typeof(Monster))]
 	[FriendClass(typeof(Base))]
+	[FriendClass(typeof(Troop))]
     public static class UnitFactory
     {
         public static Unit Create(Scene currentScene, UnitInfo unitInfo)
@@ -53,7 +55,7 @@ namespace ET
             return unit;
         }
 
-		public static async ETTask<Monster> CreateMonster(Scene currentscene,int monsterconfigId,long monsterid,int MonsterNavId,int MonsterZone)
+		public static async ETTask<Monster> CreateMonster(Scene currentscene,int monsterconfigId,long monsterid,int MonsterNavId,int MonsterZone,bool PlayerBuy)
 		{
 			if (currentscene == null) return null;
             IdGenerater.Instance.AddLastId(monsterid);
@@ -70,16 +72,34 @@ namespace ET
 			monster.Attack = monster.Config.MonsterAttack;
 			monster.PhysicsDefense = monster.Config.Defense[0];
 			monster.MagicDefense = monster.Config.Defense[1];
+            monster.PlayerBuy = PlayerBuy;
             monster.AddComponent<MonsterMoveComponent, int>(MonsterNavId);
             await Game.EventSystem.PublishAsync(new EventType.AfterUnitCreateMonster() { Monster = monster ,CurrentScene = currentscene});
             currentscene.GetComponent<GameComponent>().AllEnemy.Add(monster);
             return monster;
         }
+		public static async ETTask<Troop> CreateAssembleTroop(Scene currentscene,int Hp,int attackdamage,int attackinterval,int attackrange,int speed,long troopId,float TroopX,float TroopY,string prefabname,int zone)
+		{
+			if (currentscene == null) return null;
+			TroopComponent troopcomponent = currentscene.GetComponent<TroopComponent>();
+            Troop troop = troopcomponent.AddChildWithId<Troop>(troopId);
+			troop.Hp = Hp;
+			troop.MaxHp = Hp;
+			troop.AttackIntervalTimer = attackinterval;
+			troop.AttackDamage = attackdamage;
+			troop.AttackRange = attackrange;
+			troop.speed = speed / 1000.0f;
+			troop.Zone = zone;
+			troop.PrefabName = prefabname;
+			troop.Position = new Vector2(TroopX,TroopY);
+			await Game.EventSystem.PublishAsync(new EventType.AfterUnitCreateTroop() { Troop = troop });
+			currentscene.GetComponent<GameComponent>().AllTroop.Add(troop);
+            return troop;
+        }
 		public static async ETTask<Tower> CreateTower(Scene currentscene,int configId,float Px,float Py,int TowerZone,long TowerId,List<int> TalentIds) 
 		{
             TowerComponent towercomponent = currentscene.GetComponent<TowerComponent>();
             Tower tower = towercomponent.AddChildWithId<Tower, int>(TowerId, configId);
-            towercomponent.Add(tower);
 
 			tower.AttackRange = (float)(tower.Config.Range / 1000.0f);
             tower.PhysicsAttack = tower.Config.Attack[0];
@@ -108,13 +128,62 @@ namespace ET
             skillcomponent = Type.GetType("ET." + skillname);
             tower.AddComponent(skillcomponent);
 			//end
-			
             await Game.EventSystem.PublishAsync(new EventType.AfterUnitCreateTower() { zonescene = currentscene.ZoneScene(),Tower = tower,TowerPx = Px,TowerPy = Py,TalentIds = TalentIds });
             currentscene.GetComponent<GameComponent>().AllTower.Add(tower);
             return tower;
         }
-		//public static async ETTask<Tower> UpTower(Scene currentscene,int configid)
-		public static async ETTask DeleteTower(Scene currentscene,long TowerId)
+        public static void UpTower(Scene currentscene, long TowerId,List<int> TalentIds)
+        {
+            Tower tower = currentscene.GetComponent<TowerComponent>().GetChild<Tower>(TowerId);
+            List<Type> types = new List<Type>();
+            foreach(Type type in tower.Components.Keys)
+            {
+                if(typeof(LogicSkill).IsAssignableFrom(type))
+                {
+                    types.Add(type);
+                }
+            }
+            for(int i=0;i<types.Count; i++)
+            {
+                Entity component = tower.Components[types[i]];
+                component?.Dispose();
+            }
+            int newconfigId = tower.ConfigId + 1;
+            TowerConfig towerconfig = TowerConfigCategory.Instance.Get(newconfigId);
+            tower.UpFrame = 23;
+            tower.ConfigId = newconfigId;
+            tower.Config = towerconfig;
+            tower.AttackRange = (float)(towerconfig.Range / 1000.0f);
+            tower.PhysicsAttack = towerconfig.Attack[0];
+            tower.MagicAttack = towerconfig.Attack[1];
+            tower.AttackInterval = towerconfig.AttackInterval;
+            int NormalSkillId;
+            SkillConfig skill;
+            string skillname;
+            Type skillcomponent;
+            //技能
+            for (int i = 0; i < TalentIds.Count; i++)
+            {
+                int TalentId = TalentIds[i];
+                TalentConfig talentconfig = TalentConfigCategory.Instance.Get(TalentId);
+                skill = SkillConfigCategory.Instance.Get(talentconfig.SkillId);
+                skillname = skill.Script;
+                skillcomponent = Type.GetType("ET." + skillname);
+                tower.AddComponent(skillcomponent);
+            }
+            //普攻
+            NormalSkillId = tower.Config.NoramlSkill;
+            skill = SkillConfigCategory.Instance.Get(NormalSkillId);
+            skillname = skill.Script;
+            skillcomponent = Type.GetType("ET." + skillname);
+            tower.AddComponent(skillcomponent);
+            //end
+            //播放升级动画
+            int levelId = (tower.ConfigId - 1) % 3 + 1;
+            string animatorname = (levelId - 1).ToString() + "T" + levelId.ToString();
+            Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = currentscene, entity = tower, AnimatorName = animatorname }).Coroutine();
+        }
+        public static async ETTask DeleteTower(Scene currentscene,long TowerId)
 		{
             TowerComponent towercomponent = currentscene.GetComponent<TowerComponent>();
 			Tower tower = towercomponent.Get(TowerId);

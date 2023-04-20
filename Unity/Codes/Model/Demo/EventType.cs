@@ -30,6 +30,7 @@ namespace ET
             public Tower Tower;
             public Bullet Bullet;
             public Base Base;
+            public Troop troop;
             public WrapVector3 OldPos = new WrapVector3();
 
             // 因为是重复利用的，所以用完PublishClass会调用Dispose
@@ -40,6 +41,7 @@ namespace ET
                 this.Tower = null;
                 this.Bullet = null;
                 this.Base = null;
+                this.troop = null;
             }
         }
     
@@ -53,6 +55,7 @@ namespace ET
             public Tower Tower;
             public Bullet Bullet;
             public Base Base;
+            public Troop troop;
             // 因为是重复利用的，所以用完PublishClass会调用Dispose
             public override void Dispose()
             {
@@ -61,6 +64,7 @@ namespace ET
                 this.Tower = null;
                 this.Bullet = null;
                 this.Base = null;
+                this.troop = null;
             }
         }
 
@@ -147,6 +151,7 @@ namespace ET
         {
             public Scene CurrentScene;
             public Monster Monster;
+            public bool PlayerBuy;
         }
         public struct AfterUnitCreateBullet
         {
@@ -220,8 +225,8 @@ namespace ET
             public Tower tower;
             public long TowerId;
             public int opttype;
-            public float towerX;
-            public float towerY;
+            public int optId;
+            public bool invalid;
         }
         public struct LogicBulletPos
         {
@@ -282,6 +287,12 @@ namespace ET
             public Monster monster;
             public Vector3 v;
             public float speed;
+        }
+        public struct AfterUnitCreateTroop
+        {
+            public Troop Troop;
+            public float TroopX;
+            public float TroopY;
         }
 
     }

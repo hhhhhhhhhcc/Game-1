@@ -91,7 +91,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image E_SKillButtonImage
+		public UnityEngine.UI.Button E_SKillButton
      	{
      		get
      		{
@@ -100,11 +100,28 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_SKillButtonImage == null )
+     			if( this.m_E_SKillButton == null )
      			{
-		    		this.m_E_SKillButtonImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_SKillButton");
+		    		this.m_E_SKillButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_SKill");
      			}
-     			return this.m_E_SKillButtonImage;
+     			return this.m_E_SKillButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_SKillImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SKillImage == null )
+     			{
+		    		this.m_E_SKillImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_SKill");
+     			}
+     			return this.m_E_SKillImage;
      		}
      	}
 
@@ -115,7 +132,8 @@ namespace ET
 			this.m_E_SkillInputTextText = null;
 			this.m_E_SkillNumberBaseSpriteImage = null;
 			this.m_E_SkillNumberTextText = null;
-			this.m_E_SKillButtonImage = null;
+			this.m_E_SKillButton = null;
+			this.m_E_SKillImage = null;
 			this.uiTransform = null;
 		}
 
@@ -124,7 +142,10 @@ namespace ET
 		private UnityEngine.UI.Text m_E_SkillInputTextText = null;
 		private UnityEngine.UI.Image m_E_SkillNumberBaseSpriteImage = null;
 		private UnityEngine.UI.Text m_E_SkillNumberTextText = null;
-		private UnityEngine.UI.Image m_E_SKillButtonImage = null;
+		private UnityEngine.UI.Button m_E_SKillButton = null;
+		private UnityEngine.UI.Image m_E_SKillImage = null;
 		public Transform uiTransform = null;
-	}
+        public int PlayerSkillId;
+        public int ChargeTime;
+    }
 }

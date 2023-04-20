@@ -98,5 +98,6 @@ namespace ET
 		 public const ushort C2G_ContinueGame = 10095;
 		 public const ushort G2C_ContinueGame = 10096;
 		 public const ushort G2C_UpdateLevelData = 10097;
+		 public const ushort C2M_AdjustForm = 10098;
 	}
 }

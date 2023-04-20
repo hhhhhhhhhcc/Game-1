@@ -806,6 +806,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_AttackIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AttackIconImage == null )
+     			{
+		    		this.m_E_AttackIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties1/E_AttackIcon");
+     			}
+     			return this.m_E_AttackIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_TowerProperties2Image
      	{
      		get
@@ -837,6 +854,23 @@ namespace ET
 		    		this.m_E_TowerProperties2NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties2/E_TowerProperties2Number");
      			}
      			return this.m_E_TowerProperties2NumberText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_AttackSpeedIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AttackSpeedIconImage == null )
+     			{
+		    		this.m_E_AttackSpeedIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties2/E_AttackSpeedIcon");
+     			}
+     			return this.m_E_AttackSpeedIconImage;
      		}
      	}
 
@@ -874,6 +908,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_RangeIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RangeIconImage == null )
+     			{
+		    		this.m_E_RangeIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties3/E_RangeIcon");
+     			}
+     			return this.m_E_RangeIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_TowerProperties4Image
      	{
      		get
@@ -905,6 +956,23 @@ namespace ET
 		    		this.m_E_TowerProperties4NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties4/E_TowerProperties4Number");
      			}
      			return this.m_E_TowerProperties4NumberText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_AttackMethodIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_AttackMethodIconImage == null )
+     			{
+		    		this.m_E_AttackMethodIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerInfoBase/E_TowerPropertiesAll/E_TowerProperties4/E_AttackMethodIcon");
+     			}
+     			return this.m_E_AttackMethodIconImage;
      		}
      	}
 
@@ -2064,6 +2132,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_BloodVolumeIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_BloodVolumeIconImage == null )
+     			{
+		    		this.m_E_BloodVolumeIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties1/E_BloodVolumeIcon");
+     			}
+     			return this.m_E_BloodVolumeIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_MonsterProperties2Image
      	{
      		get
@@ -2095,6 +2180,23 @@ namespace ET
 		    		this.m_E_MonsterProperties2NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties2/E_MonsterProperties2Number");
      			}
      			return this.m_E_MonsterProperties2NumberText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_MonsterAttackIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterAttackIconImage == null )
+     			{
+		    		this.m_E_MonsterAttackIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties2/E_MonsterAttackIcon");
+     			}
+     			return this.m_E_MonsterAttackIconImage;
      		}
      	}
 
@@ -2132,6 +2234,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_MagicalDefenseIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MagicalDefenseIconImage == null )
+     			{
+		    		this.m_E_MagicalDefenseIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties3/E_MagicalDefenseIcon");
+     			}
+     			return this.m_E_MagicalDefenseIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_MonsterProperties4Image
      	{
      		get
@@ -2163,6 +2282,23 @@ namespace ET
 		    		this.m_E_MonsterProperties4NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties4/E_MonsterProperties4Number");
      			}
      			return this.m_E_MonsterProperties4NumberText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_PhysicalDefenseIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PhysicalDefenseIconImage == null )
+     			{
+		    		this.m_E_PhysicalDefenseIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties4/E_PhysicalDefenseIcon");
+     			}
+     			return this.m_E_PhysicalDefenseIconImage;
      		}
      	}
 
@@ -2200,6 +2336,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_MonsterSpeedIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterSpeedIconImage == null )
+     			{
+		    		this.m_E_MonsterSpeedIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties5/E_MonsterSpeedIcon");
+     			}
+     			return this.m_E_MonsterSpeedIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_MonsterProperties6Image
      	{
      		get
@@ -2231,6 +2384,23 @@ namespace ET
 		    		this.m_E_MonsterProperties6NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties6/E_MonsterProperties6Number");
      			}
      			return this.m_E_MonsterProperties6NumberText;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_HarmImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_HarmImage == null )
+     			{
+		    		this.m_E_HarmImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties6/E_MonsterProperties6Number/E_Harm");
+     			}
+     			return this.m_E_HarmImage;
      		}
      	}
 
@@ -2283,12 +2453,16 @@ namespace ET
 			this.m_E_TowerPropertiesAllImage = null;
 			this.m_E_TowerProperties1Image = null;
 			this.m_E_TowerProperties1NumberText = null;
+			this.m_E_AttackIconImage = null;
 			this.m_E_TowerProperties2Image = null;
 			this.m_E_TowerProperties2NumberText = null;
+			this.m_E_AttackSpeedIconImage = null;
 			this.m_E_TowerProperties3Image = null;
 			this.m_E_TowerProperties3NumberText = null;
+			this.m_E_RangeIconImage = null;
 			this.m_E_TowerProperties4Image = null;
 			this.m_E_TowerProperties4NumberText = null;
+			this.m_E_AttackMethodIconImage = null;
 			this.m_E_TowerTalentBaseImage = null;
 			this.m_E_TowerTalent1BaseImage = null;
 			this.m_E_TowerTalentLevel1Image = null;
@@ -2357,16 +2531,22 @@ namespace ET
 			this.m_E_MonsterPropertiesAllImage = null;
 			this.m_E_MonsterProperties1Image = null;
 			this.m_E_MonsterProperties1NumberText = null;
+			this.m_E_BloodVolumeIconImage = null;
 			this.m_E_MonsterProperties2Image = null;
 			this.m_E_MonsterProperties2NumberText = null;
+			this.m_E_MonsterAttackIconImage = null;
 			this.m_E_MonsterProperties3Image = null;
 			this.m_E_MonsterProperties3NumberText = null;
+			this.m_E_MagicalDefenseIconImage = null;
 			this.m_E_MonsterProperties4Image = null;
 			this.m_E_MonsterProperties4NumberText = null;
+			this.m_E_PhysicalDefenseIconImage = null;
 			this.m_E_MonsterProperties5Image = null;
 			this.m_E_MonsterProperties5NumberText = null;
+			this.m_E_MonsterSpeedIconImage = null;
 			this.m_E_MonsterProperties6Image = null;
 			this.m_E_MonsterProperties6NumberText = null;
+			this.m_E_HarmImage = null;
 			this.uiTransform = null;
 		}
 
@@ -2417,12 +2597,16 @@ namespace ET
 		private UnityEngine.UI.Image m_E_TowerPropertiesAllImage = null;
 		private UnityEngine.UI.Image m_E_TowerProperties1Image = null;
 		private UnityEngine.UI.Text m_E_TowerProperties1NumberText = null;
+		private UnityEngine.UI.Image m_E_AttackIconImage = null;
 		private UnityEngine.UI.Image m_E_TowerProperties2Image = null;
 		private UnityEngine.UI.Text m_E_TowerProperties2NumberText = null;
+		private UnityEngine.UI.Image m_E_AttackSpeedIconImage = null;
 		private UnityEngine.UI.Image m_E_TowerProperties3Image = null;
 		private UnityEngine.UI.Text m_E_TowerProperties3NumberText = null;
+		private UnityEngine.UI.Image m_E_RangeIconImage = null;
 		private UnityEngine.UI.Image m_E_TowerProperties4Image = null;
 		private UnityEngine.UI.Text m_E_TowerProperties4NumberText = null;
+		private UnityEngine.UI.Image m_E_AttackMethodIconImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentBaseImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalent1BaseImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1Image = null;
@@ -2491,16 +2675,22 @@ namespace ET
 		private UnityEngine.UI.Image m_E_MonsterPropertiesAllImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties1Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties1NumberText = null;
+		private UnityEngine.UI.Image m_E_BloodVolumeIconImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties2Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties2NumberText = null;
+		private UnityEngine.UI.Image m_E_MonsterAttackIconImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties3Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties3NumberText = null;
+		private UnityEngine.UI.Image m_E_MagicalDefenseIconImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties4Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties4NumberText = null;
+		private UnityEngine.UI.Image m_E_PhysicalDefenseIconImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties5Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties5NumberText = null;
+		private UnityEngine.UI.Image m_E_MonsterSpeedIconImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties6Image = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties6NumberText = null;
+		private UnityEngine.UI.Image m_E_HarmImage = null;
 		public Transform uiTransform = null;
 	}
 }

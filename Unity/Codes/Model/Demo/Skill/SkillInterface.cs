@@ -28,26 +28,8 @@
     { 
 
     }
-    public interface PlayerLogic//玩家技能(有持续时间的上这个接口)
-    {
-
-    }
     public interface PlayerAfterKillCoin//全局杀怪获得金币调用这个接口
     {
 
     }
-    public interface PlayerInitTowerSkill//玩家技能用到塔 传塔的参数
-    {
-
-    }
-    public interface PlayerInitPositionSkill//玩家技能用到位置 传位置参数
-    {
-
-    }
-    public interface PlayerInitZoneSkill//玩家技能  用到队伍传递队伍参数
-    {
-
-    }
-
-
 }

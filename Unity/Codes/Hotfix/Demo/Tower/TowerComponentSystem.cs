@@ -16,13 +16,9 @@
         {
         }
     }
-
+    [FriendClass(typeof(TowerComponent))]
     public static class TowerComponentSystem
     {
-        public static void Add(this TowerComponent self, Tower tower)
-        {
-        }
-
         public static Tower Get(this TowerComponent self, long id)
         {
             Tower tower = self.GetChild<Tower>(id);

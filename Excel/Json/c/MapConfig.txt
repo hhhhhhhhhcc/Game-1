@@ -1,4 +1,4 @@
 {"list":[
-{"_t":"MapConfig","_id":1,"MapName":"Map1","RoadNumber":2,"MaxVisualX":2520,"MaxVisualY":1080,"PosX":[-573,-577,-190,-89,118,427,127,624],"PosY":[-310,-21,-45,-375,-166,93,290,300],"WaveInfoX":[-648,38],"WaveInfoY":[-438,-443],"ReleaseX":[0],"ReleaseY":[0]},
-{"_t":"MapConfig","_id":1001,"MapName":"Map1001","RoadNumber":2,"MaxVisualX":1920,"MaxVisualY":1080,"PosX":[-100,-100,-350,-400,-600,-650,100,100,350,400,600,650],"PosY":[250,100,150,-133,-150,-350,250,100,150,-133,-150,-350],"WaveInfoX":[-647,647],"WaveInfoY":[400,400],"ReleaseX":[-480,480],"ReleaseY":[413,413]},
+{"_t":"MapConfig","_id":1,"MapName":"Map1","RoadNumber":2,"MaxVisualX":2520,"MaxVisualY":1080,"PosX":[-573,-577,-190,-89,118,427,127,624],"PosY":[-310,-21,-45,-375,-166,93,290,300],"WaveInfoX":[-648,38],"WaveInfoY":[-438,-443],"ReleaseX":[0],"ReleaseY":[0],"ReleaseZone":[]},
+{"_t":"MapConfig","_id":1001,"MapName":"Map1001","RoadNumber":6,"MaxVisualX":2520,"MaxVisualY":1080,"PosX":[-807,-476,-827,-398,-463,-109,109,463,398,827,476,807],"PosY":[220,220,-55,-59,-250,-299,-299,-250,-59,-55,220,220],"WaveInfoX":[-481,-1039,1039,481],"WaveInfoY":[400,206,206,400],"ReleaseX":[-628,-1085,1085,628,-183,183],"ReleaseY":[426,75,75,426,257,257],"ReleaseZone":[2,2,1,1,2,1]},
 ]}

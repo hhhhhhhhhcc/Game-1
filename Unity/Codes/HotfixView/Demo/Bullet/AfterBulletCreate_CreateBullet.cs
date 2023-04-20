@@ -5,6 +5,7 @@ namespace ET
     [FriendClass(typeof(GlobalComponent))]
     [FriendClass(typeof(Bullet))]
     [FriendClass(typeof(BulletNavComponent))]
+    [FriendClass(typeof(TowerChargeComponent))]
     public class AfterBulletCreate_CreateBullet : AEventAsync<EventType.AfterUnitCreateBullet>
     {
         protected override async ETTask Run(EventType.AfterUnitCreateBullet args)
@@ -19,17 +20,16 @@ namespace ET
             args.Bullet.GetComponent<GameObjectComponent>().SpriteRender = go.GetComponent<SpriteRenderer>();
             args.Bullet.AddComponent<AnimatorComponent>();
 
-            float px = args.Tower.Position.x;
-            float py = args.Tower.Position.y;
+            Vector3 attackpoint = args.Tower.GetComponent<TowerChargeComponent>().AttackPoint.transform.position;
 
-            go.transform.position = new Vector3(px, py, 0);
+            go.transform.position = attackpoint;
 
             args.Bullet.Position = go.transform.position;
             args.Bullet.LogicPos = go.transform.position;
 
-            args.Bullet.Position = new Vector3(px, py, 0);//子弹初始位置同步塔的位置
-            args.Bullet.LogicPos = new Vector3(px, py, 0);
-            
+            args.Bullet.Position = attackpoint;//子弹初始位置同步塔的位置
+            args.Bullet.LogicPos = attackpoint;
+            await ETTask.CompletedTask;
         }
 
     }

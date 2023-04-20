@@ -7,7 +7,6 @@ namespace ET
     {
         public override void Awake(CannonBallShootNormalSkill self)
         {
-            self.AttackInterval = self.GetParent<Tower>().AttackInterval;
             self.AttackIntervalTimer = 0;
             self.PrefabName = "Bullet2";
             self.FlySpeed = 5;
@@ -43,7 +42,7 @@ namespace ET
                 self.RemainAttackNumber = 0;
                 self.RemainAttackLogic = 0;
             }
-            if (self.AttackIntervalTimer >= self.AttackInterval)
+            if (self.AttackIntervalTimer >= self.GetParent<Tower>().AttackInterval)
             {
                 if (attacktargetlist.Count > 0)
                 {

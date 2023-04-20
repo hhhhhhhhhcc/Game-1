@@ -90,6 +90,9 @@ namespace ET
 		/// <summary>对应技能Id</summary>
 		[ProtoMember(5)]
 		public int SkillId { get; set; }
+		/// <summary>美术资源</summary>
+		[ProtoMember(6)]
+		public string ResourceCode { get; set; }
 
 	}
 }

@@ -15,7 +15,7 @@ namespace ET
         public List<ESButton_CreateTower> AllTowers = new List<ESButton_CreateTower>();
         public List<ESButton_CreateTower> CurrentTowers = new List<ESButton_CreateTower>();
         public int CurrentSelectMonster;
-        public bool CurrentSkillState;
-
+        public int CurrentSelectPlayerSkill;
+        public long UnitInfoId;
     }
 }

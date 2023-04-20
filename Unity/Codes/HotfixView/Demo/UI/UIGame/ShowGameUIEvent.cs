@@ -29,7 +29,7 @@ namespace ET
             //args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().ShowWindow();
             if (numeric.GetAsInt(NumericType.IsStartGame) == 1)//加载游戏数据
             {
-                args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().DisReadyAndShowWindow();
+                args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().HidePrepare();
             }
             else//还未进入游戏
             {

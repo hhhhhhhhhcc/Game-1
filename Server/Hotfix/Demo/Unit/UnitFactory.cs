@@ -22,6 +22,7 @@ namespace ET
                         unit.Position = new Vector3(-10, 0, -10);*/
                         
                         NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+                        numericComponent.SetNoEvent(NumericType.TowerId1, 3001);
                         unit.AddComponent<BagComponent>();
                         unit.AddComponent<LevelComponent>();
                         FightItemComponent fightitemcomponent = unit.AddComponent<FightItemComponent>();

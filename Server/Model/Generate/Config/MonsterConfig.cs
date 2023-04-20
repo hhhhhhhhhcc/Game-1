@@ -99,6 +99,9 @@ namespace ET
 		/// <summary>购买所需金币</summary>
 		[ProtoMember(8)]
 		public int NeedMoney { get; set; }
+		/// <summary>对怪造成的伤害</summary>
+		[ProtoMember(9)]
+		public int AttackToMonster { get; set; }
 
 	}
 }

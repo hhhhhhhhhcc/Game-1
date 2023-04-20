@@ -10,20 +10,31 @@ namespace ET
         public static void RegisterUIEvent(this DlgMainHome self)
         {
             //self.View.EButton_UpButton.AddListenerAsync(() => { return self.OnClickUp(); });
-           /* self.View.ES_shuzhi1.RegisterEvent(NumericType.Power);
-            self.View.ES_shuzhi2.RegisterEvent(NumericType.PhysicalStrength);
-            self.View.ES_shuzhi3.RegisterEvent(NumericType.Agile);
-            self.View.ES_shuzhi4.RegisterEvent(NumericType.Spirit);*/
+            /* self.View.ES_shuzhi1.RegisterEvent(NumericType.Power);
+             self.View.ES_shuzhi2.RegisterEvent(NumericType.PhysicalStrength);
+             self.View.ES_shuzhi3.RegisterEvent(NumericType.Agile);
+             self.View.ES_shuzhi4.RegisterEvent(NumericType.Spirit);*/
             self.View.EButton_matchButton.AddListenerAsync(() => { return self.EnterMatch(); });
+            //self.View.EButton_matchButton.AddListener(self.OpenForm);
             //self.View.EButton_GetItemButton.AddListener(self.GetItem);
             //self.View.EButton_ReduceItemButton.AddListener(self.ReduceItem);
-           /*self.View.EButton_SingeModeButton.AddListener(self.EnterSingleMode);*/
+            /*self.View.EButton_SingeModeButton.AddListener(self.EnterSingleMode);*/
             self.View.EButton_SingeModeButton.AddListener(self.Select);
             self.View.E_OpenFightItemButton.AddListener(self.OpenFightItem);
+            self.View.EButton_QuitButton.AddListener(self.QuitGame);
         }
         public static void EnterSingleMode(this DlgMainHome self)
         {
             MatchHelper.EnterSingleMode(self.ZoneScene(),1).Coroutine();
+        }
+
+        public static void QuitGame(this DlgMainHome self)
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
         }
 
         public static void Select(this DlgMainHome self)
@@ -45,6 +56,11 @@ namespace ET
         public static void ShowWindow(this DlgMainHome self, Entity contextData = null)
         {
             self.Refresh().Coroutine();
+        }
+
+        public static void OpenForm(this DlgMainHome self)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Form);
         }
         public static async ETTask EnterMatch(this DlgMainHome self)
         {

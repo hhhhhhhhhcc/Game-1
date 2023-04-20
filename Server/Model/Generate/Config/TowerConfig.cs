@@ -105,9 +105,12 @@ namespace ET
 		/// <summary>简介</summary>
 		[ProtoMember(10)]
 		public string Introduction { get; set; }
-		/// <summary>攻击类型</summary>
+		/// <summary>攻击类型（打天空地面）</summary>
 		[ProtoMember(11)]
 		public int Type { get; set; }
+		/// <summary>是否为范围攻击(0不是，1是)</summary>
+		[ProtoMember(12)]
+		public int IsRangeAttack { get; set; }
 
 	}
 }

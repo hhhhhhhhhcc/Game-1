@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 namespace ET
 {
     [FriendClass(typeof(GlobalComponent))]
+    [FriendClass(typeof(Tower))]
     public class AfterTowerCreate_CreateTower : AEventAsync<EventType.AfterUnitCreateTower>
     {
         protected override async ETTask Run(EventType.AfterUnitCreateTower args)
@@ -25,8 +26,10 @@ namespace ET
             args.Tower.AddComponent<GameObjectComponent>().GameObject = go;
             args.Tower.GetComponent<GameObjectComponent>().SpriteRender = go.GetComponent<SpriteRenderer>();
             args.Tower.AddComponent<AnimatorComponent>();
+            AnimatorHelper.Play(args.Tower, "0T1").Coroutine();
             args.Tower.AddComponent<TowerChargeComponent>();
             args.Tower.GetComponent<TowerChargeComponent>().JudgeChargeBar(args.TalentIds);
+
             await ETTask.CompletedTask;
         }
         

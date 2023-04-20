@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TowerSkill
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: bb6deeffa21e493468616b9794d2121d, type: 3}
+    - {fileID: 21300000, guid: 9240f88e4dcbde24882c64cae967e8de, type: 3}
+    - {fileID: 21300000, guid: b9eaebc2e5146bf49b426f06a17ecde4, type: 3}
+    - {fileID: 21300000, guid: 7ed77b2cb8c9fc64799b535337e03353, type: 3}
+    - {fileID: 21300000, guid: 11319f76a63552049a1f20a9695f8f3e, type: 3}
+    - {fileID: 21300000, guid: fbad498b5ed546648b3dbd24eea51718, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b9eaebc2e5146bf49b426f06a17ecde4, type: 3}
+  - {fileID: 21300000, guid: 11319f76a63552049a1f20a9695f8f3e, type: 3}
+  - {fileID: 21300000, guid: fbad498b5ed546648b3dbd24eea51718, type: 3}
+  - {fileID: 21300000, guid: 7ed77b2cb8c9fc64799b535337e03353, type: 3}
+  - {fileID: 21300000, guid: 9240f88e4dcbde24882c64cae967e8de, type: 3}
+  - {fileID: 21300000, guid: bb6deeffa21e493468616b9794d2121d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - skill3
+  - skill5
+  - skill6
+  - skill4
+  - skill2
+  - skill1
+  m_RenderDataMap: {}
+  m_Tag: TowerSkill
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

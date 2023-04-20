@@ -32,10 +32,11 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 21300000, guid: 868aeb498778dee4a8aedb7bbfca82fe, type: 3}
+    - {fileID: 21300000, guid: 144b4df2d1a3e0d4c98b2324952936ac, type: 3}
     - {fileID: 21300000, guid: 1547ffb23dcdb0a43a679a7e46aadb16, type: 3}
     - {fileID: 21300000, guid: 916d623108e9d7a40828b7bee94aed94, type: 3}
-    - {fileID: 21300000, guid: 144b4df2d1a3e0d4c98b2324952936ac, type: 3}
+    - {fileID: 21300000, guid: 20ededf235d9d2c4fb260516b3feab93, type: 3}
+    - {fileID: 21300000, guid: ea29067904ee13140b2051c344945ee7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -44,12 +45,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 916d623108e9d7a40828b7bee94aed94, type: 3}
   - {fileID: 21300000, guid: 1547ffb23dcdb0a43a679a7e46aadb16, type: 3}
   - {fileID: 21300000, guid: 144b4df2d1a3e0d4c98b2324952936ac, type: 3}
-  - {fileID: 21300000, guid: 868aeb498778dee4a8aedb7bbfca82fe, type: 3}
+  - {fileID: 21300000, guid: 20ededf235d9d2c4fb260516b3feab93, type: 3}
+  - {fileID: 21300000, guid: ea29067904ee13140b2051c344945ee7, type: 3}
   m_PackedSpriteNamesToIndex:
   - Tower31
   - Tower21
   - Tower41
   - Tower11
+  - Tower51
   m_RenderDataMap: {}
   m_Tag: Tower
   m_IsVariant: 0
