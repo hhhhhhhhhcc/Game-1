@@ -51,7 +51,7 @@ namespace ET
             self.ClosePlayerSkillInfo();
             self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SetSelectPlayerSkill(self.PlayerSkillId);
         }
-        public static void InitPlayerSkillInfo(this ES_Skill slef)
+        public static void InitPlayerSkillInfo(this ES_Skill self)
 		{
 
 		}

@@ -34,6 +34,8 @@ namespace ET
 		public int CurrentMonsterPage;
 
 		public int TowerConfigLevel;
+        public int TowerTalentDescriptionId = 0;
+		public bool TowerTalentDescriptionTrigger = false;
 
     }
 }

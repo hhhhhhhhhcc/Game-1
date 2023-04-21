@@ -212,7 +212,9 @@ namespace ET
         public struct TowerChargeBar
         {
             public Tower tower;
+            public TowerState towerstate;
             public float SizeX;
+
         }
         public struct LogicMonsterPos
         {
@@ -239,6 +241,10 @@ namespace ET
             public Scene currentscene;
             public Entity entity;
             public string AnimatorName;
+        }
+        public struct ResetTowerCharge
+        {
+            public Tower tower;
         }
         public struct ShowMapUI
         {

@@ -29,7 +29,7 @@ namespace ET
                 new List<Vector3[]>
                 {
                     new Vector3[]{
-                        new Vector3(-7.7f,-5.2f,0),
+                        new Vector3(-8f,-5.2f,0),
                         new Vector3(-7.6f,-3.25f,0),
                         new Vector3(-7.0f,-2.0f,0),
                         new Vector3(-4.5f,-1.5f,0),
@@ -44,7 +44,7 @@ namespace ET
                 },
                     new Vector3[]
                     {
-                        new Vector3(1.8f,-5.35f,0),
+                        new Vector3(1.5f,-5.35f,0),
                         new Vector3(1.5f,-3.5f,0),
                         new Vector3(0.15f,-2.95f,0),
                         new Vector3(-0.3f,-1.8f,0),

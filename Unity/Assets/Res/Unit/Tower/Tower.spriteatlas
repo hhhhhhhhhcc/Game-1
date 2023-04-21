@@ -24,11 +24,11 @@ SpriteAtlas:
     platformSettings: []
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -36,23 +36,62 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 1547ffb23dcdb0a43a679a7e46aadb16, type: 3}
     - {fileID: 21300000, guid: 916d623108e9d7a40828b7bee94aed94, type: 3}
     - {fileID: 21300000, guid: 20ededf235d9d2c4fb260516b3feab93, type: 3}
-    - {fileID: 21300000, guid: ea29067904ee13140b2051c344945ee7, type: 3}
+    - {fileID: 21300000, guid: 40f5a68f275330e49a25b37f3354ee78, type: 3}
+    - {fileID: 21300000, guid: e7723aeba183a154494655e58dc95d2e, type: 3}
+    - {fileID: 21300000, guid: 4a9fb9747146a524d9066bd6bd5b5414, type: 3}
+    - {fileID: 21300000, guid: f7c057656d54ce442ad298de27ce2eaa, type: 3}
+    - {fileID: 21300000, guid: be57a9c74be916248bd4acfee0f2575b, type: 3}
+    - {fileID: 21300000, guid: ba6a16d41f3b2fc49b7b05d133d25db4, type: 3}
+    - {fileID: 21300000, guid: 4d50f0e33e8cf96449ffe7d056f31d07, type: 3}
+    - {fileID: 21300000, guid: 5b67ce20117a3e447849311717005da5, type: 3}
+    - {fileID: 21300000, guid: 384fa69b0b2b01e4794044c72ee25baf, type: 3}
+    - {fileID: 21300000, guid: 00b4135dcd402ba42aa0fa0c29543035, type: 3}
+    - {fileID: 21300000, guid: b6b5b1348a4bf9c44b3abe852993ebc0, type: 3}
+    - {fileID: 21300000, guid: cc74aab7c4a5bc14faa93591615892b0, type: 3}
+    - {fileID: 21300000, guid: 1bb0a6038eedd92498791214089481f2, type: 3}
+    - {fileID: 21300000, guid: af26227b8ab58754093d500a9766b901, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 5b67ce20117a3e447849311717005da5, type: 3}
   - {fileID: 21300000, guid: 916d623108e9d7a40828b7bee94aed94, type: 3}
   - {fileID: 21300000, guid: 1547ffb23dcdb0a43a679a7e46aadb16, type: 3}
   - {fileID: 21300000, guid: 144b4df2d1a3e0d4c98b2324952936ac, type: 3}
   - {fileID: 21300000, guid: 20ededf235d9d2c4fb260516b3feab93, type: 3}
-  - {fileID: 21300000, guid: ea29067904ee13140b2051c344945ee7, type: 3}
+  - {fileID: 21300000, guid: 1bb0a6038eedd92498791214089481f2, type: 3}
+  - {fileID: 21300000, guid: 4d50f0e33e8cf96449ffe7d056f31d07, type: 3}
+  - {fileID: 21300000, guid: b6b5b1348a4bf9c44b3abe852993ebc0, type: 3}
+  - {fileID: 21300000, guid: 4a9fb9747146a524d9066bd6bd5b5414, type: 3}
+  - {fileID: 21300000, guid: ba6a16d41f3b2fc49b7b05d133d25db4, type: 3}
+  - {fileID: 21300000, guid: f7c057656d54ce442ad298de27ce2eaa, type: 3}
+  - {fileID: 21300000, guid: cc74aab7c4a5bc14faa93591615892b0, type: 3}
+  - {fileID: 21300000, guid: be57a9c74be916248bd4acfee0f2575b, type: 3}
+  - {fileID: 21300000, guid: af26227b8ab58754093d500a9766b901, type: 3}
+  - {fileID: 21300000, guid: 384fa69b0b2b01e4794044c72ee25baf, type: 3}
+  - {fileID: 21300000, guid: e7723aeba183a154494655e58dc95d2e, type: 3}
+  - {fileID: 21300000, guid: 00b4135dcd402ba42aa0fa0c29543035, type: 3}
+  - {fileID: 21300000, guid: 40f5a68f275330e49a25b37f3354ee78, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Tower31
+  - Tower13Bg
+  - Tower31Bg
+  - Tower21Bg
+  - Tower41Bg
+  - Tower11Bg
+  - Tower42Bg
+  - Tower12Bg
+  - Tower32Bg
   - Tower21
-  - Tower41
-  - Tower11
   - Tower51
+  - Tower31
+  - Tower33Bg
+  - Tower41
+  - Tower43Bg
+  - Tower22Bg
+  - Tower11
+  - Tower23Bg
+  - Tower51Bg
   m_RenderDataMap: {}
   m_Tag: Tower
   m_IsVariant: 0

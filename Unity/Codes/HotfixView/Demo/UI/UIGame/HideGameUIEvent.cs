@@ -12,11 +12,13 @@ namespace ET
             {
                 args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_Login);
             }
-            if (args.ZoneScene.GetComponent<UIComponent>().IsWindowVisible(WindowID.WindowID_GameUI))
+            args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_MainHome);
+            if (args.ZoneScene.GetComponent<UIComponent>().IsWindowVisible(WindowID.WindowID_GameUI))//如果存在
             {
                 args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_GameUI);
+                args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Select);
             }
-            args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_MainHome);
+     
             GlobalComponent.Instance.MainCamera.transform.position = new UnityEngine.Vector3(0, 0, -35.2f);
 
             //展示地图

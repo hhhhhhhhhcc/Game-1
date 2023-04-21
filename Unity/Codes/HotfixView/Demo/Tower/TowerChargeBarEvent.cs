@@ -9,7 +9,7 @@ namespace ET
             TowerChargeComponent towerChargeComponent = a.tower.GetComponent<TowerChargeComponent>();
             if (a.SizeX < 0) a.SizeX = 0;
             if (a.SizeX > 1) a.SizeX = 1;
-            towerChargeComponent.SetChargeBar(a.SizeX);
+            towerChargeComponent.SetChargeBar(a.SizeX,a.towerstate);
             await ETTask.CompletedTask;
         }
     }

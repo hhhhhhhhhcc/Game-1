@@ -36,19 +36,31 @@ SpriteAtlas:
     - {fileID: 21300000, guid: b6db62080526d2541a1d2a73efb91cfa, type: 3}
     - {fileID: 21300000, guid: a3546682edb5f604fa4dc0b1a4851f44, type: 3}
     - {fileID: 21300000, guid: c1499d17d50f32646b0b28fda21565bf, type: 3}
+    - {fileID: 21300000, guid: 61de074774472504fae05a7e397a62a2, type: 3}
+    - {fileID: 21300000, guid: 2cdab316511b757448c56332b0431176, type: 3}
+    - {fileID: 21300000, guid: 8f6e7a422991e8549a4b9ba3ad7ed481, type: 3}
+    - {fileID: 21300000, guid: 5701591978c9ace4a9fc0fc77b981597, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 8f6e7a422991e8549a4b9ba3ad7ed481, type: 3}
   - {fileID: 21300000, guid: a3546682edb5f604fa4dc0b1a4851f44, type: 3}
+  - {fileID: 21300000, guid: 2cdab316511b757448c56332b0431176, type: 3}
   - {fileID: 21300000, guid: c1499d17d50f32646b0b28fda21565bf, type: 3}
+  - {fileID: 21300000, guid: 61de074774472504fae05a7e397a62a2, type: 3}
   - {fileID: 21300000, guid: b6db62080526d2541a1d2a73efb91cfa, type: 3}
+  - {fileID: 21300000, guid: 5701591978c9ace4a9fc0fc77b981597, type: 3}
   - {fileID: 21300000, guid: 87485749144f5594c92d6f41961088b9, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Monster3Bg
   - Monster2
+  - Monster2Bg
   - Monster4
+  - Monster1Bg
   - Monster1
+  - Monster4Bg
   - Monster3
   m_RenderDataMap: {}
   m_Tag: monster

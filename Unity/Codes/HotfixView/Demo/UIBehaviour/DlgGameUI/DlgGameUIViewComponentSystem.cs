@@ -151,9 +151,9 @@ namespace ET
                 self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().InputToAction(4);
             }
             self.E_RangeSkillImage.transform.localPosition = (Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2, 0)) * Screen.currentResolution.width / Screen.width;
+            int playerskillId = self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().GetCurrentPlayerSkillId();
             if (Input.GetMouseButtonUp(0))
             {
-                int playerskillId = self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().GetCurrentPlayerSkillId();
                 if (playerskillId == 0)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(GlobalComponent.Instance.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -205,11 +205,13 @@ namespace ET
                         }
                     }
                 }
-                else
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (playerskillId != 0)
                 {
                     PlayerSkillConfig config = PlayerSkillConfigCategory.Instance.Get(playerskillId);
                     int playerskilltype = config.ReleaseType;
-
                     if (playerskilltype == 2 || playerskilltype == 3)
                     {
                         RaycastHit2D hit = Physics2D.Raycast(GlobalComponent.Instance.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -221,7 +223,7 @@ namespace ET
                             }
                         }
                     }
-                }
+                }         
             }
         }
     }

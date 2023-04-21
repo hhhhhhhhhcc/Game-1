@@ -150,7 +150,7 @@ namespace ET
             }
             int newconfigId = tower.ConfigId + 1;
             TowerConfig towerconfig = TowerConfigCategory.Instance.Get(newconfigId);
-            tower.UpFrame = 23;
+            tower.UpFrame = 12;
             tower.ConfigId = newconfigId;
             tower.Config = towerconfig;
             tower.AttackRange = (float)(towerconfig.Range / 1000.0f);
@@ -181,7 +181,9 @@ namespace ET
             //播放升级动画
             int levelId = (tower.ConfigId - 1) % 3 + 1;
             string animatorname = (levelId - 1).ToString() + "T" + levelId.ToString();
+            Game.EventSystem.PublishAsync(new EventType.ResetTowerCharge() { tower = tower }).Coroutine();
             Game.EventSystem.PublishAsync(new EventType.ChangeUnitAnimatorState() { currentscene = currentscene, entity = tower, AnimatorName = animatorname }).Coroutine();
+            
         }
         public static async ETTask DeleteTower(Scene currentscene,long TowerId)
 		{

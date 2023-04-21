@@ -29,7 +29,7 @@ namespace ET
             {
                 self.InfoTimer = 0;
             }
-            if(self.InfoTimer >= 1)
+            if(self.InfoTimer >= 0.2f)
             {
                 self.EMonsterInfoBaseSpriteImage.gameObject.SetActive(true);
             }
@@ -50,15 +50,19 @@ namespace ET
     {
         public static void RegisterEvent(this ESCreateMonster self, int MonsterConfigId)
         {
-            if(MonsterConfigId != 0)
+            self.MonsterConfigId = MonsterConfigId;
+            if (MonsterConfigId != 0)
             {
-                self.MonsterConfigId = MonsterConfigId;
                 self.InitMonsterInfo();
                 self.ECreateMonsterButtonButton.AddListener(() =>
                 {
                     self.SelectMonster();
                 });
                 self.RegisterMonsterInfo();
+            }
+            else
+            {
+                self.uiTransform.gameObject.SetActive(false);
             }
         }
         public static void InitMonsterInfo(this ESCreateMonster self)
@@ -68,7 +72,7 @@ namespace ET
             self.ECreateMonsterMoneyNumberTextText.SetText(monsterconfig.NeedMoney.ToString());
             FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monsterconfig.MonsterConfigId);
             self.EMonsterNameTextText.SetText(fightitemconfig.FightItemName);
-            self.EMonsterLvTextText.SetText("1");
+            //self.EMonsterLvTextText.SetText("1");
             self.ECreateMonsterButtonImage.sprite = IconHelper.LoadIconSprite("monster", fightitemconfig.ResourceCode);
             self.ECreateMonsterButtonImage.SetNativeSize();
             self.ECreateMonsterButtonImage.gameObject.SetActive(true);
@@ -84,19 +88,19 @@ namespace ET
             {
                 self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(false);
                 self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(false);
-                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 180);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 152);
             }
             if(PetSkills.Count == 1)
             {
                 self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(false);
                 self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(true);
-                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 330);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 302);
             }
             if(PetSkills.Count == 2)
             {
                 self.EMonsterSkillBaseSprite1Image.gameObject.SetActive(true);
                 self.EMonsterSkillBaseSprite2Image.gameObject.SetActive(true);
-                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 480);
+                self.EMonsterInfoBaseSpriteImage.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(308, 450);
             }
         }
         public static void RegisterMonsterInfo(this ESCreateMonster self)

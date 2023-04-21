@@ -5,7 +5,7 @@ namespace ET
 {
 	[ComponentOf(typeof(UIBaseWindow))]
 	[EnableMethod]
-	public  class DlgTalentUIViewComponent : Entity,IAwake,IDestroy 
+	public  class DlgTalentUIViewComponent : Entity,IAwake,IUpdate,IDestroy 
 	{
 		public UnityEngine.UI.Button E_BackBaseButton
      	{
@@ -1044,6 +1044,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_TowerTalentLevel1LockImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1LockImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel1LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1Lock");
+     			}
+     			return this.m_E_TowerTalentLevel1LockImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_TowerTalentLevel1LeftBaseImage
      	{
      		get
@@ -1092,6 +1109,74 @@ namespace ET
 		    		this.m_E_TowerTalentLevel1LeftImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1LeftBase/E_TowerTalentLevel1Left");
      			}
      			return this.m_E_TowerTalentLevel1LeftImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel1LeftEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1LeftEventTrigger == null )
+     			{
+		    		this.m_E_TowerTalentLevel1LeftEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1LeftBase/E_TowerTalentLevel1Left");
+     			}
+     			return this.m_E_TowerTalentLevel1LeftEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel1LeftDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1LeftDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel1LeftDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1LeftBase/E_TowerTalentLevel1Left/E_TowerTalentLevel1LeftDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel1LeftDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel1LeftDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1LeftDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel1LeftDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1LeftBase/E_TowerTalentLevel1Left/E_TowerTalentLevel1LeftDescriptionBase/E_TowerTalentLevel1LeftDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel1LeftDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel1LeftDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1LeftDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel1LeftDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1LeftBase/E_TowerTalentLevel1Left/E_TowerTalentLevel1LeftDescriptionBase/E_TowerTalentLevel1LeftDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel1LeftDescriptionTextText;
      		}
      	}
 
@@ -1163,7 +1248,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image E_TowerTalentLevel1LockImage
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel1RightEventTrigger
      	{
      		get
      		{
@@ -1172,11 +1257,62 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_TowerTalentLevel1LockImage == null )
+     			if( this.m_E_TowerTalentLevel1RightEventTrigger == null )
      			{
-		    		this.m_E_TowerTalentLevel1LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1Lock");
+		    		this.m_E_TowerTalentLevel1RightEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1RightBase/E_TowerTalentLevel1Right");
      			}
-     			return this.m_E_TowerTalentLevel1LockImage;
+     			return this.m_E_TowerTalentLevel1RightEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel1RightDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1RightDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel1RightDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1RightBase/E_TowerTalentLevel1Right/E_TowerTalentLevel1RightDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel1RightDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel1RightDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1RightDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel1RightDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1RightBase/E_TowerTalentLevel1Right/E_TowerTalentLevel1RightDescriptionBase/E_TowerTalentLevel1RightDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel1RightDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel1RightDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel1RightDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel1RightDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent1Base/E_TowerTalentLevel1RightBase/E_TowerTalentLevel1Right/E_TowerTalentLevel1RightDescriptionBase/E_TowerTalentLevel1RightDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel1RightDescriptionTextText;
      		}
      	}
 
@@ -1231,6 +1367,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_TowerTalentLevel2LockImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2LockImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel2LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2Lock");
+     			}
+     			return this.m_E_TowerTalentLevel2LockImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_TowerTalentLevel2LeftBaseImage
      	{
      		get
@@ -1279,6 +1432,74 @@ namespace ET
 		    		this.m_E_TowerTalentLevel2LeftImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2LeftBase/E_TowerTalentLevel2Left");
      			}
      			return this.m_E_TowerTalentLevel2LeftImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel2LeftEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2LeftEventTrigger == null )
+     			{
+		    		this.m_E_TowerTalentLevel2LeftEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2LeftBase/E_TowerTalentLevel2Left");
+     			}
+     			return this.m_E_TowerTalentLevel2LeftEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel2LeftDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2LeftDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel2LeftDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2LeftBase/E_TowerTalentLevel2Left/E_TowerTalentLevel2LeftDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel2LeftDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel2LeftDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2LeftDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel2LeftDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2LeftBase/E_TowerTalentLevel2Left/E_TowerTalentLevel2LeftDescriptionBase/E_TowerTalentLevel2LeftDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel2LeftDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel2LeftDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2LeftDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel2LeftDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2LeftBase/E_TowerTalentLevel2Left/E_TowerTalentLevel2LeftDescriptionBase/E_TowerTalentLevel2LeftDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel2LeftDescriptionTextText;
      		}
      	}
 
@@ -1350,7 +1571,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image E_TowerTalentLevel2LockImage
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel2RightEventTrigger
      	{
      		get
      		{
@@ -1359,11 +1580,62 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_TowerTalentLevel2LockImage == null )
+     			if( this.m_E_TowerTalentLevel2RightEventTrigger == null )
      			{
-		    		this.m_E_TowerTalentLevel2LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2Lock");
+		    		this.m_E_TowerTalentLevel2RightEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2RightBase/E_TowerTalentLevel2Right");
      			}
-     			return this.m_E_TowerTalentLevel2LockImage;
+     			return this.m_E_TowerTalentLevel2RightEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel2RightDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2RightDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel2RightDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2RightBase/E_TowerTalentLevel2Right/E_TowerTalentLevel2RightDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel2RightDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel2RightDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2RightDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel2RightDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2RightBase/E_TowerTalentLevel2Right/E_TowerTalentLevel2RightDescriptionBase/E_TowerTalentLevel2RightDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel2RightDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel2RightDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel2RightDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel2RightDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent2Base/E_TowerTalentLevel2RightBase/E_TowerTalentLevel2Right/E_TowerTalentLevel2RightDescriptionBase/E_TowerTalentLevel2RightDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel2RightDescriptionTextText;
      		}
      	}
 
@@ -1418,6 +1690,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_TowerTalentLevel3LockImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3LockImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel3LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3Lock");
+     			}
+     			return this.m_E_TowerTalentLevel3LockImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_TowerTalentLevel3LeftBaseImage
      	{
      		get
@@ -1466,6 +1755,74 @@ namespace ET
 		    		this.m_E_TowerTalentLevel3LeftImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3LeftBase/E_TowerTalentLevel3Left");
      			}
      			return this.m_E_TowerTalentLevel3LeftImage;
+     		}
+     	}
+
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel3LeftEventTrigger
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3LeftEventTrigger == null )
+     			{
+		    		this.m_E_TowerTalentLevel3LeftEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3LeftBase/E_TowerTalentLevel3Left");
+     			}
+     			return this.m_E_TowerTalentLevel3LeftEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel3LeftDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3LeftDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel3LeftDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3LeftBase/E_TowerTalentLevel3Left/E_TowerTalentLevel3LeftDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel3LeftDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel3LeftDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3LeftDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel3LeftDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3LeftBase/E_TowerTalentLevel3Left/E_TowerTalentLevel3LeftDescriptionBase/E_TowerTalentLevel3LeftDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel3LeftDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel3LeftDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3LeftDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel3LeftDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3LeftBase/E_TowerTalentLevel3Left/E_TowerTalentLevel3LeftDescriptionBase/E_TowerTalentLevel3LeftDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel3LeftDescriptionTextText;
      		}
      	}
 
@@ -1537,7 +1894,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image E_TowerTalentLevel3LockImage
+		public UnityEngine.EventSystems.EventTrigger E_TowerTalentLevel3RightEventTrigger
      	{
      		get
      		{
@@ -1546,11 +1903,62 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_TowerTalentLevel3LockImage == null )
+     			if( this.m_E_TowerTalentLevel3RightEventTrigger == null )
      			{
-		    		this.m_E_TowerTalentLevel3LockImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3Lock");
+		    		this.m_E_TowerTalentLevel3RightEventTrigger = UIFindHelper.FindDeepChild<UnityEngine.EventSystems.EventTrigger>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3RightBase/E_TowerTalentLevel3Right");
      			}
-     			return this.m_E_TowerTalentLevel3LockImage;
+     			return this.m_E_TowerTalentLevel3RightEventTrigger;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_TowerTalentLevel3RightDescriptionBaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3RightDescriptionBaseImage == null )
+     			{
+		    		this.m_E_TowerTalentLevel3RightDescriptionBaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3RightBase/E_TowerTalentLevel3Right/E_TowerTalentLevel3RightDescriptionBase");
+     			}
+     			return this.m_E_TowerTalentLevel3RightDescriptionBaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel3RightDescriptionTitleText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3RightDescriptionTitleText == null )
+     			{
+		    		this.m_E_TowerTalentLevel3RightDescriptionTitleText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3RightBase/E_TowerTalentLevel3Right/E_TowerTalentLevel3RightDescriptionBase/E_TowerTalentLevel3RightDescriptionTitle");
+     			}
+     			return this.m_E_TowerTalentLevel3RightDescriptionTitleText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_TowerTalentLevel3RightDescriptionTextText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_TowerTalentLevel3RightDescriptionTextText == null )
+     			{
+		    		this.m_E_TowerTalentLevel3RightDescriptionTextText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_TowerPart/E_TowerInfoTalentBase/E_TowerTalentBase/E_TowerTalent3Base/E_TowerTalentLevel3RightBase/E_TowerTalentLevel3Right/E_TowerTalentLevel3RightDescriptionBase/E_TowerTalentLevel3RightDescriptionText");
+     			}
+     			return this.m_E_TowerTalentLevel3RightDescriptionTextText;
      		}
      	}
 
@@ -2115,23 +2523,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_MonsterProperties1NumberText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MonsterProperties1NumberText == null )
-     			{
-		    		this.m_E_MonsterProperties1NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties1/E_MonsterProperties1Number");
-     			}
-     			return this.m_E_MonsterProperties1NumberText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_BloodVolumeIconImage
      	{
      		get
@@ -2146,6 +2537,23 @@ namespace ET
 		    		this.m_E_BloodVolumeIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties1/E_BloodVolumeIcon");
      			}
      			return this.m_E_BloodVolumeIconImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_MonsterProperties1NumberText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterProperties1NumberText == null )
+     			{
+		    		this.m_E_MonsterProperties1NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties1/E_MonsterProperties1Number");
+     			}
+     			return this.m_E_MonsterProperties1NumberText;
      		}
      	}
 
@@ -2166,23 +2574,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_MonsterProperties2NumberText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MonsterProperties2NumberText == null )
-     			{
-		    		this.m_E_MonsterProperties2NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties2/E_MonsterProperties2Number");
-     			}
-     			return this.m_E_MonsterProperties2NumberText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_MonsterAttackIconImage
      	{
      		get
@@ -2197,6 +2588,23 @@ namespace ET
 		    		this.m_E_MonsterAttackIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties2/E_MonsterAttackIcon");
      			}
      			return this.m_E_MonsterAttackIconImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_MonsterProperties2NumberText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterProperties2NumberText == null )
+     			{
+		    		this.m_E_MonsterProperties2NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties2/E_MonsterProperties2Number");
+     			}
+     			return this.m_E_MonsterProperties2NumberText;
      		}
      	}
 
@@ -2217,23 +2625,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_MonsterProperties3NumberText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MonsterProperties3NumberText == null )
-     			{
-		    		this.m_E_MonsterProperties3NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties3/E_MonsterProperties3Number");
-     			}
-     			return this.m_E_MonsterProperties3NumberText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_MagicalDefenseIconImage
      	{
      		get
@@ -2248,6 +2639,23 @@ namespace ET
 		    		this.m_E_MagicalDefenseIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties3/E_MagicalDefenseIcon");
      			}
      			return this.m_E_MagicalDefenseIconImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_MonsterProperties3NumberText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterProperties3NumberText == null )
+     			{
+		    		this.m_E_MonsterProperties3NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties3/E_MonsterProperties3Number");
+     			}
+     			return this.m_E_MonsterProperties3NumberText;
      		}
      	}
 
@@ -2268,23 +2676,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_MonsterProperties4NumberText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MonsterProperties4NumberText == null )
-     			{
-		    		this.m_E_MonsterProperties4NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties4/E_MonsterProperties4Number");
-     			}
-     			return this.m_E_MonsterProperties4NumberText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_PhysicalDefenseIconImage
      	{
      		get
@@ -2299,6 +2690,23 @@ namespace ET
 		    		this.m_E_PhysicalDefenseIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties4/E_PhysicalDefenseIcon");
      			}
      			return this.m_E_PhysicalDefenseIconImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_MonsterProperties4NumberText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterProperties4NumberText == null )
+     			{
+		    		this.m_E_MonsterProperties4NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties4/E_MonsterProperties4Number");
+     			}
+     			return this.m_E_MonsterProperties4NumberText;
      		}
      	}
 
@@ -2319,23 +2727,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_MonsterProperties5NumberText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MonsterProperties5NumberText == null )
-     			{
-		    		this.m_E_MonsterProperties5NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties5/E_MonsterProperties5Number");
-     			}
-     			return this.m_E_MonsterProperties5NumberText;
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_MonsterSpeedIconImage
      	{
      		get
@@ -2350,6 +2741,23 @@ namespace ET
 		    		this.m_E_MonsterSpeedIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties5/E_MonsterSpeedIcon");
      			}
      			return this.m_E_MonsterSpeedIconImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_MonsterProperties5NumberText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterProperties5NumberText == null )
+     			{
+		    		this.m_E_MonsterProperties5NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties5/E_MonsterProperties5Number");
+     			}
+     			return this.m_E_MonsterProperties5NumberText;
      		}
      	}
 
@@ -2370,6 +2778,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_MonsterBaseDamageIconImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MonsterBaseDamageIconImage == null )
+     			{
+		    		this.m_E_MonsterBaseDamageIconImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties6/E_MonsterBaseDamageIcon");
+     			}
+     			return this.m_E_MonsterBaseDamageIconImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Text E_MonsterProperties6NumberText
      	{
      		get
@@ -2384,23 +2809,6 @@ namespace ET
 		    		this.m_E_MonsterProperties6NumberText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties6/E_MonsterProperties6Number");
      			}
      			return this.m_E_MonsterProperties6NumberText;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_HarmImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_HarmImage == null )
-     			{
-		    		this.m_E_HarmImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BookBase/E_MonsterPart/E_MonsterInfoBg/E_MonsterPropertiesAll/E_MonsterProperties6/E_MonsterProperties6Number/E_Harm");
-     			}
-     			return this.m_E_HarmImage;
      		}
      	}
 
@@ -2467,36 +2875,60 @@ namespace ET
 			this.m_E_TowerTalent1BaseImage = null;
 			this.m_E_TowerTalentLevel1Image = null;
 			this.m_E_TowerTalentLevel1LeftArrowImage = null;
+			this.m_E_TowerTalentLevel1LockImage = null;
 			this.m_E_TowerTalentLevel1LeftBaseImage = null;
 			this.m_E_TowerTalentLevel1LeftButton = null;
 			this.m_E_TowerTalentLevel1LeftImage = null;
+			this.m_E_TowerTalentLevel1LeftEventTrigger = null;
+			this.m_E_TowerTalentLevel1LeftDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel1LeftDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel1LeftDescriptionTextText = null;
 			this.m_E_TowerTalentLevel1RightArrowImage = null;
 			this.m_E_TowerTalentLevel1RightBaseImage = null;
 			this.m_E_TowerTalentLevel1RightButton = null;
 			this.m_E_TowerTalentLevel1RightImage = null;
-			this.m_E_TowerTalentLevel1LockImage = null;
+			this.m_E_TowerTalentLevel1RightEventTrigger = null;
+			this.m_E_TowerTalentLevel1RightDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel1RightDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel1RightDescriptionTextText = null;
 			this.m_E_TowerTalent2BaseImage = null;
 			this.m_E_TowerTalentLevel2Image = null;
 			this.m_E_TowerTalentLevel2LeftArrowImage = null;
+			this.m_E_TowerTalentLevel2LockImage = null;
 			this.m_E_TowerTalentLevel2LeftBaseImage = null;
 			this.m_E_TowerTalentLevel2LeftButton = null;
 			this.m_E_TowerTalentLevel2LeftImage = null;
+			this.m_E_TowerTalentLevel2LeftEventTrigger = null;
+			this.m_E_TowerTalentLevel2LeftDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel2LeftDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel2LeftDescriptionTextText = null;
 			this.m_E_TowerTalentLevel2RightArrowImage = null;
 			this.m_E_TowerTalentLevel2RightBaseImage = null;
 			this.m_E_TowerTalentLevel2RightButton = null;
 			this.m_E_TowerTalentLevel2RightImage = null;
-			this.m_E_TowerTalentLevel2LockImage = null;
+			this.m_E_TowerTalentLevel2RightEventTrigger = null;
+			this.m_E_TowerTalentLevel2RightDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel2RightDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel2RightDescriptionTextText = null;
 			this.m_E_TowerTalent3BaseImage = null;
 			this.m_E_TowerTalentLevel3Image = null;
 			this.m_E_TowerTalentLevel3LeftArrowImage = null;
+			this.m_E_TowerTalentLevel3LockImage = null;
 			this.m_E_TowerTalentLevel3LeftBaseImage = null;
 			this.m_E_TowerTalentLevel3LeftButton = null;
 			this.m_E_TowerTalentLevel3LeftImage = null;
+			this.m_E_TowerTalentLevel3LeftEventTrigger = null;
+			this.m_E_TowerTalentLevel3LeftDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel3LeftDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel3LeftDescriptionTextText = null;
 			this.m_E_TowerTalentLevel3RightArrowImage = null;
 			this.m_E_TowerTalentLevel3RightBaseImage = null;
 			this.m_E_TowerTalentLevel3RightButton = null;
 			this.m_E_TowerTalentLevel3RightImage = null;
-			this.m_E_TowerTalentLevel3LockImage = null;
+			this.m_E_TowerTalentLevel3RightEventTrigger = null;
+			this.m_E_TowerTalentLevel3RightDescriptionBaseImage = null;
+			this.m_E_TowerTalentLevel3RightDescriptionTitleText = null;
+			this.m_E_TowerTalentLevel3RightDescriptionTextText = null;
 			this.m_E_TowerSpendMoneyBaseImage = null;
 			this.m_E_SpendText = null;
 			this.m_E_TowerSpendMoneyLeftImage = null;
@@ -2530,23 +2962,23 @@ namespace ET
 			this.m_E_Split4Image = null;
 			this.m_E_MonsterPropertiesAllImage = null;
 			this.m_E_MonsterProperties1Image = null;
-			this.m_E_MonsterProperties1NumberText = null;
 			this.m_E_BloodVolumeIconImage = null;
+			this.m_E_MonsterProperties1NumberText = null;
 			this.m_E_MonsterProperties2Image = null;
-			this.m_E_MonsterProperties2NumberText = null;
 			this.m_E_MonsterAttackIconImage = null;
+			this.m_E_MonsterProperties2NumberText = null;
 			this.m_E_MonsterProperties3Image = null;
-			this.m_E_MonsterProperties3NumberText = null;
 			this.m_E_MagicalDefenseIconImage = null;
+			this.m_E_MonsterProperties3NumberText = null;
 			this.m_E_MonsterProperties4Image = null;
-			this.m_E_MonsterProperties4NumberText = null;
 			this.m_E_PhysicalDefenseIconImage = null;
+			this.m_E_MonsterProperties4NumberText = null;
 			this.m_E_MonsterProperties5Image = null;
-			this.m_E_MonsterProperties5NumberText = null;
 			this.m_E_MonsterSpeedIconImage = null;
+			this.m_E_MonsterProperties5NumberText = null;
 			this.m_E_MonsterProperties6Image = null;
+			this.m_E_MonsterBaseDamageIconImage = null;
 			this.m_E_MonsterProperties6NumberText = null;
-			this.m_E_HarmImage = null;
 			this.uiTransform = null;
 		}
 
@@ -2611,36 +3043,60 @@ namespace ET
 		private UnityEngine.UI.Image m_E_TowerTalent1BaseImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1Image = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1LeftArrowImage = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel1LockImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1LeftBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel1LeftButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1LeftImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel1LeftEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel1LeftDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel1LeftDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel1LeftDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1RightArrowImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1RightBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel1RightButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel1RightImage = null;
-		private UnityEngine.UI.Image m_E_TowerTalentLevel1LockImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel1RightEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel1RightDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel1RightDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel1RightDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerTalent2BaseImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2Image = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2LeftArrowImage = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel2LockImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2LeftBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel2LeftButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2LeftImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel2LeftEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel2LeftDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel2LeftDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel2LeftDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2RightArrowImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2RightBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel2RightButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel2RightImage = null;
-		private UnityEngine.UI.Image m_E_TowerTalentLevel2LockImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel2RightEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel2RightDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel2RightDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel2RightDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerTalent3BaseImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3Image = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3LeftArrowImage = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel3LockImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3LeftBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel3LeftButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3LeftImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel3LeftEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel3LeftDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel3LeftDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel3LeftDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3RightArrowImage = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3RightBaseImage = null;
 		private UnityEngine.UI.Button m_E_TowerTalentLevel3RightButton = null;
 		private UnityEngine.UI.Image m_E_TowerTalentLevel3RightImage = null;
-		private UnityEngine.UI.Image m_E_TowerTalentLevel3LockImage = null;
+		private UnityEngine.EventSystems.EventTrigger m_E_TowerTalentLevel3RightEventTrigger = null;
+		private UnityEngine.UI.Image m_E_TowerTalentLevel3RightDescriptionBaseImage = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel3RightDescriptionTitleText = null;
+		private UnityEngine.UI.Text m_E_TowerTalentLevel3RightDescriptionTextText = null;
 		private UnityEngine.UI.Image m_E_TowerSpendMoneyBaseImage = null;
 		private UnityEngine.UI.Text m_E_SpendText = null;
 		private UnityEngine.UI.Image m_E_TowerSpendMoneyLeftImage = null;
@@ -2674,23 +3130,26 @@ namespace ET
 		private UnityEngine.UI.Image m_E_Split4Image = null;
 		private UnityEngine.UI.Image m_E_MonsterPropertiesAllImage = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties1Image = null;
-		private UnityEngine.UI.Text m_E_MonsterProperties1NumberText = null;
 		private UnityEngine.UI.Image m_E_BloodVolumeIconImage = null;
+		private UnityEngine.UI.Text m_E_MonsterProperties1NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties2Image = null;
-		private UnityEngine.UI.Text m_E_MonsterProperties2NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterAttackIconImage = null;
+		private UnityEngine.UI.Text m_E_MonsterProperties2NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties3Image = null;
-		private UnityEngine.UI.Text m_E_MonsterProperties3NumberText = null;
 		private UnityEngine.UI.Image m_E_MagicalDefenseIconImage = null;
+		private UnityEngine.UI.Text m_E_MonsterProperties3NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties4Image = null;
-		private UnityEngine.UI.Text m_E_MonsterProperties4NumberText = null;
 		private UnityEngine.UI.Image m_E_PhysicalDefenseIconImage = null;
+		private UnityEngine.UI.Text m_E_MonsterProperties4NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties5Image = null;
-		private UnityEngine.UI.Text m_E_MonsterProperties5NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterSpeedIconImage = null;
+		private UnityEngine.UI.Text m_E_MonsterProperties5NumberText = null;
 		private UnityEngine.UI.Image m_E_MonsterProperties6Image = null;
+		private UnityEngine.UI.Image m_E_MonsterBaseDamageIconImage = null;
 		private UnityEngine.UI.Text m_E_MonsterProperties6NumberText = null;
-		private UnityEngine.UI.Image m_E_HarmImage = null;
 		public Transform uiTransform = null;
-	}
+        public float TowerTalentDescriptionTimer;
+
+
+    }
 }

@@ -19,7 +19,7 @@ namespace ET
         public static void OnLogic(this IgnoreArmorSkill self, int dt)
         {
             self.SkillTimer = self.SkillTimer + dt;
-            Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = (float)self.SkillTimer / (float)self.SkillTime }).Coroutine();
+            Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = (float)self.SkillTimer / (float)self.SkillTime, towerstate = self.GetParent<Tower>().GetTowerState() }).Coroutine();
             if (self.SkillTimer >= self.SkillTime)
             {
                 self.GetParent<Tower>().state = TowerState.SkillAttack;

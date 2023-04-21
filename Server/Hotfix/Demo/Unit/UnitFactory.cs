@@ -25,6 +25,17 @@ namespace ET
                         numericComponent.SetNoEvent(NumericType.TowerId1, 3001);
                         unit.AddComponent<BagComponent>();
                         unit.AddComponent<LevelComponent>();
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
+                        unit.GetComponent<LevelComponent>().LevelData.Add(3);
                         FightItemComponent fightitemcomponent = unit.AddComponent<FightItemComponent>();
                         fightitemcomponent.AddFightItemByConfigId(3001);
                         fightitemcomponent.AddFightItemByConfigId(3004);

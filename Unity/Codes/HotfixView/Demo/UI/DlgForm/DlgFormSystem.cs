@@ -193,7 +193,7 @@ namespace ET
             }
             else//未选中
             {
-                petItem.E_PetIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+                petItem.E_PetIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
             }
             if (self.pet[0] != fightitem.Config.Id && self.pet[1] != fightitem.Config.Id && self.pet[2] != fightitem.Config.Id && self.pet[3] != fightitem.Config.Id)
             { 
@@ -252,7 +252,7 @@ namespace ET
             }
             else//未选中
             {
-                towerItem.E_TowerIconImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode);
+                towerItem.E_TowerIconImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode + "Bg");
             }
             if (self.tower[0] != fightitem.Config.Id && self.tower[1] != fightitem.Config.Id && self.tower[2] != fightitem.Config.Id && self.tower[3] != fightitem.Config.Id)
             {
@@ -435,25 +435,25 @@ namespace ET
             {
                 case 0:
                     {
-                        self.View.E_Tower1_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode);
+                        self.View.E_Tower1_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode + "Bg");
                         self.tower1 = chooseOne;
                         break;
                     }
                 case 1:
                     {
-                        self.View.E_Tower2_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode);
+                        self.View.E_Tower2_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode + "Bg");
                         self.tower2 = chooseOne;
                         break;
                     }
                 case 2:
                     {
-                        self.View.E_Tower3_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode);
+                        self.View.E_Tower3_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode + "Bg");
                         self.tower3 = chooseOne;
                         break;
                     }
                 case 3:
                     {
-                        self.View.E_Tower4_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode);
+                        self.View.E_Tower4_ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig.ResourceCode + "Bg");
                         self.tower4 = chooseOne;
                         break;
                     }
@@ -468,25 +468,25 @@ namespace ET
             {
                 case 0:
                     {
-                        self.View.E_Pet1_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+                        self.View.E_Pet1_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
                         self.pet1= chooseOne;
                         break;
                     }
                 case 1:
                     {
-                        self.View.E_Pet2_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+                        self.View.E_Pet2_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
                         self.pet2 = chooseOne;
                         break;
                     }
                 case 2:
                     {
-                        self.View.E_Pet3_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+                        self.View.E_Pet3_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
                         self.pet3 = chooseOne;
                         break;
                     }
                 case 3:
                     {
-                        self.View.E_Pet4_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+                        self.View.E_Pet4_ImageImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
                         self.pet4 = chooseOne;
                         break;
                     }

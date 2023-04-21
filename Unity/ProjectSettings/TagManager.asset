@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Shadow
+    uniqueID: 2237739643
+    locked: 0
   - name: Monster
     uniqueID: 3543620369
     locked: 0

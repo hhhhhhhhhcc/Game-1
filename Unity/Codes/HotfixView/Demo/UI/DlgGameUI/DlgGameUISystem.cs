@@ -277,21 +277,35 @@ namespace ET
         //键盘输入触发事件（例如用数字1 2 3 4 买怪放技能等）
         public static void InputToAction(this DlgGameUI self,int InputIndex)
         {
+            Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
+            NumericComponent num = unit.GetComponent<NumericComponent>();
             if (InputIndex == 1)
             {
-                self.View.ESCreateMonster1.SelectMonster();
+                if(num.GetAsInt(NumericType.Monster1) != 0)
+                {
+                    self.View.ESCreateMonster1.SelectMonster();
+                }
             }
             if (InputIndex == 2)
             {
-                self.View.ESCreateMonster2.SelectMonster();
+                if (num.GetAsInt(NumericType.Monster2) != 0)
+                {
+                    self.View.ESCreateMonster2.SelectMonster();
+                }
             }
             if (InputIndex == 3)
             {
-                self.View.ESCreateMonster3.SelectMonster();
+                if (num.GetAsInt(NumericType.Monster3) != 0)
+                {
+                    self.View.ESCreateMonster3.SelectMonster();
+                }
             }
             if (InputIndex == 4)
             {
-                self.View.ESCreateMonster4.SelectMonster();
+                if (num.GetAsInt(NumericType.Monster4) != 0)
+                {
+                    self.View.ESCreateMonster4.SelectMonster();
+                }
             }
         }
         //绑定事件

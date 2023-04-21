@@ -66,16 +66,15 @@ namespace ET
                 for (int j = 0; j < levelCount; j++)
                 {
                     Transform level = chapter.GetChild(j).transform;
-                    if (levelcomponent.LevelData.Count + 1 >= j + i * 10 + 1)
+                    if (levelcomponent.LevelData.Count >= j + i * 10)//打了1关  第1关解锁j+i*10+1 = 1
                     {
                         //判断星级
-                        if (levelcomponent.LevelData.Count + 1 > j + i * 10 + 1)
+                        if (levelcomponent.LevelData.Count > j + i * 10 )
                         {
                             int stars = levelcomponent.LevelData[j];
                             if (stars == 3)
                             {
                                 level.GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "FlagFinish");
-                                //chapter.GetChild(3).gameObject.SetActive(true);
                             }
                             else
                             {
@@ -86,18 +85,26 @@ namespace ET
                             {
                                 level.GetChild(0).GetChild(t).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "Star");
                             }
-                            for (int t = 0; t < chapter.GetChild(j).GetChild(1).childCount; t++)
+                            if ((j + 1) % 10 != 0)
                             {
-                                level.GetChild(1).GetChild(t).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "PathBeanBright");
+                                for (int t = 0; t < chapter.GetChild(j).GetChild(1).childCount; t++)
+                                {
+                                    level.GetChild(1).GetChild(t).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "PathBeanBright");
+                                }
                             }
-
                         }
                         else if (levelcomponent.LevelData.Count + 1 == j + i * 10 + 1)
                         {
-                                chapter.GetChild(j).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "FlagBright");
+                            if((j+1)%10 != 0) level.GetChild(1).transform.gameObject.SetActive(false);
+                            chapter.GetChild(j).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "FlagBright");
                         }
                     }
-                    
+                    else
+                    {
+                        level.transform.gameObject.SetActive(false);
+                    }
+
+
                     int a = i, b = j;
                     level.GetComponent<Button>().AddListener(() => { self.LevelInfo(a * 10 + b + 1); });
 
@@ -117,7 +124,8 @@ namespace ET
             LevelConfig levelConfig = LevelConfigCategory.Instance.Get(self.currentLevelId);
             self.currentLevelCount = levelConfig.MonstersId.Length;
             self.View.E_ChapterIntroductImage.gameObject.SetActive(true);
-            self.View.E_MapIntImage.sprite = IconHelper.LoadIconSprite("MapRes", ("Map" + (self.currentLevelId)));
+            MapConfig mapconfig = MapConfigCategory.Instance.Get(levelConfig.MapId);
+            self.View.E_MapIntImage.sprite = IconHelper.LoadIconSprite("MapRes", mapconfig.MapName);
             self.View.E_LeveNameText.text = levelConfig.LevelName;
             self.View.E_IntroductLeveText.text = levelConfig.LevelDis;
             //怪的滑动列表
@@ -134,6 +142,18 @@ namespace ET
             {
                 self.View.E_FightButton.interactable = false;
             }
+
+            //奖励
+            self.View.E_Reward12Image.gameObject.SetActive(false);
+            self.View.E_Reward22Image.gameObject.SetActive(false);
+            self.View.E_Reward32Image.gameObject.SetActive(false);
+            (List<int> rewardTypes,List<int> rewardNumbers) =  RewardHelper.GetRewardByLevelId(self.currentLevelId);
+            self.View.E_Reward1Image.sprite = IconHelper.LoadIconSprite("Items", ItemConfigCategory.Instance.Get(rewardTypes[0]).ItemName);
+            self.View.E_RweardNum1Text.SetText(rewardNumbers[0].ToString());
+            self.View.E_Reward2Image.sprite = IconHelper.LoadIconSprite("Items", ItemConfigCategory.Instance.Get(rewardTypes[1]).ItemName);
+            self.View.E_RweardNum2Text.SetText(rewardNumbers[1].ToString());
+            self.View.E_Reward3Image.sprite = IconHelper.LoadIconSprite("Items", ItemConfigCategory.Instance.Get(rewardTypes[2]).ItemName);
+            self.View.E_RweardNum3Text.SetText(rewardNumbers[2].ToString());
         }
 
         //刷新
@@ -142,7 +162,7 @@ namespace ET
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
             NumericComponent component = unit.GetComponent<NumericComponent>();
             self.View.EText_CoinNumberText.SetText("Gold:" + component.GetAsLong(NumericType.Gold).ToString());
-
+            await ETTask.CompletedTask;
         }
 
         //章节选择
@@ -220,7 +240,7 @@ namespace ET
             LevelConfig levelConfig = LevelConfigCategory.Instance.Get(self.currentLevelId);
             int id = levelConfig.MonstersId[index];
             FightItemConfig fightItemConfig = FightItemConfigCategory.Instance.Get(id);
-            monsteritem.E_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode);
+            monsteritem.E_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItemConfig.ResourceCode + "Bg");
         }
 
         //进入战斗
@@ -240,38 +260,22 @@ namespace ET
             if (tower1 != 0)
             {
                 FightItemConfig fightItemConfig1 = FightItemConfigCategory.Instance.Get(tower1);
-                self.View.E_Tower1ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig1.ResourceCode);
-            }
-            else
-            {
-                self.View.E_Tower1ImageImage.sprite = IconHelper.LoadIconSprite("SelectLevel", "NoPeople");
+                self.View.E_Tower1ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig1.ResourceCode + "Bg" );
             }
             if (tower2 != 0)
             {
                 FightItemConfig fightItemConfig2 = FightItemConfigCategory.Instance.Get(tower2);
-                self.View.E_Tower2ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig2.ResourceCode);
-            }
-            else
-            {
-                self.View.E_Tower2ImageImage.sprite = IconHelper.LoadIconSprite("SelectLevel", "NoPeople");
+                self.View.E_Tower2ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig2.ResourceCode + "Bg");
             }
             if (tower3 != 0)
             {
                 FightItemConfig fightItemConfig3 = FightItemConfigCategory.Instance.Get(tower3);
-                self.View.E_Tower3ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig3.ResourceCode);
-            }
-            else
-            {
-                self.View.E_Tower3ImageImage.sprite = IconHelper.LoadIconSprite("SelectLevel", "NoPeople");
+                self.View.E_Tower3ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig3.ResourceCode + "Bg"); ;
             }
             if (tower4 != 0)
             {
                 FightItemConfig fightItemConfig4 = FightItemConfigCategory.Instance.Get(tower4);
-                self.View.E_Tower4ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig4.ResourceCode);
-            }
-            else
-            {
-                self.View.E_Tower4ImageImage.sprite = IconHelper.LoadIconSprite("SelectLevel", "NoPeople");
+                self.View.E_Tower4ImageImage.sprite = IconHelper.LoadIconSprite("Tower", fightItemConfig4.ResourceCode + "Bg");
             }
 
         }

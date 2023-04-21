@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.ComponentModel;
 using static UnityEngine.UI.CanvasScaler;
 using JetBrains.Annotations;
+using UnityEngine.EventSystems;
 //using static UnityEditor.PlayerSettings;
 
 namespace ET
@@ -37,6 +38,8 @@ namespace ET
             self.View.E_TowerTalentLevel3LeftButton.AddListener(() => { self.AddFightItemTalent(5); });//天赋点位置5
             self.View.E_TowerTalentLevel3RightButton.AddListener(() => { self.AddFightItemTalent(6); });//天赋点位置6
             self.View.E_TowerTalentResetBaseButton.AddListener(() => { self.ResetFightItemTalent(); });
+
+            self.RegisterTowerTalentTrigger();//注册技能详情信息面便
         }
         public static void CloseWindow(this DlgTalentUI self)
         {
@@ -240,21 +243,27 @@ namespace ET
         {
             Scroll_Item_Tower toweritem = self.TowerItems[index].BindTrans(transform);
             FightItem fightitem = self.towerfightitem[index + (self.CurrentTowerPage - 1) * 4];
-            toweritem.E_TowerBookLevel1Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
-            toweritem.E_TowerBookLevel2Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
-            toweritem.E_TowerBookLevel3Image.sprite = IconHelper.LoadIconSprite("Tower", fightitem.Config.ResourceCode);
+            toweritem.E_TowerBookLevel1Image.sprite = IconHelper.LoadIconSprite("Tower", TowerConfigCategory.Instance.Get(fightitem.ConfigId).ResourceCode);
+            toweritem.E_TowerBookLevel2Image.sprite = IconHelper.LoadIconSprite("Tower", TowerConfigCategory.Instance.Get(fightitem.ConfigId + 1).ResourceCode);
+            toweritem.E_TowerBookLevel3Image.sprite = IconHelper.LoadIconSprite("Tower", TowerConfigCategory.Instance.Get(fightitem.ConfigId + 2).ResourceCode);
             if(fightitem.Id == self.currentId)//表示选中
             {
                 if(self.TowerConfigLevel == 1)
                 {
                     toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerChoose");
+                    toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
+                    toweritem.E_TowerBookLevel3BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
                 }
                 if (self.TowerConfigLevel == 2)
                 {
+                    toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
                     toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerChoose");
+                    toweritem.E_TowerBookLevel3BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
                 }
                 if (self.TowerConfigLevel == 3)
                 {
+                    toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
+                    toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
                     toweritem.E_TowerBookLevel3BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerChoose");
                 }
                 toweritem.E_TowerHandBookImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "BookBright");//选中亮颜色
@@ -262,7 +271,9 @@ namespace ET
             else//未选中
             {
                 toweritem.E_TowerHandBookImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "BookDark");
-
+                toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
+                toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
+                toweritem.E_TowerBookLevel3BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
             }
             toweritem.E_TowerBookLevel1Button.AddListener(() => { self.SelectTowerConfigLevel(fightitem.Id,1); });
             toweritem.E_TowerBookLevel2Button.AddListener(() => { self.SelectTowerConfigLevel(fightitem.Id,2); });
@@ -272,7 +283,7 @@ namespace ET
         {
             Scroll_Item_Monster monsteritem = self.MonsterItems[index].BindTrans(transform);
             FightItem fightitem = self.monsterfightitem[index + (self.CurrentMonsterPage - 1) * 16];
-            monsteritem.E_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", fightitem.Config.ResourceCode);
+            monsteritem.E_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", fightitem.Config.ResourceCode + "Bg");
             if (fightitem.Id == self.currentId)//表示选中
             {
                 monsteritem.E_MonsterBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "MonsterChoose");//选中亮颜色
@@ -397,9 +408,9 @@ namespace ET
                 int configId = fightItemId - 1 + self.TowerConfigLevel;
                 TowerConfig towerconfig = TowerConfigCategory.Instance.Get(configId);
                 self.View.E_TowerInfoDescriptionText.text = towerconfig.Introduction;
-                self.View.E_TowerInfoIconImage.sprite = IconHelper.LoadIconSprite("Tower", fightItem.Config.ResourceCode);
+                self.View.E_TowerInfoIconImage.sprite = IconHelper.LoadIconSprite("Tower", towerconfig.ResourceCode);
 
-                string physicalAttack, lawAttack, attackSpeed, range, attackAethod;
+                string physicalAttack, lawAttack, attackSpeed, range;
                 
                 //攻击
                 if (towerconfig.Attack[0] == 0)
@@ -455,7 +466,7 @@ namespace ET
                 FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(fightItemId);
                 MonsterConfig monsterConfig = MonsterConfigCategory.Instance.Get(fightItemId);
 
-                self.View.E_MonsterChooseIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItem.Config.ResourceCode);
+                self.View.E_MonsterChooseIconImage.sprite = IconHelper.LoadIconSprite("monster", fightItem.Config.ResourceCode + "Bg");
                 self.View.E_MonsterDescriptionText.text = fightitemconfig.Introduction;
 
                 string harm, monsterSpeed, physicalDefense, magicalDefense, monsterAttack, bloodVolume;
@@ -471,13 +482,13 @@ namespace ET
                 else if (monsterConfig.Speed < 800) monsterSpeed = "中";
                 else monsterSpeed = "高";
                 self.View.E_MonsterProperties2NumberText.text = monsterSpeed;
-                self.View.E_MonsterSpeedIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "bloodVolume");
+                self.View.E_MonsterSpeedIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "monsterSpeed");
                 //对塔伤害
                 if (monsterConfig.MonsterAttack < 5) harm = "低";
                 else if (monsterConfig.MonsterAttack < 7) harm = "中";
                 else harm = "高";
                 self.View.E_MonsterProperties3NumberText.text = harm;
-                self.View.E_HarmImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "harm");
+                self.View.E_MonsterBaseDamageIconImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "harm");
                 //物理防御
                 if (monsterConfig.Defense[0] < 4) physicalDefense = "低";
                 else if (monsterConfig.Defense[0] < 6) physicalDefense = "中";
@@ -524,36 +535,50 @@ namespace ET
                     Log.Debug(fightItem.Config.TalentCode + "   " + talentLevel + "   " + sn);
                     int talentId = TalentConfigCategory.Instance.GetTalentId(fightItem.Config.TalentCode, talentLevel, sn);
                     TalentConfig talentConfig = TalentConfigCategory.Instance.Get(talentId);
+                    SkillConfig skillconfig = SkillConfigCategory.Instance.Get(talentConfig.SkillId);
+
                     switch (i)
                     {
                         case 1:
                             {
                                 self.View.E_TowerTalentLevel1LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel1LeftDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel1LeftDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                         case 2:
                             {
                                 self.View.E_TowerTalentLevel1RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel1RightDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel1RightDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                         case 3:
                             {
                                 self.View.E_TowerTalentLevel2LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel2LeftDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel2LeftDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                         case 4:
                             {
                                 self.View.E_TowerTalentLevel2RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel2RightDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel2RightDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                         case 5:
                             {
                                 self.View.E_TowerTalentLevel3LeftImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel3LeftDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel3LeftDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                         case 6:
                             {
                                 self.View.E_TowerTalentLevel3RightImage.sprite = IconHelper.LoadIconSprite("TowerSkill", talentConfig.ResourceCode);
+                                self.View.E_TowerTalentLevel3RightDescriptionTitleText.SetText(skillconfig.Name);
+                                self.View.E_TowerTalentLevel3RightDescriptionTextText.SetText(skillconfig.Description);
                                 break;
                             }
                     }
@@ -678,5 +703,141 @@ namespace ET
                 }
             }
         }
+        public static void HideAllTowerTalentDescription(this DlgTalentUI self)
+        {
+            self.View.E_TowerTalentLevel1LeftDescriptionBaseImage.gameObject.SetActive(false);
+            self.View.E_TowerTalentLevel2LeftDescriptionBaseImage.gameObject.SetActive(false);
+            self.View.E_TowerTalentLevel3LeftDescriptionBaseImage.gameObject.SetActive(false);
+            self.View.E_TowerTalentLevel1RightDescriptionBaseImage.gameObject.SetActive(false);
+            self.View.E_TowerTalentLevel2RightDescriptionBaseImage.gameObject.SetActive(false);
+            self.View.E_TowerTalentLevel3RightDescriptionBaseImage.gameObject.SetActive(false);
+        }
+        public static void ShowTowerTalentDescriptionByPos(this DlgTalentUI self,int pos)
+        {
+            switch (pos)
+            {
+                case 1:
+                    self.View.E_TowerTalentLevel1LeftDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+                case 2:
+                    self.View.E_TowerTalentLevel1RightDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+                case 3:
+                    self.View.E_TowerTalentLevel2LeftDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+                case 4:
+                    self.View.E_TowerTalentLevel2RightDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+                case 5:
+                    self.View.E_TowerTalentLevel3LeftDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+                case 6:
+                    self.View.E_TowerTalentLevel3RightDescriptionBaseImage.gameObject.SetActive(true);
+                    break;
+            }
+        }
+        public static void RegisterTowerTalentTrigger(this DlgTalentUI self)
+        {
+            //1左
+            EventTrigger.Entry entry1 = new EventTrigger.Entry();
+            entry1.eventID = EventTriggerType.PointerEnter;
+            entry1.callback.AddListener((data1) =>
+            {
+                self.SetTowerTalentTriggerTrue(1);
+            });
+            self.View.E_TowerTalentLevel1LeftEventTrigger.triggers.Add(entry1);
+            EventTrigger.Entry entry2 = new EventTrigger.Entry();
+            entry2.eventID = EventTriggerType.PointerExit;
+            entry2.callback.AddListener((data2) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel1LeftEventTrigger.triggers.Add(entry2);
+            //1右
+            EventTrigger.Entry entry3 = new EventTrigger.Entry();
+            entry3.eventID = EventTriggerType.PointerEnter;
+            entry3.callback.AddListener((data3) =>
+            {
+                self.SetTowerTalentTriggerTrue(2);
+            });
+            self.View.E_TowerTalentLevel1RightEventTrigger.triggers.Add(entry3);
+            EventTrigger.Entry entry4 = new EventTrigger.Entry();
+            entry4.eventID = EventTriggerType.PointerExit;
+            entry4.callback.AddListener((data4) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel1RightEventTrigger.triggers.Add(entry4);
+            //2左
+            EventTrigger.Entry entry5 = new EventTrigger.Entry();
+            entry5.eventID = EventTriggerType.PointerEnter;
+            entry5.callback.AddListener((data5) =>
+            {
+                self.SetTowerTalentTriggerTrue(3);
+            });
+            self.View.E_TowerTalentLevel2LeftEventTrigger.triggers.Add(entry5);
+            EventTrigger.Entry entry6 = new EventTrigger.Entry();
+            entry6.eventID = EventTriggerType.PointerExit;
+            entry6.callback.AddListener((data6) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel2LeftEventTrigger.triggers.Add(entry6);
+            //2右
+            EventTrigger.Entry entry7 = new EventTrigger.Entry();
+            entry7.eventID = EventTriggerType.PointerEnter;
+            entry7.callback.AddListener((data7) =>
+            {
+                self.SetTowerTalentTriggerTrue(4);
+            });
+            self.View.E_TowerTalentLevel2RightEventTrigger.triggers.Add(entry7);
+            EventTrigger.Entry entry8 = new EventTrigger.Entry();
+            entry8.eventID = EventTriggerType.PointerExit;
+            entry8.callback.AddListener((data8) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel2RightEventTrigger.triggers.Add(entry8);
+            //3左
+            EventTrigger.Entry entry9 = new EventTrigger.Entry();
+            entry9.eventID = EventTriggerType.PointerEnter;
+            entry9.callback.AddListener((data9) =>
+            {
+                self.SetTowerTalentTriggerTrue(5);
+            });
+            self.View.E_TowerTalentLevel3LeftEventTrigger.triggers.Add(entry9);
+            EventTrigger.Entry entry10 = new EventTrigger.Entry();
+            entry10.eventID = EventTriggerType.PointerExit;
+            entry10.callback.AddListener((data10) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel3LeftEventTrigger.triggers.Add(entry10);
+            //3右
+            EventTrigger.Entry entry11 = new EventTrigger.Entry();
+            entry11.eventID = EventTriggerType.PointerEnter;
+            entry11.callback.AddListener((data11) =>
+            {
+                self.SetTowerTalentTriggerTrue(6);
+            });
+            self.View.E_TowerTalentLevel3RightEventTrigger.triggers.Add(entry11);
+            EventTrigger.Entry entry12 = new EventTrigger.Entry();
+            entry12.eventID = EventTriggerType.PointerExit;
+            entry12.callback.AddListener((data12) =>
+            {
+                self.SetTowerTalentTriggerFalse();
+            });
+            self.View.E_TowerTalentLevel3RightEventTrigger.triggers.Add(entry12);
+        }
+        public static void SetTowerTalentTriggerTrue(this DlgTalentUI self,int pos)
+        {
+            self.TowerTalentDescriptionId = pos;
+            self.TowerTalentDescriptionTrigger = true;
+        }
+        public static void SetTowerTalentTriggerFalse(this DlgTalentUI self)
+        {
+            self.TowerTalentDescriptionTrigger = false;
+        }
+
     }
 }

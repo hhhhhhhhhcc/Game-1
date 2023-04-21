@@ -1,4 +1,5 @@
 {"list":[
 {"_t":"ItemConfig","_id":1,"ItemDes":"金币","ItemName":"Coin","ItemType":1},
-{"_t":"ItemConfig","_id":2,"ItemDes":"碎片","ItemName":"asd","ItemType":2},
+{"_t":"ItemConfig","_id":2,"ItemDes":"科技点","ItemName":"TechPoint","ItemType":1},
+{"_t":"ItemConfig","_id":3,"ItemDes":"建材","ItemName":"BuildMat","ItemType":1},
 ]}

@@ -12,7 +12,7 @@ namespace ET
             self.Config = TowerConfigCategory.Instance.Get(configId);
             self.AttackTargetList = new List<Monster>();
             self.state = TowerState.NormalAttack;
-            self.UpFrame = 23;
+            self.UpFrame = 12;
             self.AttackNumber = 1;
             self.ExtraCoin = 0;
         }

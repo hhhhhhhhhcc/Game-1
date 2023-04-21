@@ -6,7 +6,8 @@
 		public const int Max = 10000;
 
 		public const int AOI = 1003;
-
+        public const int BuildMat = 2005;
+        public const int TechPoint = 2006;
         public const int Level = 2007;
         public const int Gold = 2008;
 		public const int Exp = 2009;	

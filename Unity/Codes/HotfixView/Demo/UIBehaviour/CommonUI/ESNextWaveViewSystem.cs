@@ -96,22 +96,22 @@ namespace ET
                 if (dir.x >= 0 && dir.y > 0)//第一象限 +  45  -135
 				{
 					self.E_NextWaveArrowImage.transform.rotation = Quaternion.Euler(0, 0, -180 + value);
-					self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(-234, -134, 0);
+					self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(-279, -166, 0);
 				}
                 if (dir.x < 0 && dir.y >= 0)//第二象限 -  135   -45
                 {
 					self.E_NextWaveArrowImage.transform.rotation = Quaternion.Euler(0, 0,  value);
-                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(234, -134, 0);
+                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(279, -166, 0);
                 }
                 if (dir.x <= 0 && dir.y < 0)//第三象限 + -135  45
                 {
 					self.E_NextWaveArrowImage.transform.rotation = Quaternion.Euler(0, 0, value);
-                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(234, 134, 0);
+                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(279, 166, 0);
                 }
                 if (dir.x > 0 && dir.y <= 0)//第四象限 -  -45  135
                 {
 					self.E_NextWaveArrowImage.transform.rotation = Quaternion.Euler(0, 0, -180 + value);
-                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(-234, 134, 0);
+                    self.E_NextWaveInfoBaseImage.transform.localPosition = new Vector3(-279, 166, 0);
                 }
             }
 

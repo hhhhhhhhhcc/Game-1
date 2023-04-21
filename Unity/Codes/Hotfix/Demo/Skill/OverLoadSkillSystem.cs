@@ -24,7 +24,7 @@ namespace ET
             if(self.GetParent<Tower>().state == TowerState.NormalAttack)
             {
                 self.SkillTimer = self.SkillTimer + dt;
-                Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = (float)self.SkillTimer / (float)self.SkillTime }).Coroutine();
+                Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = (float)self.SkillTimer / (float)self.SkillTime, towerstate = self.GetParent<Tower>().GetTowerState() }).Coroutine();
                 if(self.SkillTimer >= self.SkillTime && self.GetParent<Tower>().AttackTargetList.Count > 0)
                 {
                     self.GetParent<Tower>().AttackInterval = self.GetParent<Tower>().AttackInterval * 100 / (100 + self.param["attackspeedadd"]) ;
@@ -35,7 +35,7 @@ namespace ET
             else if(self.GetParent<Tower>().state == TowerState.SkillAttack)
             {
                 self.ContinuedTimer = self.ContinuedTimer + dt;
-                Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = 1.0f - (float)self.ContinuedTimer / (float)self.ContinuedTime }).Coroutine();
+                Game.EventSystem.PublishAsync(new EventType.TowerChargeBar() { tower = self.GetParent<Tower>(), SizeX = 1.0f - (float)self.ContinuedTimer / (float)self.ContinuedTime, towerstate = self.GetParent<Tower>().GetTowerState() }).Coroutine();
                 if (self.ContinuedTimer >= self.ContinuedTime)
                 {
                     self.GetParent<Tower>().AttackInterval = self.GetParent<Tower>().AttackInterval * (100 + self.param["attackspeedadd"]) / 100;
