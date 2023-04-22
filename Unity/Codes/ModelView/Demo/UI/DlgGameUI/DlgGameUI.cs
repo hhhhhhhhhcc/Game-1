@@ -17,5 +17,6 @@ namespace ET
         public int CurrentSelectMonster;
         public int CurrentSelectPlayerSkill;
         public long UnitInfoId;
+        public int MatchMode;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [FriendClass(typeof(DlgGameUI))]
     public class ShowGameUIEvent : AEventAsync<EventType.ShowGameUI>
     {
         protected override async ETTask Run(ShowGameUI args)
@@ -20,10 +21,7 @@ namespace ET
                 args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_GameUI);
             }
             args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_GameUI);
-            if (args.MatchMode == 1)
-            {
-                args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SingleModeHide();
-            }
+            args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().SetMatchMode();
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(args.ZoneScene.CurrentScene());
             NumericComponent numeric = unit.GetComponent<NumericComponent>();
             //args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().ShowWindow();

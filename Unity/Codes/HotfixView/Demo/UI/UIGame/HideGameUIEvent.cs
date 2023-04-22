@@ -4,6 +4,7 @@ using UnityEngine;
 namespace ET
 {
     [FriendClass(typeof(MapComponent))]
+    [FriendClass(typeof(DlgGameUI))]
     public class HideGameUIEvent : AEventAsync<EventType.HideGameUI>
     {
         protected override async ETTask Run(HideGameUI args)
@@ -15,8 +16,11 @@ namespace ET
             args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_MainHome);
             if (args.ZoneScene.GetComponent<UIComponent>().IsWindowVisible(WindowID.WindowID_GameUI))//如果存在
             {
+                if(args.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgGameUI>().MatchMode == 1)
+                {
+                    args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Select);
+                }
                 args.ZoneScene.GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_GameUI);
-                args.ZoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Select);
             }
      
             GlobalComponent.Instance.MainCamera.transform.position = new UnityEngine.Vector3(0, 0, -35.2f);

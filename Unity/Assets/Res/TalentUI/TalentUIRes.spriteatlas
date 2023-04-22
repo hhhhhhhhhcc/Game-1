@@ -54,7 +54,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 2560ebc5d98e77e4186e9c5432c9613b, type: 3}
     - {fileID: 21300000, guid: aa7f2074c23ea1b49b0692e8d100ca58, type: 3}
     - {fileID: 21300000, guid: 0090c904a03f4d0458ce0b5b5dd8cc57, type: 3}
-    - {fileID: 21300000, guid: 4faa327a322e17d41b8dde78bcbe71f0, type: 3}
+    - {fileID: 21300000, guid: daae7577485288f4592addc5f36ee4bf, type: 3}
     - {fileID: 21300000, guid: 09a39d6444741db4b988a2d0ce8d4a11, type: 3}
     - {fileID: 21300000, guid: 2b53c32cc5b7c7545bd26bcc06351344, type: 3}
     - {fileID: 21300000, guid: cd836b8066ab81544bb56d7aed676e50, type: 3}
@@ -73,7 +73,6 @@ SpriteAtlas:
     - {fileID: 21300000, guid: e0d9506be50f7b346a176d16c7522740, type: 3}
     - {fileID: 21300000, guid: 26a1c43a90266e8499560796a3650475, type: 3}
     - {fileID: 21300000, guid: baa79f95397fb2f42b88043b9375e570, type: 3}
-    - {fileID: 21300000, guid: daae7577485288f4592addc5f36ee4bf, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -105,7 +104,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 860059973a5bffa40a05055fa12da8f5, type: 3}
   - {fileID: 21300000, guid: 3b2f4cb7f89060a4385cd350b1d98521, type: 3}
   - {fileID: 21300000, guid: 26a1c43a90266e8499560796a3650475, type: 3}
-  - {fileID: 21300000, guid: 4faa327a322e17d41b8dde78bcbe71f0, type: 3}
   - {fileID: 21300000, guid: e0d9506be50f7b346a176d16c7522740, type: 3}
   - {fileID: 21300000, guid: e5d2c96b2519c3948bea781d60a1da93, type: 3}
   - {fileID: 21300000, guid: 2b53c32cc5b7c7545bd26bcc06351344, type: 3}
@@ -148,7 +146,6 @@ SpriteAtlas:
   - BookDark
   - TalentBoxChoose
   - physicalDefense
-  - Reset
   - monsterSpeed
   - range
   - TalentBaseDark

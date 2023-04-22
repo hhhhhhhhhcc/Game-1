@@ -230,11 +230,14 @@ namespace ET
             self.View.EButton_LoseRestartGameImage.gameObject.SetActive(false);
         }
         //单人模式隐藏一些按钮
-        public static void SingleModeHide(this DlgGameUI self)
+        public static void SetMatchMode(this DlgGameUI self)
         {
-            self.View.ECreateMonsterAllImage.gameObject.SetActive(false);
-            self.View.EInfoRightImage.gameObject.SetActive(false);
-            self.View.E_SkillAllImage.gameObject.SetActive(false);
+            if(self.MatchMode == 1)
+            {
+                self.View.ECreateMonsterAllImage.gameObject.SetActive(false);
+                self.View.EInfoRightImage.gameObject.SetActive(false);
+                self.View.E_SkillAllImage.gameObject.SetActive(false);
+            }
         }
         public static void MoveCurrentTower(this DlgGameUI self, Vector3 dir)
         {
@@ -375,7 +378,7 @@ namespace ET
         public static void ShowSettingUI(this DlgGameUI self)
         {
             self.View.E_SettingBaseSpriteImage.gameObject.SetActive(true);            
-            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            if(self.MatchMode == 1)
             {
                 GameHelper.PauseSingleGameMode(self.ZoneScene()).Coroutine();
             }
@@ -389,7 +392,7 @@ namespace ET
         public static void CloseSettingUI(this DlgGameUI self)
         {
             self.View.E_SettingBaseSpriteImage.gameObject.SetActive(false);
-            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            if(self.MatchMode == 1)
             {
                 GameHelper.ContinueSingleGameMode(self.ZoneScene()).Coroutine();
             }
@@ -397,7 +400,7 @@ namespace ET
         //下一波
         public static void NextWave(this DlgGameUI self)
         {
-            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            if(self.MatchMode == 1)
             {
                 self.HideAllNextWave();
                 GameHelper.NextWaveSingleGameMode(self.ZoneScene()).Coroutine();
@@ -573,7 +576,8 @@ namespace ET
         public static void ShowWindow(this DlgGameUI self, Entity contextData = null)
         {
             self.InitUI();
-            if (self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode != 1)
+            self.MatchMode = self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode;
+            if (self.MatchMode != 1)
             {
                 self.View.EButton_readyImage.transform.gameObject.SetActive(true);
             }
@@ -591,7 +595,7 @@ namespace ET
             self.GameMoneyRefresh(InitGold);
 
             //单人直接开始游戏
-            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 1)
+            if(self.MatchMode == 1)
             {
                 self.GetReady();
             }
@@ -635,8 +639,17 @@ namespace ET
         {
             if (Result)//胜利
             {
-                self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(true);
-                self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(false);
+                //单人双人用不一样的ui
+                if(self.MatchMode == 1)
+                {
+                    self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(true);
+                    self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(false);
+                }
+                if (self.MatchMode == 2)
+                {
+                    self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(true);
+                    self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(false);
+                }
                 int count = ItemId.Count;
                 self.ItemId = ItemId;
                 self.ItemNumber = ItemNumber;
@@ -646,10 +659,18 @@ namespace ET
             }
             else//失败
             {
-                self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(false);
-                self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(true);
+                if (self.MatchMode == 1)
+                {
+                    self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(false);
+                    self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(true);
+                }
+                if (self.MatchMode == 2)
+                {
+                    self.View.EResultWinBackgroundImage.transform.gameObject.SetActive(false);
+                    self.View.EResultLoseBackgroundImage.transform.gameObject.SetActive(true);
+                }
             }
-            if(self.ZoneScene().CurrentScene().GetComponent<GameComponent>().MatchMode == 2)//双人对战
+            if(self.MatchMode == 2)//双人对战
             {
                 self.HideRestartAndBack();
             }
@@ -706,6 +727,7 @@ namespace ET
             self.ShowUnitInfo(1);
             Tower tower = self.ZoneScene().CurrentScene().GetComponent<TowerComponent>().GetChild<Tower>(TowerId);
             //头像切换
+            self.View.E_Unit_TowerIconImage.sprite = IconHelper.LoadIconSprite("Tower",TowerConfigCategory.Instance.Get(tower.ConfigId).ResourceCode);
             //end
             self.View.E_Unit_TowerNameText.SetText(tower.Config.Name);
             if (tower.PhysicsAttack != 0)
@@ -743,6 +765,7 @@ namespace ET
             self.ShowUnitInfo(2);
             Monster monster = self.ZoneScene().CurrentScene().GetComponent<MonsterComponent>().GetChild<Monster>(monsterId);
             //头像切换
+            self.View.E_Unit_MonsterIconImage.sprite = IconHelper.LoadIconSprite("monster", FightItemConfigCategory.Instance.Get(MonsterConfigCategory.Instance.Get(monster.ConfigId).MonsterConfigId).ResourceCode);
             //end
             FightItemConfig fightitemconfig = FightItemConfigCategory.Instance.Get(monster.Config.MonsterConfigId);
             self.View.E_Unit_MonsterNameText.SetText(fightitemconfig.FightItemName);

@@ -248,6 +248,7 @@ namespace ET
             toweritem.E_TowerBookLevel3Image.sprite = IconHelper.LoadIconSprite("Tower", TowerConfigCategory.Instance.Get(fightitem.ConfigId + 2).ResourceCode);
             if(fightitem.Id == self.currentId)//表示选中
             {
+                toweritem.E_TowerIconBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerIconBright");
                 if(self.TowerConfigLevel == 1)
                 {
                     toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerChoose");
@@ -270,6 +271,7 @@ namespace ET
             }
             else//未选中
             {
+                toweritem.E_TowerIconBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerIconDark");
                 toweritem.E_TowerHandBookImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "BookDark");
                 toweritem.E_TowerBookLevel1BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
                 toweritem.E_TowerBookLevel2BaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TowerNormal");
@@ -627,9 +629,9 @@ namespace ET
             if (needmoney == 0)
             {
                 self.View.E_TowerSpendMoneyBaseImage.gameObject.SetActive(false);
-/*                self.View.E_TowerSpendMoneyNumberText.SetText("最高级");
+                //self.View.E_TowerSpendMoneyNumberText.SetText("最高级");
                 self.View.E_TowerTalentUpgradeBaseImage.gameObject.SetActive(false);
-                self.View.E_TowerTalentMaxBaseImage.gameObject.SetActive(true);*/
+                self.View.E_TowerTalentMaxBaseImage.gameObject.SetActive(true);
             }
             //初始化天赋外框
             self.View.E_TowerTalentLevel1LeftBaseImage.sprite = IconHelper.LoadIconSprite("TalentUIRes", "TalentBoxNormal");

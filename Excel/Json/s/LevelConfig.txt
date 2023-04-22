@@ -29,5 +29,5 @@
 {"_t":"LevelConfig","_id":28,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[15000,15000,15000,15000,15000,15000,15000],"InitGold":500,"Reward":"1,100;1,200;1,300","Percent":[],"LevelDis":"这是一张静谧森林地图","LevelName":"第二十八关","MonstersId":[6001,6002,6003]},
 {"_t":"LevelConfig","_id":29,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[15000,15000,15000,15000,15000,15000,15000],"InitGold":500,"Reward":"1,100;1,200;1,300","Percent":[],"LevelDis":"这是一张静谧森林地图","LevelName":"第二十九关","MonstersId":[6001,6002,6003]},
 {"_t":"LevelConfig","_id":30,"MapId":1,"MonsterWaveCode":"Wave2","MonsterWaveInterval":[15000,15000,15000,15000,15000,15000,15000],"InitGold":500,"Reward":"1,100;1,200;1,300","Percent":[],"LevelDis":"这是一张静谧森林地图","LevelName":"第三十关","MonstersId":[6001,6002,6003]},
-{"_t":"LevelConfig","_id":1001,"MapId":1001,"MonsterWaveCode":"Wave1","MonsterWaveInterval":[5000,5000,5000,5000,5000,5000],"InitGold":500,"Reward":"1,100;2,100;3,100","Percent":[200,50],"LevelDis":"","LevelName":"","MonstersId":[]},
+{"_t":"LevelConfig","_id":1001,"MapId":1001,"MonsterWaveCode":"Wave1","MonsterWaveInterval":[5000,5000,5000,5000,5000,5000],"InitGold":500,"Reward":"1,100;1,200;3,300","Percent":[200,50],"LevelDis":"","LevelName":"","MonstersId":[]},
 ]}

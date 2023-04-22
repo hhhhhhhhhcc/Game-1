@@ -83,7 +83,7 @@ namespace ET
 
                             for (int t = 0; t < stars; t++)
                             {
-                                level.GetChild(0).GetChild(t).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "Star");
+                                level.GetChild(0).GetChild(t).GetComponent<Image>().sprite = IconHelper.LoadIconSprite("SelectLevel", "StarBright");
                             }
                             if ((j + 1) % 10 != 0)
                             {
@@ -144,9 +144,9 @@ namespace ET
             }
 
             //奖励
-            self.View.E_Reward12Image.gameObject.SetActive(false);
-            self.View.E_Reward22Image.gameObject.SetActive(false);
-            self.View.E_Reward32Image.gameObject.SetActive(false);
+            self.View.E_Reward12BaseImage.gameObject.SetActive(false);
+            self.View.E_Reward22BaseImage.gameObject.SetActive(false);
+            self.View.E_Reward32BaseImage.gameObject.SetActive(false);
             (List<int> rewardTypes,List<int> rewardNumbers) =  RewardHelper.GetRewardByLevelId(self.currentLevelId);
             self.View.E_Reward1Image.sprite = IconHelper.LoadIconSprite("Items", ItemConfigCategory.Instance.Get(rewardTypes[0]).ItemName);
             self.View.E_RweardNum1Text.SetText(rewardNumbers[0].ToString());

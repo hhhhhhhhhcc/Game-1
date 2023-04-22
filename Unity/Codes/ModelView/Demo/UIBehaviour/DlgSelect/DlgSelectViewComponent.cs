@@ -2670,7 +2670,7 @@ namespace ET
      			}
      			if( this.m_E_Level210Stars1Image == null )
      			{
-		    		this.m_E_Level210Stars1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars1");
+		    		this.m_E_Level210Stars1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars/E_Level210Stars1");
      			}
      			return this.m_E_Level210Stars1Image;
      		}
@@ -2687,7 +2687,7 @@ namespace ET
      			}
      			if( this.m_E_Level210Stars2Image == null )
      			{
-		    		this.m_E_Level210Stars2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars2");
+		    		this.m_E_Level210Stars2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars/E_Level210Stars2");
      			}
      			return this.m_E_Level210Stars2Image;
      		}
@@ -2704,7 +2704,7 @@ namespace ET
      			}
      			if( this.m_E_Level210Stars3Image == null )
      			{
-		    		this.m_E_Level210Stars3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars3");
+		    		this.m_E_Level210Stars3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter2/ELevel210/E_Level210Stars/E_Level210Stars3");
      			}
      			return this.m_E_Level210Stars3Image;
      		}
@@ -4013,7 +4013,7 @@ namespace ET
      			}
      			if( this.m_E_Level310Stars1Image == null )
      			{
-		    		this.m_E_Level310Stars1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars1");
+		    		this.m_E_Level310Stars1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars/E_Level310Stars1");
      			}
      			return this.m_E_Level310Stars1Image;
      		}
@@ -4030,7 +4030,7 @@ namespace ET
      			}
      			if( this.m_E_Level310Stars2Image == null )
      			{
-		    		this.m_E_Level310Stars2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars2");
+		    		this.m_E_Level310Stars2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars/E_Level310Stars2");
      			}
      			return this.m_E_Level310Stars2Image;
      		}
@@ -4047,7 +4047,7 @@ namespace ET
      			}
      			if( this.m_E_Level310Stars3Image == null )
      			{
-		    		this.m_E_Level310Stars3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars3");
+		    		this.m_E_Level310Stars3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Chapters/E_Chapter3/ELevel310/E_Level310Stars/E_Level310Stars3");
      			}
      			return this.m_E_Level310Stars3Image;
      		}
@@ -4121,40 +4121,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button E_NextChapterButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_NextChapterButton == null )
-     			{
-		    		this.m_E_NextChapterButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_NextChapter");
-     			}
-     			return this.m_E_NextChapterButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_NextChapterImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_NextChapterImage == null )
-     			{
-		    		this.m_E_NextChapterImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_NextChapter");
-     			}
-     			return this.m_E_NextChapterImage;
-     		}
-     	}
-
 		public UnityEngine.UI.Button E_LastChapterButton
      	{
      		get
@@ -4186,6 +4152,40 @@ namespace ET
 		    		this.m_E_LastChapterImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_LastChapter");
      			}
      			return this.m_E_LastChapterImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NextChapterButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextChapterButton == null )
+     			{
+		    		this.m_E_NextChapterButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_NextChapter");
+     			}
+     			return this.m_E_NextChapterButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NextChapterImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NextChapterImage == null )
+     			{
+		    		this.m_E_NextChapterImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_NextChapter");
+     			}
+     			return this.m_E_NextChapterImage;
      		}
      	}
 
@@ -4359,6 +4359,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Dropdown E_ChapterSelectDropdown
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ChapterSelectDropdown == null )
+     			{
+		    		this.m_E_ChapterSelectDropdown = UIFindHelper.FindDeepChild<UnityEngine.UI.Dropdown>(this.uiTransform.gameObject,"E_ChapterSelect");
+     			}
+     			return this.m_E_ChapterSelectDropdown;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_ChapterSelectImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_ChapterSelectImage == null )
+     			{
+		    		this.m_E_ChapterSelectImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterSelect");
+     			}
+     			return this.m_E_ChapterSelectImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_ChapterIntroductImage
      	{
      		get
@@ -4410,23 +4444,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_IntroductLeveText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_IntroductLeveText == null )
-     			{
-		    		this.m_E_IntroductLeveText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/E_IntroductLeve");
-     			}
-     			return this.m_E_IntroductLeveText;
-     		}
-     	}
-
 		public UnityEngine.UI.Text E_LeveNameText
      	{
      		get
@@ -4441,6 +4458,23 @@ namespace ET
 		    		this.m_E_LeveNameText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/E_LeveName");
      			}
      			return this.m_E_LeveNameText;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_IntroductLeveText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_IntroductLeveText == null )
+     			{
+		    		this.m_E_IntroductLeveText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/E_IntroductLeve");
+     			}
+     			return this.m_E_IntroductLeveText;
      		}
      	}
 
@@ -4461,6 +4495,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Image E_Reward1BaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward1BaseImage == null )
+     			{
+		    		this.m_E_Reward1BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward1Base");
+     			}
+     			return this.m_E_Reward1BaseImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_Reward1Image
      	{
      		get
@@ -4472,7 +4523,7 @@ namespace ET
      			}
      			if( this.m_E_Reward1Image == null )
      			{
-		    		this.m_E_Reward1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward1");
+		    		this.m_E_Reward1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward1Base/E_Reward1");
      			}
      			return this.m_E_Reward1Image;
      		}
@@ -4489,9 +4540,26 @@ namespace ET
      			}
      			if( this.m_E_RweardNum1Text == null )
      			{
-		    		this.m_E_RweardNum1Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward1/E_RweardNum1");
+		    		this.m_E_RweardNum1Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward1Base/E_RweardNum1");
      			}
      			return this.m_E_RweardNum1Text;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_Reward12BaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward12BaseImage == null )
+     			{
+		    		this.m_E_Reward12BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward12Base");
+     			}
+     			return this.m_E_Reward12BaseImage;
      		}
      	}
 
@@ -4506,7 +4574,7 @@ namespace ET
      			}
      			if( this.m_E_Reward12Image == null )
      			{
-		    		this.m_E_Reward12Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward12");
+		    		this.m_E_Reward12Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward12Base/E_Reward12");
      			}
      			return this.m_E_Reward12Image;
      		}
@@ -4523,13 +4591,13 @@ namespace ET
      			}
      			if( this.m_E_RweardNum12Text == null )
      			{
-		    		this.m_E_RweardNum12Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward12/E_RweardNum12");
+		    		this.m_E_RweardNum12Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar1/E_Reward12Base/E_RweardNum12");
      			}
      			return this.m_E_RweardNum12Text;
      		}
      	}
 
-		public UnityEngine.UI.Image E_Reward22Image
+		public UnityEngine.UI.Image E_Reward2BaseImage
      	{
      		get
      		{
@@ -4538,28 +4606,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_Reward22Image == null )
+     			if( this.m_E_Reward2BaseImage == null )
      			{
-		    		this.m_E_Reward22Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward22");
+		    		this.m_E_Reward2BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward2Base");
      			}
-     			return this.m_E_Reward22Image;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_RweardNum22Text
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_RweardNum22Text == null )
-     			{
-		    		this.m_E_RweardNum22Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward22/E_RweardNum22");
-     			}
-     			return this.m_E_RweardNum22Text;
+     			return this.m_E_Reward2BaseImage;
      		}
      	}
 
@@ -4574,7 +4625,7 @@ namespace ET
      			}
      			if( this.m_E_Reward2Image == null )
      			{
-		    		this.m_E_Reward2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward2");
+		    		this.m_E_Reward2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward2Base/E_Reward2");
      			}
      			return this.m_E_Reward2Image;
      		}
@@ -4591,9 +4642,77 @@ namespace ET
      			}
      			if( this.m_E_RweardNum2Text == null )
      			{
-		    		this.m_E_RweardNum2Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward2/E_RweardNum2");
+		    		this.m_E_RweardNum2Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward2Base/E_RweardNum2");
      			}
      			return this.m_E_RweardNum2Text;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_Reward22BaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward22BaseImage == null )
+     			{
+		    		this.m_E_Reward22BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward22Base");
+     			}
+     			return this.m_E_Reward22BaseImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_Reward22Image
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward22Image == null )
+     			{
+		    		this.m_E_Reward22Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward22Base/E_Reward22");
+     			}
+     			return this.m_E_Reward22Image;
+     		}
+     	}
+
+		public UnityEngine.UI.Text E_RweardNum22Text
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RweardNum22Text == null )
+     			{
+		    		this.m_E_RweardNum22Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar2/E_Reward22Base/E_RweardNum22");
+     			}
+     			return this.m_E_RweardNum22Text;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_Reward3BaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward3BaseImage == null )
+     			{
+		    		this.m_E_Reward3BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward3Base");
+     			}
+     			return this.m_E_Reward3BaseImage;
      		}
      	}
 
@@ -4608,7 +4727,7 @@ namespace ET
      			}
      			if( this.m_E_Reward3Image == null )
      			{
-		    		this.m_E_Reward3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward3");
+		    		this.m_E_Reward3Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward3Base/E_Reward3");
      			}
      			return this.m_E_Reward3Image;
      		}
@@ -4625,9 +4744,26 @@ namespace ET
      			}
      			if( this.m_E_RweardNum3Text == null )
      			{
-		    		this.m_E_RweardNum3Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward3/E_RweardNum3");
+		    		this.m_E_RweardNum3Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward3Base/E_RweardNum3");
      			}
      			return this.m_E_RweardNum3Text;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_Reward32BaseImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Reward32BaseImage == null )
+     			{
+		    		this.m_E_Reward32BaseImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward32Base");
+     			}
+     			return this.m_E_Reward32BaseImage;
      		}
      	}
 
@@ -4642,7 +4778,7 @@ namespace ET
      			}
      			if( this.m_E_Reward32Image == null )
      			{
-		    		this.m_E_Reward32Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward32");
+		    		this.m_E_Reward32Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward32Base/E_Reward32");
      			}
      			return this.m_E_Reward32Image;
      		}
@@ -4659,7 +4795,7 @@ namespace ET
      			}
      			if( this.m_E_RweardNum32Text == null )
      			{
-		    		this.m_E_RweardNum32Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward32/E_RweardNum32");
+		    		this.m_E_RweardNum32Text = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"E_ChapterIntroduct/Reward/Bg/RewardStar3/E_Reward32Base/E_RweardNum32");
      			}
      			return this.m_E_RweardNum32Text;
      		}
@@ -4747,40 +4883,6 @@ namespace ET
 		    		this.m_E_EnemysLoopHorizontalScrollRect = UIFindHelper.FindDeepChild<UnityEngine.UI.LoopHorizontalScrollRect>(this.uiTransform.gameObject,"E_ChapterIntroduct/E_Enemys");
      			}
      			return this.m_E_EnemysLoopHorizontalScrollRect;
-     		}
-     	}
-
-		public UnityEngine.UI.Dropdown E_ChapterSelectDropdown
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_ChapterSelectDropdown == null )
-     			{
-		    		this.m_E_ChapterSelectDropdown = UIFindHelper.FindDeepChild<UnityEngine.UI.Dropdown>(this.uiTransform.gameObject,"E_ChapterSelect");
-     			}
-     			return this.m_E_ChapterSelectDropdown;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_ChapterSelectImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_ChapterSelectImage == null )
-     			{
-		    		this.m_E_ChapterSelectImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_ChapterSelect");
-     			}
-     			return this.m_E_ChapterSelectImage;
      		}
      	}
 
@@ -5028,10 +5130,10 @@ namespace ET
 			this.m_E_BackBaseImage = null;
 			this.m_ECoinDisplayImage = null;
 			this.m_EText_CoinNumberText = null;
-			this.m_E_NextChapterButton = null;
-			this.m_E_NextChapterImage = null;
 			this.m_E_LastChapterButton = null;
 			this.m_E_LastChapterImage = null;
+			this.m_E_NextChapterButton = null;
+			this.m_E_NextChapterImage = null;
 			this.m_E_Tower1FrameImage = null;
 			this.m_E_Tower1ImageImage = null;
 			this.m_E_Tower2FrameImage = null;
@@ -5042,22 +5144,30 @@ namespace ET
 			this.m_E_Tower4ImageImage = null;
 			this.m_E_AdjustButton = null;
 			this.m_E_AdjustImage = null;
+			this.m_E_ChapterSelectDropdown = null;
+			this.m_E_ChapterSelectImage = null;
 			this.m_E_ChapterIntroductImage = null;
 			this.m_E_IntroductCloseButton = null;
 			this.m_E_IntroductCloseImage = null;
-			this.m_E_IntroductLeveText = null;
 			this.m_E_LeveNameText = null;
+			this.m_E_IntroductLeveText = null;
 			this.m_E_MosterIntroductText = null;
+			this.m_E_Reward1BaseImage = null;
 			this.m_E_Reward1Image = null;
 			this.m_E_RweardNum1Text = null;
+			this.m_E_Reward12BaseImage = null;
 			this.m_E_Reward12Image = null;
 			this.m_E_RweardNum12Text = null;
-			this.m_E_Reward22Image = null;
-			this.m_E_RweardNum22Text = null;
+			this.m_E_Reward2BaseImage = null;
 			this.m_E_Reward2Image = null;
 			this.m_E_RweardNum2Text = null;
+			this.m_E_Reward22BaseImage = null;
+			this.m_E_Reward22Image = null;
+			this.m_E_RweardNum22Text = null;
+			this.m_E_Reward3BaseImage = null;
 			this.m_E_Reward3Image = null;
 			this.m_E_RweardNum3Text = null;
+			this.m_E_Reward32BaseImage = null;
 			this.m_E_Reward32Image = null;
 			this.m_E_RweardNum32Text = null;
 			this.m_E_FightButton = null;
@@ -5065,8 +5175,6 @@ namespace ET
 			this.m_E_MapIntImage = null;
 			this.m_EnemyLineImage = null;
 			this.m_E_EnemysLoopHorizontalScrollRect = null;
-			this.m_E_ChapterSelectDropdown = null;
-			this.m_E_ChapterSelectImage = null;
 			this.uiTransform = null;
 		}
 
@@ -5312,10 +5420,10 @@ namespace ET
 		private UnityEngine.UI.Image m_E_BackBaseImage = null;
 		private UnityEngine.UI.Image m_ECoinDisplayImage = null;
 		private UnityEngine.UI.Text m_EText_CoinNumberText = null;
-		private UnityEngine.UI.Button m_E_NextChapterButton = null;
-		private UnityEngine.UI.Image m_E_NextChapterImage = null;
 		private UnityEngine.UI.Button m_E_LastChapterButton = null;
 		private UnityEngine.UI.Image m_E_LastChapterImage = null;
+		private UnityEngine.UI.Button m_E_NextChapterButton = null;
+		private UnityEngine.UI.Image m_E_NextChapterImage = null;
 		private UnityEngine.UI.Image m_E_Tower1FrameImage = null;
 		private UnityEngine.UI.Image m_E_Tower1ImageImage = null;
 		private UnityEngine.UI.Image m_E_Tower2FrameImage = null;
@@ -5326,22 +5434,30 @@ namespace ET
 		private UnityEngine.UI.Image m_E_Tower4ImageImage = null;
 		private UnityEngine.UI.Button m_E_AdjustButton = null;
 		private UnityEngine.UI.Image m_E_AdjustImage = null;
+		private UnityEngine.UI.Dropdown m_E_ChapterSelectDropdown = null;
+		private UnityEngine.UI.Image m_E_ChapterSelectImage = null;
 		private UnityEngine.UI.Image m_E_ChapterIntroductImage = null;
 		private UnityEngine.UI.Button m_E_IntroductCloseButton = null;
 		private UnityEngine.UI.Image m_E_IntroductCloseImage = null;
-		private UnityEngine.UI.Text m_E_IntroductLeveText = null;
 		private UnityEngine.UI.Text m_E_LeveNameText = null;
+		private UnityEngine.UI.Text m_E_IntroductLeveText = null;
 		private UnityEngine.UI.Text m_E_MosterIntroductText = null;
+		private UnityEngine.UI.Image m_E_Reward1BaseImage = null;
 		private UnityEngine.UI.Image m_E_Reward1Image = null;
 		private UnityEngine.UI.Text m_E_RweardNum1Text = null;
+		private UnityEngine.UI.Image m_E_Reward12BaseImage = null;
 		private UnityEngine.UI.Image m_E_Reward12Image = null;
 		private UnityEngine.UI.Text m_E_RweardNum12Text = null;
-		private UnityEngine.UI.Image m_E_Reward22Image = null;
-		private UnityEngine.UI.Text m_E_RweardNum22Text = null;
+		private UnityEngine.UI.Image m_E_Reward2BaseImage = null;
 		private UnityEngine.UI.Image m_E_Reward2Image = null;
 		private UnityEngine.UI.Text m_E_RweardNum2Text = null;
+		private UnityEngine.UI.Image m_E_Reward22BaseImage = null;
+		private UnityEngine.UI.Image m_E_Reward22Image = null;
+		private UnityEngine.UI.Text m_E_RweardNum22Text = null;
+		private UnityEngine.UI.Image m_E_Reward3BaseImage = null;
 		private UnityEngine.UI.Image m_E_Reward3Image = null;
 		private UnityEngine.UI.Text m_E_RweardNum3Text = null;
+		private UnityEngine.UI.Image m_E_Reward32BaseImage = null;
 		private UnityEngine.UI.Image m_E_Reward32Image = null;
 		private UnityEngine.UI.Text m_E_RweardNum32Text = null;
 		private UnityEngine.UI.Button m_E_FightButton = null;
@@ -5349,8 +5465,6 @@ namespace ET
 		private UnityEngine.UI.Image m_E_MapIntImage = null;
 		private UnityEngine.UI.Image m_EnemyLineImage = null;
 		private UnityEngine.UI.LoopHorizontalScrollRect m_E_EnemysLoopHorizontalScrollRect = null;
-		private UnityEngine.UI.Dropdown m_E_ChapterSelectDropdown = null;
-		private UnityEngine.UI.Image m_E_ChapterSelectImage = null;
 		public Transform uiTransform = null;
 	}
 }
